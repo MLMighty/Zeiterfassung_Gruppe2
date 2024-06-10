@@ -13,6 +13,7 @@ public class Main {
             if (number>number2){
                 System.out.println("You are greater than the number");
                 scanner.close();
+                
             }
         }
     }
