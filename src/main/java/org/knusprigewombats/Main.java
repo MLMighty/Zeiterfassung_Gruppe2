@@ -7,6 +7,7 @@ import org.knusprigewombats.database.DatabaseConnection;
 public class Main {
     public static void main(String[] args) {
 
-        DatabaseConnection.getConnection();
+        DatabaseConnection.getConnection("SELECT email, password from users;");
+
     }
 }

@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DatabaseConnection {
 
-    public static void getConnection() {
+    public static void getConnection(String befehl) {
             // Connect to your database.
             // Replace server name, username, and password with your credentials
 
@@ -24,7 +24,7 @@ public class DatabaseConnection {
              Statement statement = connection.createStatement();) {
 
 
-            String selectSql = "SELECT * from t_User;";
+            String selectSql = ""+befehl+"";
             resultSet = statement.executeQuery(selectSql);
 
 
@@ -36,11 +36,10 @@ public class DatabaseConnection {
                         String columnValue = resultSet.getString(i);
                         System.out.print(columnValue);
                     }
+                    System.out.println("\n");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }
