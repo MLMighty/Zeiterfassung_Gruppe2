@@ -12,9 +12,8 @@ public class Main
         //Clas for SQL Commands
         SQLCommand sqlQuery=new SQLCommand();
 
-        //Database Connection
-        DatabaseConnection.getConnection(sqlQuery.getLogin());
-        DatabaseConnection.getConnection((sqlQuery.getQueryAllUserAndPasswords()));
-        DatabaseConnection.getConnection(((sqlQuery.getQueryForFilteredMonthlyDataPerUser(1,3,4))));
+        //                                          Database Connection
+        //DatabaseConnection.getConnection((sqlQuery.getQueryAllUserAndPasswords()));
+        //DatabaseConnection.getConnection(((sqlQuery.getQueryForFilteredMonthlyDataPerUser(1,7,8))));
     }
 }
