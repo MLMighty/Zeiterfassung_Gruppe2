@@ -2,12 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let scriptLocation;
     let main_Container = document.getElementById("main-Container");
-    
-    if(location.href === "http://127.0.0.1:5500/src/infinisurv/self_resources/infinisurv.html"){
-        scriptLocation ='../global_dependencys/global_scripts/main_script.js'
-    }else{
-        scriptLocation ='../../../global_dependencys/global_scripts/main_script.js'
-    }
+
 
     const loginDiv = `
     <div class="login-Container" id="login-Container-Visbility">
@@ -22,9 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 <input class="login-input" id="firstname" name="txt" placeholder="Firstname*" required
                     size="10" />
                 <input class="login-input" id="lastname" name="txt" placeholder="Lastname*" required />
-                <input class="login-input" id="birthday" type="date" name="txt" placeholder="birthday*"
-                    required />
-                <input class="login-input" id="username" name="txt" placeholder="Username*" required />
                 <input class="login-input" id="email" type="email" name="email" placeholder="Email*"
                     required />
                 <input class="login-input"  oninput="import('${scriptLocation}').then(module => module.forwardingChangeOnInput(event)).catch(err => console.error(err))" id="password" type="password" name="pswd" placeholder="Password*"
@@ -54,5 +46,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-    main_Container.insertAdjacentHTML('afterbegin', loginDiv);
+    main_Container.insertAdjacentHTML('beforebegin', loginDiv);
 });
