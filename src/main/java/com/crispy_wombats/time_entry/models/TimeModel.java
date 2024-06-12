@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Date;
+import java.util.Set;
 
 
 @Entity
@@ -13,6 +14,12 @@ public class TimeModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "time_id")
     private int time_id;
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
+    @Setter
+    @ManyToMany(mappedBy = "time")
+    Set<UsersModel> users;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
     @Getter
     @Column(name = "taskprojectuser_id")
@@ -47,4 +54,8 @@ public class TimeModel {
     @Setter
     @Column(name = "workingHours")
     private double workingHours;
+
+    public TimeModel(){
+
+    }
 }
