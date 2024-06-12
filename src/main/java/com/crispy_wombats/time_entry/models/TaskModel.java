@@ -28,4 +28,7 @@ public class TaskModel {
     @Setter
     @Column(name = "taskDescription")
     private String taskDescription;
+    public TaskModel(){
+
+    }
 }
