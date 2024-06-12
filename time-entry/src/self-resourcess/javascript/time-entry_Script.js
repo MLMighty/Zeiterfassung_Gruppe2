@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const calendarBody = calendar.querySelector('tbody');
 
         calendarBody.innerHTML = '';
-        monthYearDisplay.textContent = `${String(month + 1).padStart(2, '0')}-${year}`;
+        monthYearDisplay.textContent = `${String(month + 1).padStart(2, '0')}.${year}`;
 
         let date = 1;
         for (let i = 0; i < 6; i++) {
@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarBody.appendChild(row);
         }
 
-        fetchCalendarData(month + 1, year);
+        //fetchCalendarData(month + 1, year);
     }
+
     prevMonthButton.addEventListener('click', () => {
         currentMonth--;
         if (currentMonth < 0) {
@@ -74,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return i;
     }
 
-    //funktioniert noch nicht!!!
     function setWeekDay(){
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
@@ -83,10 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("weekDay").innerHTML = day;
     }
 
+    function setDateText(){
+        const d = new Date();
+        let myArray = d.toLocaleDateString().split(".");
+        for (let i = 0; i < myArray.length ; i++){
+            myArray[i]=checkTime(myArray[i]); 
+        }
+        console.log(myArray[0] + "." + myArray[1] + "." + myArray[2]);
+        document.getElementById("fullDate").innerHTML = myArray[0] + "." + myArray[1] + "." + myArray[2];
+    }
+
     function callFunctions(){
         startTime();
         renderCalendar(currentMonth, currentYear);
         setWeekDay();
+        setDateText();
     }
 
     callFunctions();
