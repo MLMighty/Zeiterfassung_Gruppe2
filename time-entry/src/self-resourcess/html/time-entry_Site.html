@@ -7,8 +7,8 @@
     <title>Zeiterfassung</title>
     <link rel="stylesheet" href="../css/time-entry_Style.css">
 </head>
-<body>
-    <main>
+<body onload="import('../../global_dependencys/global_scripts/main-script.js').then(event => event.callLoginHadler(event))">
+    <main >
         <header>
         <!--load header here-->
         </header>
@@ -47,6 +47,7 @@
         <!--load footer here-->
         </footer>
     <script src="../javascript/time-entry_Script.js"></script>
+    
     </main>
 </body>
 </html>
