@@ -1,6 +1,8 @@
-// import moment from "../../../../../node_modules/moment/moment.js";
-import { InputSanitizingHandler } from "../../security-measures_scripts/input-sanitizing_script.js";
+
+import { InputSanitizingHandler } from "../../global_scripts/security-measures_scripts/input-sanitizing_script.js";
 import { PasswordGuidelines } from "../../security-measures_scripts/password-guidelines_script.js";
+import {POST_ApiInterfaceHandler} from "../api-handler_scripts/post-api-handler_script.js";
+
 
 export class SignUpHandler {
 
@@ -14,7 +16,7 @@ export class SignUpHandler {
         this.login_Inputs = document.getElementsByClassName("login-input");
 
         this.neededSanatizing = [];
-
+        this.post_apiInterfaceHandler = new POST_ApiInterfaceHandler();
         this.sanitizeInputHandler = new InputSanitizingHandler();
         this.passwordGuidelines = new PasswordGuidelines();
     }

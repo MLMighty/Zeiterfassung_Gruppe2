@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-    let scriptLocation;
+    let scriptLocation = "../../global_dependencys/global_scripts/main_script.js";
     let main_Container = document.getElementById("main-Container");
 
 
