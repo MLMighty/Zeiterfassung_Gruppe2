@@ -1,19 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const calendar = document.getElementById('calendar');
+    const table = document.getElementById('table');
     const monthYearDisplay = document.getElementById('month-year');
     const prevMonthButton = document.getElementById('prev-month');
     const nextMonthButton = document.getElementById('next-month');
     const clock = document.getElementById("clock");
-    const fullDate=document.getElementById("fullDate");
     let currentMonth = new Date().getMonth();
     let currentYear = new Date().getFullYear();
 
-    function renderCalendar(month, year) {
+    //function to render table in monthView
+    function renderMonthTable(month, year) {
+
         const firstDay = new Date(year, month).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const calendarBody = calendar.querySelector('tbody');
+        const tableHead = table.querySelector('thead')
+        const tableBody = table.querySelector('tbody');
 
-        calendarBody.innerHTML = '';
+        tableHead.innerHTML =`<tr>
+                                    <th>Sun</th>
+                                    <th>Mon</th>
+                                    <th>Tue</th>
+                                    <th>Wed</th>
+                                    <th>Thu</th>
+                                    <th>Fri</th>
+                                    <th>Sat</th>
+                              </tr>`
+        tableBody.innerHTML = '';
         monthYearDisplay.textContent = `${String(month + 1).padStart(2, '0')}.${year}`;
 
         let date = 1;
@@ -27,17 +38,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (date > daysInMonth) {
                     break;
                 } else {
-                    cell.innerHTML = `<span class="date">${date}</span>`;
+                    cell.innerHTML = `<span id="cell${date}" class="date">${date}</span>`; //set id to cells for easier adress
                     cell.setAttribute('data-date', `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`);
+                    let dateObject = new Date(cell.getAttribute('data-date'))
+                    let currentDate = new Date();
+                    if (currentDate.toLocaleDateString() === dateObject.toLocaleDateString()){
+                        cell.classList.add("bg"); //highlight the current day
+                    }
                     date++;
                 }
                 row.appendChild(cell);
             }
 
-            calendarBody.appendChild(row);
+            tableBody.appendChild(row);
         }
 
-        //fetchCalendarData(month + 1, year);
+        //fetchTableData(month + 1, year);
+    }
+
+    //generates table based on the view option chosen
+    function genView(value){
+        switch(value) {
+            case "weekView":
+              // code block
+              break;
+            case "monthView":
+                renderMonthTable(currentMonth, currentYear);
+              break;
+            case "quarterView":
+              // code block
+              break;
+            case "yearView":
+                // code block
+                break;
+            default:
+                renderMonthTable(currentMonth, currentYear);
+          }
     }
 
     prevMonthButton.addEventListener('click', () => {
@@ -46,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMonth = 11;
             currentYear--;
         }
-        renderCalendar(currentMonth, currentYear);
+        renderMonthTable(currentMonth, currentYear);
     });
 
     nextMonthButton.addEventListener('click', () => {
@@ -55,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMonth = 0;
             currentYear++;
         }
-        renderCalendar(currentMonth, currentYear);
+        renderMonthTable(currentMonth, currentYear);
     });
 
     function startTime() {
@@ -89,13 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < myArray.length ; i++){
             myArray[i]=checkTime(myArray[i]); 
         }
-        console.log(myArray[0] + "." + myArray[1] + "." + myArray[2]);
         document.getElementById("fullDate").innerHTML = myArray[0] + "." + myArray[1] + "." + myArray[2];
     }
 
     function callFunctions(){
         startTime();
-        renderCalendar(currentMonth, currentYear);
+        renderMonthTable(currentMonth, currentYear);
         setWeekDay();
         setDateText();
     }
