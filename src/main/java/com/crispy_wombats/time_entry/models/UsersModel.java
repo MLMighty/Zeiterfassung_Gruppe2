@@ -77,7 +77,14 @@ public class UsersModel {
     @Column(name = "email")
     private String email;
 
+<<<<<<< HEAD
 
+=======
+    @Getter
+    @Setter
+    @Column(name = "password")
+    private String password;
+>>>>>>> 02b72eab2e50ba51a1d9991efb1536fec377372b
 
     public UsersModel(){
 
