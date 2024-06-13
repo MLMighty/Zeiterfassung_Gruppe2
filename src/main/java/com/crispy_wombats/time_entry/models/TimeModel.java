@@ -42,12 +42,12 @@ public class TimeModel {
 
     @Getter
     @Setter
-    @Column(name = "holiday")
+    @Column(name = "isHoliday")
     private boolean holiday;
 
     @Getter
     @Setter
-    @Column(name = "weekEnd")
+    @Column(name = "isWeekend")
     private boolean weekEnd;
 
     @Getter
