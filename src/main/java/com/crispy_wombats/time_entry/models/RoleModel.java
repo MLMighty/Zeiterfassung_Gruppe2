@@ -34,6 +34,11 @@ public class RoleModel {
     @Column(name = "roleDescription")
     private String roleDescription;
 
+    @Getter
+    @Setter
+    @Column(name = "permissionRights")
+    private Boolean permissionRights;
+
     public RoleModel(){
 
     }

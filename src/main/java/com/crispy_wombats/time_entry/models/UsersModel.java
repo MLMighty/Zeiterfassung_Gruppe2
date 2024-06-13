@@ -9,6 +9,7 @@ import org.apache.catalina.User;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -64,6 +65,14 @@ public class UsersModel {
     @Setter
     @ManyToOne( cascade = CascadeType.ALL)
     private RoleModel role;
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private List<AbsenceModel> absence;
     //////////////////////////////////////////////////////////////////////////////////////////////
 
 
