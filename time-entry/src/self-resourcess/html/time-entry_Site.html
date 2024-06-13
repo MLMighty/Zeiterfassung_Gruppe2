@@ -18,7 +18,7 @@
             <div class="containerTop">
                 <div class="header-left">
                         <h1 class="leftText" id="name">Max Mustermann</h1>
-                        <select class="selects" id="viewSelection">
+                        <select class="selects" onselect="genView" id="viewSelection">
                             <option value="weekView">Wochenansicht</option>
                             <option selected="selected" value="monthView">Monatsansicht</option>
                             <option value="quarterView">Quartalsansicht</option>
@@ -56,29 +56,22 @@
                     </div>
                 </div>
             </div>
-            <div class="containerCalendar">
+            <div class="containerTable">
                 <section>
-                    <h1>Calendar</h1>
+                    <h1>Table</h1>
                     <div class="month-year">
+                        <button id="exportExcel">Download als Excel</button>
+                        <button id="exportPdf">Download als PDF</button>
                         <button id="prev-month">&lt;</button>
                         <span id="month-year"></span>
                         <button id="next-month">&gt;</button>
                     </div>
                 </section>
-                <table id="calendar">
+                <table id="table">
                     <thead>
-                    <tr>
-                        <th>Sun</th>
-                        <th>Mon</th>
-                        <th>Tue</th>
-                        <th>Wed</th>
-                        <th>Thu</th>
-                        <th>Fri</th>
-                        <th>Sat</th>
-                    </tr>
                     </thead>
                     <tbody>
-                    <!-- Calendar dates will be inserted here dynamically -->
+                    <!-- table data will be inserted here dynamically -->
                     </tbody>
                 </table>
             </div>
