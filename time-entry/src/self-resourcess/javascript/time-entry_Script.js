@@ -1,69 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const table = document.getElementById('table');
-    const monthYearDisplay = document.getElementById('month-year');
-    const prevMonthButton = document.getElementById('prev-month');
-    const nextMonthButton = document.getElementById('next-month');
+    //set important values for functions
+    const weekday = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Sonntag"];
+    const monthNames = [ "Januar", "Februar", "März", "April", "Mai", "Juni",
+                         "Juli", "August", "September", "Oktober", "November", "Dezember" ];
+    //const table = document.getElementById('table');
+    const viewSelection = document.getElementById("viewSelection")
+    const tableViewInfo = document.getElementById('tableViewInfo');
+    const tableHead = document.getElementById('tableHead');
+    const tableBody = document.getElementById('tableBody');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
     const clock = document.getElementById("clock");
-    let currentMonth = new Date().getMonth();
-    let currentYear = new Date().getFullYear();
+    const today = new Date();
+    const week = getWeekNumber(today);
+    let currentWeek = week;
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
 
-    //function to render table in monthView
-    function renderMonthTable(month, year) {
 
-        const firstDay = new Date(year, month).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const tableHead = table.querySelector('thead')
-        const tableBody = table.querySelector('tbody');
-
+    function renderTableHeaderDE(){
         tableHead.innerHTML =`<tr>
-                                    <th>Sun</th>
-                                    <th>Mon</th>
-                                    <th>Tue</th>
-                                    <th>Wed</th>
-                                    <th>Thu</th>
-                                    <th>Fri</th>
-                                    <th>Sat</th>
-                              </tr>`
-        tableBody.innerHTML = '';
-        monthYearDisplay.textContent = `${String(month + 1).padStart(2, '0')}.${year}`;
-
-        let date = 1;
-        for (let i = 0; i < 6; i++) {
-            const row = document.createElement('tr');
-
-            for (let j = 0; j < 7; j++) {
-                const cell = document.createElement('td');
-                if (i === 0 && j < firstDay) {
-                    cell.innerHTML = '';
-                } else if (date > daysInMonth) {
-                    break;
-                } else {
-                    cell.innerHTML = `<span id="cell${date}" class="date">${date}</span>`; //set id to cells for easier adress
-                    cell.setAttribute('data-date', `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`);
-                    let dateObject = new Date(cell.getAttribute('data-date'))
-                    let currentDate = new Date();
-                    if (currentDate.toLocaleDateString() === dateObject.toLocaleDateString()){
-                        cell.classList.add("bg"); //highlight the current day
-                    }
-                    date++;
-                }
-                row.appendChild(cell);
-            }
-
-            tableBody.appendChild(row);
-        }
-
-        //fetchTableData(month + 1, year);
+                                <th>Datum</th>
+                                <th>Start</th>
+                                <th>Ende</th>
+                                <th>Ist</th>
+                                <th>Soll</th>
+                                <th>Projekt</th>
+                                <th>Tätigkeit</th>
+                                <th>freigegeben</th>
+                              </tr>`;
     }
+    
+    function getFirstDayOfWeek(date) {
+        const dayOfWeek = date.getDay();
+        const diff = date.getDate() - dayOfWeek + (dayOfWeek === 0? -6 : 1);
+        return new Date(date.setDate(diff));
+    }
+    
+    function getWeekNumber(date) {
+        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+        const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+        return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7); //math.ceil rundet
+    }
+    
 
     //generates table based on the view option chosen
-    function genView(value){
-        switch(value) {
+    viewSelection.addEventListener('change', (event)=> {
+        e = viewSelection.value;
+        switch(e) {
             case "weekView":
-              // code block
+                tableViewInfo.textContent = `KW ${week} ${today.getFullYear()}`;
               break;
             case "monthView":
-                renderMonthTable(currentMonth, currentYear);
+                tableViewInfo.textContent = `${checkTime(currentMonth +1)}.${today.getFullYear()}`;
               break;
             case "quarterView":
               // code block
@@ -71,34 +60,94 @@ document.addEventListener('DOMContentLoaded', () => {
             case "yearView":
                 // code block
                 break;
-            default:
-                renderMonthTable(currentMonth, currentYear);
           }
+    });
+
+    prevButton.addEventListener('click', () => {
+        var e = viewSelection.value; //get Value of viewSelection to adapt function of buttons to one week/month/quarter/year before
+        switch(e){
+            case "weekView":
+                currentWeek--;
+                if (currentWeek < 1) {
+                    currentWeek = 52;
+                    currentYear--;
+                }
+                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`
+              break;
+            
+            case "monthView":
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`
+                break;
+            
+            case "quarterView":
+                // code block
+                break;
+              case "yearView":
+                  // code block
+                  break;
+              //default:
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        
+        var e = viewSelection.value; //get Value of viewSelection to adapt function of buttons to one week/month/quarter/year ahead
+        switch(e){
+            case "weekView":
+                currentWeek++;
+                if (currentWeek > 52) {
+                    currentWeek = 1;
+                    currentYear++;
+                }
+                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`
+              break;
+            
+            case "monthView":
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`
+                break;
+            
+            case "quarterView":
+                // code block
+                break;
+              case "yearView":
+                  // code block
+                  break;
+              //default:
+        }
+        
+    });
+
+    //sets text for the week Day in top container
+    function setWeekDay(){
+        let day = weekday[today.getDay()];
+        document.getElementById("weekDay").innerHTML = day;
     }
 
-    prevMonthButton.addEventListener('click', () => {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
+    //set text for date in top container
+    function setDateText(){
+        let myArray = today.toLocaleDateString().split(".");
+        for (let i = 0; i < myArray.length ; i++){
+            myArray[i]=checkTime(myArray[i]); 
         }
-        renderMonthTable(currentMonth, currentYear);
-    });
+        document.getElementById("fullDate").innerHTML = myArray[0] + "." + myArray[1] + "." + myArray[2];
+    }
 
-    nextMonthButton.addEventListener('click', () => {
-        currentMonth++;
-        if (currentMonth > 11) {
-            currentMonth = 0;
-            currentYear++;
-        }
-        renderMonthTable(currentMonth, currentYear);
-    });
-
+    //starts clock for top container
     function startTime() {
-        const today = new Date();
-        let h = today.getHours();
-        let m = today.getMinutes();
-        let s = today.getSeconds();
+        let d = new Date()
+        let h = d.getHours();
+        let m = d.getMinutes();
+        let s = d.getSeconds();
         h = checkTime(h);
         m = checkTime(m);
         s = checkTime(s);
@@ -106,33 +155,19 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(startTime, 1000);
     }
 
+    //checkTime for numbers < 10 to add a 0 in front
     function checkTime(i) {
         if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
         return i;
     }
 
-    function setWeekDay(){
-        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-        const d = new Date();
-        let day = weekday[d.getDay()];
-        document.getElementById("weekDay").innerHTML = day;
-    }
-
-    function setDateText(){
-        const d = new Date();
-        let myArray = d.toLocaleDateString().split(".");
-        for (let i = 0; i < myArray.length ; i++){
-            myArray[i]=checkTime(myArray[i]); 
-        }
-        document.getElementById("fullDate").innerHTML = myArray[0] + "." + myArray[1] + "." + myArray[2];
-    }
-
+    //calls all important functions at start
     function callFunctions(){
+        tableViewInfo.textContent = `${checkTime(currentMonth + 1)}.${currentYear}` //standardmäßig Monat
         startTime();
-        renderMonthTable(currentMonth, currentYear);
         setWeekDay();
         setDateText();
+        renderTableHeaderDE();
     }
 
     callFunctions();

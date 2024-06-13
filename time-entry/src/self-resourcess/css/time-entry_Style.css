@@ -57,12 +57,12 @@ section {
     margin-bottom: 10px;
 }
 
-.month-year {
+.tableControl {
     display: flex;
     align-items: center;
 }
 
-.month-year button {
+.tableControl button {
     background-color: #573b8a;
     color: white;
     border: none;
@@ -71,7 +71,7 @@ section {
     cursor: pointer;
 }
 
-.month-year span {
+.tableControl span {
     font-size: 24px;
 }
 
