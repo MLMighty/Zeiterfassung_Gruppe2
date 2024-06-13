@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.Role;
 import org.apache.catalina.User;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.util.Date;
 import java.util.Set;
@@ -19,13 +20,18 @@ public class UsersModel {
     private int user_id;
 
     @Getter
+    @Setter
+    @Column(name = "password")
+    private String password;
+
+    @Getter
     @Column(name = "role_id")
     private int role_id;
 
     @Getter
     @Setter
     @Column(name = "firstName")
-    private Date firstName;
+    private String firstName;
     //////////////////////////////////////////////////////////////////////////////////////////////
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -64,20 +70,18 @@ public class UsersModel {
     @Getter
     @Setter
     @Column(name = "lastName")
-    private Date lastName;
+    private String lastName;
 
     @Getter
     @Setter
     @Column(name = "email")
     private String email;
 
-    @Getter
-    @Setter
-    @Column(name = "password")
-    private boolean password;
+
 
     public UsersModel(){
 
     }
+
 
 }
