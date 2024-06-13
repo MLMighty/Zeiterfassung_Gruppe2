@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.Role;
 import org.apache.catalina.User;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,11 @@ public class UsersModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "user_id")
     private int user_id;
+
+    @Getter
+    @Setter
+    @Column(name = "password")
+    private String password;
 
     @Getter
     @Column(name = "role_id")
@@ -80,13 +86,18 @@ public class UsersModel {
     @Column(name = "email")
     private String email;
 
+<<<<<<< HEAD
+
+=======
     @Getter
     @Setter
     @Column(name = "password")
     private String password;
+>>>>>>> 02b72eab2e50ba51a1d9991efb1536fec377372b
 
     public UsersModel(){
 
     }
+
 
 }
