@@ -14,7 +14,7 @@ export class POST_ApiInterfaceHandler {
         }
         const responseData = await response.text();
         console.log(signUpData);
-        console.log("Antwort vom Server: " + responseData);
+        alert(responseData)
       } catch (err) {
         console.error("A problem occured: " + err);
       }
