@@ -23,12 +23,13 @@ public class ProjectModel {
     //////////////////////////////////////////////////////////////////////////////////////////////
 
     @Getter@Setter
-    @Column(name = "projectName")
-    private String projectName;
+    @Column(name = "projectname")
+    private String projectname;
 
     @Getter@Setter
-    @Column(name = "projectDescription")
-    private String projectDescription;
+    @Column(name = "projectdescription")
+    private String projectdescription;
+
     public ProjectModel() {
 
     }
