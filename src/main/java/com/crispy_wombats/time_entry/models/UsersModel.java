@@ -25,7 +25,7 @@ public class UsersModel {
     @Getter
     @Setter
     @Column(name = "firstName")
-    private Date firstName;
+    private String firstName;
     //////////////////////////////////////////////////////////////////////////////////////////////
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -64,7 +64,7 @@ public class UsersModel {
     @Getter
     @Setter
     @Column(name = "lastName")
-    private Date lastName;
+    private String lastName;
 
     @Getter
     @Setter
@@ -74,7 +74,7 @@ public class UsersModel {
     @Getter
     @Setter
     @Column(name = "password")
-    private boolean password;
+    private String password;
 
     public UsersModel(){
 
