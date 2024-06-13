@@ -16,3 +16,8 @@ export function forwardingChangeOnInput(event){
     passwordGuidelinesHandler.passwordGuidlines();
 }
 
+export function forwardingLoginData(event){
+    console.log("main _ script wird aufgerufen");
+    event.preventDefault();
+    loginhandler.processLoginData();
+}
