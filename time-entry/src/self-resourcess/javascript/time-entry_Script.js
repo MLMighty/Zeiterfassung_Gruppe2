@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
-    document.getElementById("commitAway").addEventListener('click', () => { openModal()});
-        
+    document.getElementById("editTime").addEventListener('click', () => { navigateToPage2()});
+    /*document.getElementById("commitAway").addEventListener('click', () => { openModal()});
     function openModal() {
         document.getElementById('myModal').style.display = 'block';
     }
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.getElementsByClassName('close')[0].onclick = function() {
         closeModal();
-    }
+    }*/
 
     function renderTableHeader(){
         tableHead.innerHTML =`<tr>
@@ -75,8 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableViewInfo.textContent = `${checkTime(today.getMonth() +1)}.${today.getFullYear()}`;
               break;
             case "quarterView":
-              // code block
-              break;
+                const currentQuarter = berechneQuartal(today.getMonth() + 1);
+                tableViewInfo.textContent = `Q${currentQuarter} ${today.getFullYear()}`;
+                break;
             case "yearView":
                 tableViewInfo.textContent = `${today.getFullYear()}`;
             break;
@@ -105,7 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             
             case "quarterView":
-                // code block
+                const previousQuarter = berechneQuartal(currentMonth - 3 + 1);
+                if (previousQuarter === 4) currentYear--;
+                currentMonth -= 3;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                tableViewInfo.textContent = `Q${previousQuarter} ${currentYear}`;
                 break;
 
             case "yearView":
@@ -114,6 +122,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
         }
     });
+    function berechneQuartal(monat) {
+        let quartal;
+        if (monat >= 1 && monat <= 3) {
+            quartal = 1;
+        } else if (monat >= 4 && monat <= 6) {
+            quartal = 2;
+        } else if (monat >= 7 && monat <= 9) {
+            quartal = 3;
+        } else if (monat >= 10 && monat <= 12) {
+            quartal = 4;
+        }
+        return quartal;
+    }
 
     nextButton.addEventListener('click', () => {
         
@@ -138,7 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             
             case "quarterView":
-                // code block
+                const nextQuarter = berechneQuartal(currentMonth + 3 + 1);
+                if (nextQuarter === 1) currentYear++;
+                currentMonth += 3;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                tableViewInfo.textContent = `Q${nextQuarter} ${currentYear}`;
                 break;
 
             case "yearView":
@@ -193,4 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     callFunctions();
+        
+    function navigateToPage2() {
+        window.location.href = "edit_time.html";
+    }
+
+    
 });
