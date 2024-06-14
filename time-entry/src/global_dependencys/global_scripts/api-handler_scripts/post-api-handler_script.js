@@ -14,7 +14,7 @@ export class POST_ApiInterfaceHandler {
         }
         const responseData = await response.text();
         console.log(signUpData);
-        console.log("Antwort vom Server: " + responseData);
+        alert(responseData)
       } catch (err) {
         console.error("A problem occured: " + err);
       }
@@ -22,25 +22,28 @@ export class POST_ApiInterfaceHandler {
   
     async loginApiHandler(loginData) {
       try {
-        const response = await fetch("http://localhost:8080/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        });
+          console.log("Login API handler called");
+          const response = await fetch("http://localhost:8080/login", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify(loginData),
+              credentials: 'include' // This ensures cookies are included in the request if needed
+          });
   
-        if (!response.ok) {
-          throw new Error("Fehler beim senden der Daten");
-        }
+          if (!response.ok) {
+              throw new Error("Error sending data");
+          }
   
-        const responseData = await response.text(); //test
-        console.log("Der server antwortet mit" + responseData);
-        return responseData;
+          const responseData = await response.text(); // For testing
+          console.log("Server responds with: " + responseData);
+          return responseData;
       } catch (err) {
-        console.error("A problem occured: " + err);
+          console.error("A problem occurred: " + err);
       }
-    }
+  }
+  
   
     async createdPostApiHandler(postData) {
       try {
