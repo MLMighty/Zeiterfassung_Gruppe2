@@ -17,8 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
+    document.getElementById("commitAway").addEventListener('click', () => { openModal()});
+        
+    function openModal() {
+        document.getElementById('myModal').style.display = 'block';
+    }
+    
+    function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+    }
+    
+    window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    
+    document.getElementsByClassName('close')[0].onclick = function() {
+        closeModal();
+    }
 
-    function renderTableHeaderDE(){
+    function renderTableHeader(){
         tableHead.innerHTML =`<tr>
                                 <th>Datum</th>
                                 <th>Start</th>
@@ -52,14 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 tableViewInfo.textContent = `KW ${week} ${today.getFullYear()}`;
               break;
             case "monthView":
-                tableViewInfo.textContent = `${checkTime(currentMonth +1)}.${today.getFullYear()}`;
+                tableViewInfo.textContent = `${checkTime(today.getMonth() +1)}.${today.getFullYear()}`;
               break;
             case "quarterView":
               // code block
               break;
             case "yearView":
-                // code block
-                break;
+                tableViewInfo.textContent = `${today.getFullYear()}`;
+            break;
           }
     });
 
@@ -73,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentYear--;
                 }
                 tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`
-              break;
+                break;
             
             case "monthView":
                 currentMonth--;
@@ -87,10 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
             case "quarterView":
                 // code block
                 break;
-              case "yearView":
-                  // code block
-                  break;
-              //default:
+
+            case "yearView":
+                currentYear--;
+                tableViewInfo.textContent = `${currentYear}`;
+                break;
         }
     });
 
@@ -104,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentWeek = 1;
                     currentYear++;
                 }
-                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`
-              break;
+                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`;
+                break;
             
             case "monthView":
                 currentMonth++;
@@ -113,16 +134,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentMonth = 0;
                     currentYear++;
                 }
-                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`
+                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`;
                 break;
             
             case "quarterView":
                 // code block
                 break;
-              case "yearView":
-                  // code block
-                  break;
-              //default:
+
+            case "yearView":
+                currentYear++;
+                tableViewInfo.textContent = `${currentYear}`;
+                break;
         }
         
     });
@@ -167,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         startTime();
         setWeekDay();
         setDateText();
-        renderTableHeaderDE();
+        renderTableHeader();
     }
 
     callFunctions();
