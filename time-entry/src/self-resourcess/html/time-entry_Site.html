@@ -8,7 +8,6 @@
     <title>Zeiterfassung</title>
     <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
     <link rel="stylesheet" href="../css/time-entry_Style.css">
-
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
     <header>
@@ -27,23 +26,49 @@
                         </select>
                         <div class="buttons">
                             <button id="editTime" type="button" onclick="">Zeiten bearbeiten</button>
-                            <button id="commitAway" type="button" onclick="">Abwesenheit eintragen</button>
+                            <button id="commitAway" type="button">Abwesenheit eintragen</button>
                         </div>
+
+                        <!-- Modal -->
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h2>Abwesenheit eintragen</h2>
+                                <form>
+                                    <label for="start">Startdatum:</label>
+                                    <input type="date" id="trip-start" name="trip-start" value="2023-01-01" />
+
+                                    <label for="end">Enddatum:</label>
+                                    <input type="date" id="trip-end" name="trip-end" value="2023-12-31" />
+                                    
+                                    <label for="awaySelection">Abwesenheitsart:</label>
+                                    <select id="awaySelection" name="awaySelection">
+                                        <option value="vacation">Urlaub</option>
+                                        <option value="sick">Krankheit</option>
+                                    </select>
+                                    
+                                    <button type="Submit" id="awaySubmit">Eintragen</button>
+                                </form>
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
+
                         <div class="status">
-                            <p id="must">Soll: </p>
-                            <p id="is">Ist: </p>
                             <p id="overtime">Überstunden: </p>
                         </div>
                 </div>
                 <div class="header-middle">
-                    <div class="buttons">
-                        <button id="startTime" type="button" onclick="">Start</button>
-                        <button id="endTime" type="button" onclick="">Stopp</button>
-                    </div>
                     <div>
+                        <button id="startTime" type="button" onclick="">Start</button>
                         <select id="projectSelection" class="selects">
                             <option value="test">Projekt</option>
                         </select>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div>
+                        <button id="endTime" type="button" onclick="">Stopp</button>
                         <select id="tasktSelection" class="selects">
                             <option value="test">Tätigkeit</option>
                         </select>
@@ -59,7 +84,7 @@
             </div>
             <div class="containerTable">
                 <section>
-                    <h1>Table</h1>
+                    <h1>Arbeitszeiten</h1>
                     <div id="tableControl" class="tableControl">
                         <button id="exportExcel">Download als Excel</button>
                         <button id="exportPdf">Download als PDF</button>
@@ -81,8 +106,13 @@
         <footer>
         <!--load footer here-->
         </footer>
+
          <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+
     <script src="../javascript/time-entry_Script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     </main>
 </body>
 </html>
