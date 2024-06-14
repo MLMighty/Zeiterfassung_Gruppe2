@@ -15,18 +15,15 @@ public class SignUpService
     UserRepository userRepository;
     public ResponseEntity<String> createUser(UsersModel user)
     {
-//        UsersModel userEmail = userRepository.findAllByEmail(user.getEmail());
 
-//        if(!user.getEmail().equals(userEmail.getEmail())){
-            user.setFirstName(user.getFirstName());
+
+            user.setFirstname(user.getFirstname());
             user.setEmail(user.getEmail());
-            user.setLastName(user.getLastName());
+            user.setLastname(user.getLastname());
             user.setPassword(user.getPassword());
 
             userRepository.save(user);
-//        }else{
-//            return new ResponseEntity<>("user already exists",HttpStatus.CREATED);
-//        }
+
 
 
         return new ResponseEntity<>("Something went wrong",HttpStatus.CREATED);

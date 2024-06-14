@@ -27,28 +27,44 @@ public class AbsenceModel {
 
     @Getter
     @Setter
-    @Column(name = "absenceStart")
-    private Date absenceStart;
+    @Column(name = "absencestart")
+    private Date absencestart;
 
     @Getter
     @Setter
-    @Column(name = "absenceEnd")
-    private Date absenceEnd;
+    @Column(name = "absenceend")
+    private Date absenceend;
 
     @Getter
     @Setter
-    @Column(name = "isVacation")
-    private Boolean isVacation;
+    @Column(name = "absencehours")
+    private double absencehours;
 
     @Getter
     @Setter
-    @Column(name = "isSickness")
-    private Boolean isSickness;
+    @Column(name = "isunpaidvacation")
+    private double isunpaidvacation;
 
     @Getter
     @Setter
-    @Column(name = "gotPermitted")
-    private Boolean gotPermitted;
+    @Column(name = "ispaidvacation")
+    private Boolean isvacation;
+
+    @Getter
+    @Setter
+    @Column(name = "issicknesswithattest")
+    private double issicknesswithattest;
+
+    @Getter
+    @Setter
+    @Column(name = "issickness")
+    private Boolean issickness;
+
+    @Getter
+    @Setter
+    @Column(name = "gotpermitted")
+    private Boolean gotpermitted;
+
 
     public AbsenceModel() {
     }

@@ -21,13 +21,14 @@ public class TaskModel {
     //////////////////////////////////////////////////////////////////////////////////////////////
     @Getter
     @Setter
-    @Column(name = "taskName")
-    private String taskName;
+    @Column(name = "taskname")
+    private String taskname;
 
     @Getter
     @Setter
-    @Column(name = "taskDescription")
-    private String taskDescription;
+    @Column(name = "taskdescription")
+    private String taskdescription;
+
     public TaskModel(){
 
     }

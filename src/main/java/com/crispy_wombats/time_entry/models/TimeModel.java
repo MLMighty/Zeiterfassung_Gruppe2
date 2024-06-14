@@ -14,12 +14,6 @@ public class TimeModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "time_id")
     private int time_id;
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @ManyToMany(mappedBy = "time")
-    Set<UsersModel> users;
-    //////////////////////////////////////////////////////////////////////////////////////////////
 
     @Getter
     @Column(name = "taskprojectuser_id")
@@ -27,13 +21,13 @@ public class TimeModel {
 
     @Getter
     @Setter
-    @Column(name = "startTime")
-    private Date startTime;
+    @Column(name = "starttime")
+    private Date starttime;
 
     @Getter
     @Setter
-    @Column(name = "endTime")
-    private Date endTime;
+    @Column(name = "endtime")
+    private Date endtime;
 
     @Getter
     @Setter
@@ -42,18 +36,18 @@ public class TimeModel {
 
     @Getter
     @Setter
-    @Column(name = "isHoliday")
+    @Column(name = "isholiday")
     private boolean holiday;
 
     @Getter
     @Setter
-    @Column(name = "isWeekend")
-    private boolean weekEnd;
+    @Column(name = "isweekend")
+    private boolean weekend;
 
     @Getter
     @Setter
-    @Column(name = "workingHours")
-    private double workingHours;
+    @Column(name = "workinghours")
+    private double workinghours;
 
     public TimeModel(){
 
