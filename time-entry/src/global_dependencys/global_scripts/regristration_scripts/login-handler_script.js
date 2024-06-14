@@ -1,7 +1,7 @@
 
+import { POST_ApiInterfaceHandler } from "../api-handler_scripts/post-api-handler_script.js";
 import { CookieHandler } from "../cookies-handler_script.js";
-import { InputSanitizingHandler } from "../../global_scripts/security-measures_scripts/input-sanitizing_script.js";
-import {POST_ApiInterfaceHandler} from "../api-handler_scripts/post-api-handler_script.js";
+import { InputSanitizingHandler } from "../security-measures_scripts/input-sanitizing_script.js";
 
 
 export class LoginHandler {
@@ -21,6 +21,7 @@ export class LoginHandler {
 
 
     processLoginData(){
+        console.log("login handler wird aufgerufen");
         try{
             this.neededSanatizing.push(
                 this.email.value,

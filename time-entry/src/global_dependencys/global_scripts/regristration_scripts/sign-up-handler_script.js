@@ -1,7 +1,7 @@
 
 import { InputSanitizingHandler } from "../../global_scripts/security-measures_scripts/input-sanitizing_script.js";
-import { PasswordGuidelines } from "../../security-measures_scripts/password-guidelines_script.js";
-import {POST_ApiInterfaceHandler} from "../api-handler_scripts/post-api-handler_script.js";
+import { POST_ApiInterfaceHandler } from "../api-handler_scripts/post-api-handler_script.js";
+import { PasswordGuidelines } from "../security-measures_scripts/password-guidelines_script.js";
 
 
 export class SignUpHandler {

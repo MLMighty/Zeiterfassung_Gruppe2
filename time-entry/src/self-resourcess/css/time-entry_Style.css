@@ -17,7 +17,7 @@ body {
     border-radius: 8px;
 }
 
-.containerCalendar {
+.containerTable {
     max-width: 90%;
     margin: 0 auto;
     padding: 20px;
@@ -57,12 +57,12 @@ section {
     margin-bottom: 10px;
 }
 
-.month-year {
+.tableControl {
     display: flex;
     align-items: center;
 }
 
-.month-year button {
+.tableControl button {
     background-color: #573b8a;
     color: white;
     border: none;
@@ -71,27 +71,27 @@ section {
     cursor: pointer;
 }
 
-.month-year span {
+.tableControl span {
     font-size: 24px;
 }
 
-#calendar {
+#table {
     width: 100%;
     border-collapse: collapse;
 }
 
-#calendar th, #calendar td {
+#table th, #table td {
     padding: 10px;
     text-align: center;
     border: 1px solid #ddd;
 }
 
-#calendar td {
+#table td {
     height: 100px;
     vertical-align: top;
 }
 
-#calendar .date {
+#table .date {
     font-weight: bold;
 }
 
@@ -130,7 +130,7 @@ section {
     margin-bottom: 10px;
 }
 
-#startTime {
+#startTime, #exportExcel {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -140,7 +140,7 @@ section {
     cursor: pointer;
 }
 
-#endTime {
+#endTime, #exportPdf{
     background-color: #F44336;
     color: white;
     border: none;
@@ -150,10 +150,14 @@ section {
     cursor: pointer;
 }
 
-#startTime:hover {
+#startTime:hover, #exportExcel:hover {
     background-color: #45a049;
 }
 
-#endTime:hover {
+#endTime:hover, #exportPdf:hover {
     background-color: #e53935;
+}
+
+#table .bg{
+    background-color: #A16DFF;
 }
