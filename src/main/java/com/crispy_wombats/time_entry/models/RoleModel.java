@@ -37,13 +37,6 @@ public class RoleModel {
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
-    @JsonIgnore
-    private List<UsersModel> users;
-    //////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 

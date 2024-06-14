@@ -76,7 +76,7 @@ public class UsersModel {
     //////////////////////////////////////////////////////////////////////////////////////////////
     @Getter
     @Setter
-    @OneToMany(mappedBy = "absence", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @JsonIgnore
     private List<AbsenceModel> absences;
@@ -85,7 +85,7 @@ public class UsersModel {
 
     @Getter
     @Setter
-    @OneToMany( mappedBy = "timeSchedule",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @JsonIgnore
     private List<TimeSchedule> timeSchedule ;
