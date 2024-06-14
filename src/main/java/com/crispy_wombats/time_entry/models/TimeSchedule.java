@@ -32,7 +32,7 @@ public class TimeSchedule {
     @Setter
     private boolean gotpermitted;
 
-    @ManyToOne
+    @ManyToOne( cascade = CascadeType.ALL)
     private UsersModel user;
 
 
