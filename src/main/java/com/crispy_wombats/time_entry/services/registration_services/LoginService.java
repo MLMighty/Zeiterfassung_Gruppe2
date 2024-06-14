@@ -15,18 +15,16 @@ public class LoginService {
 
     public ResponseEntity<Boolean> loginAuthentication(UsersModel user) {
 
-//        UsersModel userEmail = userRepository.findByEmail(user.getEmail());
-        UsersModel userPassword = userRepository.findByPassword(user.getPassword());
-        System.out.println(userPassword);
-        System.out.println(userPassword.getPassword());
-//       if (userEmail != null && userPassword != null) {
-//        if(userEmail.getPassword().equals(HashUtil.hashString(userPassword.getPassword())) ) {
-//            if (userEmail.getEmail().equals(user.getEmail()) && userPassword.getPassword().equals(user.getPassword())) {
-//                return new ResponseEntity<>(true, HttpStatus.OK);
-//            }
-//        }
-//            return new ResponseEntity<>(false, HttpStatus.OK);
-//        }
+        UsersModel userEmail = userRepository.findByEmail(user.getEmail());
+        System.out.println();
+        System.out.println(HashUtil.hashString(user.getPassword()));
+       if (userEmail != null && userEmail.getPassword() != null) {
+           System.out.println("passiert");
+            if (userEmail.getEmail().equals(user.getEmail()) && userEmail.getPassword().equals(HashUtil.hashString(user.getPassword()))) {
+                return new ResponseEntity<>(true, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(false, HttpStatus.OK);
+        }
         return new ResponseEntity<>(false, HttpStatus.BAD_REQUEST);
        }
 }
