@@ -8,7 +8,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "ttime")
+@Table(schema = "dbo", name = "ttime")
 public class TimeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "ttask")
+@Table(schema = "dbo",name = "ttask")
 public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

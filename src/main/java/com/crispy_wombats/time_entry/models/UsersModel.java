@@ -67,7 +67,12 @@ public class UsersModel {
     private List<AbsenceModel> absence;
     //////////////////////////////////////////////////////////////////////////////////////////////
 
-
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private List<TimeSchedule> timeSchedules ;
 
     @Getter
     @Setter

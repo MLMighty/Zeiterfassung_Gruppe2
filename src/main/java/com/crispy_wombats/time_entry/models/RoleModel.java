@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "trole")
+@Table(schema = "dbo",name = "trole")
 public class RoleModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
