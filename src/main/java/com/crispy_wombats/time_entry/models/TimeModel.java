@@ -15,6 +15,8 @@ public class TimeModel {
     @Column(name = "time_id")
     private int time_id;
 
+
+
     @Getter
     @Column(name = "taskprojectuser_id")
     private int taskprojectuser_id;
@@ -52,4 +54,14 @@ public class TimeModel {
     public TimeModel(){
 
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ttaskprojectuser",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "task_id") }
+    )
+    Set<TaskModel> tasks;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 }
