@@ -9,8 +9,6 @@ export class SignUpHandler {
     constructor() {
         this.firstname = document.getElementById("firstname");
         this.lastname = document.getElementById("lastname");
-        this.birthday = document.getElementById("birthday");
-        this.username = document.getElementById("username");
         this.email = document.getElementById("email");
         this.password = document.getElementById("password");
         this.login_Inputs = document.getElementsByClassName("login-input");
@@ -28,7 +26,6 @@ export class SignUpHandler {
             this.neededSanatizing.push(
                 this.firstname.value,
                 this.lastname.value,
-                this.username.value,
                 this.email.value,
                 this.password.value
             );
@@ -37,7 +34,7 @@ export class SignUpHandler {
             let authorizedPassword = this.passwordGuidelines.passwordGuidlines();
 
             if (authorized && authorizedPassword) {
-                this.calculateAge();
+                this.signUpDataTransfer();
             } else { throw new Error("youre Data wasnt authorized"); }
 
         } catch (err) {
@@ -47,22 +44,11 @@ export class SignUpHandler {
 
     }
 
-    calculateAge() {
-        let year = new Date().getFullYear();
-        let month = new Date().getMonth();
-        let day = new Date().getDay();
-        let birthYear = year - Number(this.birthday.value.slice(0, 4));
-        let birthMonth = Number(this.birthday.value.slice(5, 7));
-        (birthMonth < month) ? this.signUpDataTransfer(birthYear) : this.signUpDataTransfer(--birthYear);
-    }
 
-    signUpDataTransfer(age) {
+    signUpDataTransfer() {
         const signUpData = {
             firstname: this.firstname.value,
             lastname: this.lastname.value,
-            age: age,
-            birthday: this.birthday.value,
-            username: this.username.value,
             email: this.email.value,
             password: this.password.value,
         }
