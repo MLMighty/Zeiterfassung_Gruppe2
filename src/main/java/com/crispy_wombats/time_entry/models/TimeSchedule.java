@@ -1,11 +1,13 @@
 package com.crispy_wombats.time_entry.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.catalina.User;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "dbo", name = "ttimeschedule")
@@ -32,9 +34,10 @@ public class TimeSchedule {
     @Setter
     private boolean gotpermitted;
 
-    @ManyToOne( cascade = CascadeType.ALL)
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToOne
     private UsersModel user;
-
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

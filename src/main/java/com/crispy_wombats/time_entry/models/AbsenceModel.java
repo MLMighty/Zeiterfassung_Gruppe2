@@ -1,10 +1,12 @@
 package com.crispy_wombats.time_entry.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "dbo",name = "tabsence")
@@ -14,16 +16,6 @@ public class AbsenceModel {
     @Column(name = "absence_id")
     private int absence_id;
 
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @ManyToOne( cascade = CascadeType.ALL)
-    private UsersModel users;
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
-    @Getter
-    @Column(name = "user_id")
-    private int user_id;
 
     @Getter
     @Setter
@@ -68,4 +60,11 @@ public class AbsenceModel {
 
     public AbsenceModel() {
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
+    @Setter
+    @ManyToOne
+    private UsersModel user;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 }

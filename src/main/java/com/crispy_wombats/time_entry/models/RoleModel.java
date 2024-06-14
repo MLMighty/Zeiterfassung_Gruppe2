@@ -12,19 +12,11 @@ import java.util.Set;
 @Entity
 @Table(schema = "dbo",name = "trole")
 public class RoleModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "role_id")
     private int role_id;
-
-
-    @Column(name = "user_id")
-    private int user_id;
-
-    @Getter
-    @Setter
-    @ManyToOne( cascade = CascadeType.ALL)
-    private UsersModel users;
 
     @Getter
     @Setter
@@ -44,5 +36,14 @@ public class RoleModel {
     public RoleModel(){
 
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", referencedColumnName = "role_id")
+    @JsonIgnore
+    private List<UsersModel> users;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 }
 

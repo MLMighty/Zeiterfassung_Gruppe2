@@ -8,6 +8,7 @@ import org.apache.catalina.Role;
 import org.apache.catalina.User;
 import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -29,50 +30,6 @@ public class UsersModel {
     @Setter
     @Column(name = "firstname")
     private String firstname;
-    ////////////////////////////////////////////////////////////////////////////////////////////
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "ttaskprojectuser",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "task_id") }
-    )
-    Set<TaskModel> tasks;
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "ttaskprojectuser",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "project_id") }
-    )
-    Set<ProjectModel> project;
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-//    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
-    private List<RoleModel> userRoles;
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
-    private List<AbsenceModel> absence;
-    //////////////////////////////////////////////////////////////////////////////////////////////
-
-    @Getter
-    @Setter
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
-    private List<TimeSchedule> timeSchedules ;
 
     @Getter
     @Setter
@@ -85,12 +42,53 @@ public class UsersModel {
     private String email;
 
 
-
-
-
     public UsersModel(){
 
     }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ttaskprojectuser",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "task_id") }
+    )
+    Set<TaskModel> tasks;
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ttaskprojectuser",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "project_id") }
+    )
+    Set<ProjectModel> project;
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Getter
+    @Setter
+    @ManyToOne
+    private RoleModel role;
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @Getter
+    @Setter
+    @OneToMany(mappedBy = "absence", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private List<AbsenceModel> absences;
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Getter
+    @Setter
+    @OneToMany( mappedBy = "timeSchedule",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private List<TimeSchedule> timeSchedule ;
 
 
 }
