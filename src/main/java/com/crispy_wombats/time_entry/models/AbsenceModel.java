@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "tabsence")
+@Table(schema = "dbo",name = "tabsence")
 public class AbsenceModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
