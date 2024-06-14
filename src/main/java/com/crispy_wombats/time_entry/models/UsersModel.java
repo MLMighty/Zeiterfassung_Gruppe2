@@ -4,12 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.catalina.Role;
-import org.apache.catalina.User;
-import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -88,7 +83,7 @@ public class UsersModel {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @JsonIgnore
-    private List<TimeSchedule> timeSchedule ;
+    private List<TimeScheduleModel> timeSchedule ;
 
 
 }
