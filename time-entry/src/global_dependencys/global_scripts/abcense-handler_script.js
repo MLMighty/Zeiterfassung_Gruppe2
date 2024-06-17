@@ -17,21 +17,24 @@ export class AbcenseHandler {
     }
 
     processEndData(){
-        this.end = document.getElementById("end").value
+        let end = document.getElementById("end").value
         this.endDate = end;
+     
      }
 
      processAbcenseNameData(){
         let absence = document.getElementById("selection").value
         this.absenceName = absence;
+      
      }
 
      processAbcenceData(){
         let absenceData = {
-         startDate: this.startDate ,
-         endDate:this.endDate,
-         absenceName: this.absenceName 
+        absencestart: this.startDate ,
+        absenceend:this.endDate,
+        absencetype: this.absenceName 
         }
+        console.log(absenceData)
         this.post_ApiInterfaceHandler.abcenseApiHandler(absenceData);
      }
  
