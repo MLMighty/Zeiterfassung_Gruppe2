@@ -16,11 +16,13 @@ public class ProjectModel {
     @Column(name = "project_id")
     private int project_id;
 
-    @Getter@Setter
+    @Getter
+    @Setter
     @Column(name = "projectname")
     private String projectname;
 
-    @Getter@Setter
+    @Getter
+    @Setter
     @Column(name = "projectdescription")
     private String projectdescription;
 

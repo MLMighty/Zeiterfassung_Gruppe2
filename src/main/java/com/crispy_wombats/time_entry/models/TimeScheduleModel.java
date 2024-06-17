@@ -29,7 +29,7 @@ public class TimeScheduleModel {
 
     @Getter
     @Setter
-    private boolean gotpermitted;
+    private boolean permitted;
 
     //////////////////////////////////////////////////////////////////////////////////////////////
     @ManyToOne

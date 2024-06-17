@@ -51,7 +51,7 @@ public class TimeModel {
     @Column(name = "workinghours")
     private double workinghours;
 
-    public TimeModel(){
+    public TimeModel() {
 
     }
 
