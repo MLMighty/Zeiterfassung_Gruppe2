@@ -27,15 +27,15 @@
 
     <!-- Modal -->
     <div id="myModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content">3231
             <span class="close">&times;</span>
             <h2>Daten eintragen</h2>
             <form id="eventForm">
                 <label for="start">Startdatum:</label>
-                <input type="date" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
+                <input type="datetime-local" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
 
                 <label for="end">Enddatum:</label>
-                <input type="date" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
+                <input type="datetime-local" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
                 
                 <label for="selection">Abwesenheitsart:</label>
                 <select id="selection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenceName(event))" name="selection">

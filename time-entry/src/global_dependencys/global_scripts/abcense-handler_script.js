@@ -17,8 +17,9 @@ export class AbcenseHandler {
     }
 
     processEndData(){
-        this.end = document.getElementById("end").value
+        let end = document.getElementById("end").value
         this.endDate = end;
+     
      }
 
      processAbcenseNameData(){
@@ -29,9 +30,10 @@ export class AbcenseHandler {
      processAbcenceData(){
         let absenceData = {
         absencestart: this.startDate ,
-        absenceend:this.endDate,
+        // absenceend:this.endDate,
         absencetype: this.absenceName 
         }
+        console.log(absenceData)
         this.post_ApiInterfaceHandler.abcenseApiHandler(absenceData);
      }
  
