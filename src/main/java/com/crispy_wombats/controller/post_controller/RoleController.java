@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://127.0.0.1:5500",allowCredentials = "true")
 @RestController
 public class RoleController {
-/*
-    @PostMapping("/saverole")
+
+/*    @PostMapping("/saverole")
     public ResponseEntity<Boolean> absenceController (@RequestBody RoleModel role){
 
         return
 
-    }*/
+    }
 //
 //    @GetMapping("/absencedata")
 //    public ResponseEntity<RoleModel> forwardAbsenceController (@RequestBody RoleModel role){

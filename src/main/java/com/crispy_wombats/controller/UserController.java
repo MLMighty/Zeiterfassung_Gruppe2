@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public class UserController {
-/*
 
-    @GetMapping("/alldata")
+
+/*    @GetMapping("/alldata")
     public ResponseEntity<List<UsersModel>> signUpController(@RequestBody UsersModel user )
     {
 
         return ;
-    }
-*/
+    }*/
 }

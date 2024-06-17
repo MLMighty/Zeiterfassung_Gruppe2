@@ -1,19 +1,20 @@
 package com.crispy_wombats.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(schema = "dbo",name = "tabsence")
 public class AbsenceModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "absence_id")
     private int absence_id;
-
 
     @Getter
     @Setter
@@ -27,33 +28,12 @@ public class AbsenceModel {
 
     @Getter
     @Setter
-    @Column(name = "absencehours")
-    private double absencehours;
+    @Column(name = "absencetype")
+    private String absencetype;
 
-    @Getter
-    @Setter
-    @Column(name = "isunpaidvacation")
-    private double isunpaidvacation;
 
-    @Getter
-    @Setter
-    @Column(name = "ispaidvacation")
-    private Boolean isvacation;
 
-    @Getter
-    @Setter
-    @Column(name = "issicknesswithattest")
-    private double issicknesswithattest;
 
-    @Getter
-    @Setter
-    @Column(name = "issickness")
-    private Boolean issickness;
-
-    @Getter
-    @Setter
-    @Column(name = "gotpermitted")
-    private Boolean gotpermitted;
 
 
     public AbsenceModel() {

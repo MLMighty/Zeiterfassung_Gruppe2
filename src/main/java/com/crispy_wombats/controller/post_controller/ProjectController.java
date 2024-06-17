@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://127.0.0.1:5500",allowCredentials = "true")
 @RestController
 public class ProjectController {
-/*
-    @PostMapping("/saveproject")
+
+/*    @PostMapping("/saveproject")
     public ResponseEntity<Boolean> absenceController (@RequestBody ProjectModel project){
 
-        return;
+        return
 
-    }
-    */
+    }*/
 //
 //    @GetMapping("/projectdata")
 //    public ResponseEntity<ProjectModel> forwardAbsenceController (@RequestBody ProjectModel project){
