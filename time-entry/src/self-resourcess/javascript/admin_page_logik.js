@@ -179,3 +179,4 @@ projectForm.addEventListener('submit', function(event) {
 
     // Optional: Hier könnten weitere Aktionen nach dem Erstellen des Projekts folgen
 });
+
