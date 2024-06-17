@@ -25,12 +25,13 @@ export class AbcenseHandler {
      processAbcenseNameData(){
         let absence = document.getElementById("selection").value
         this.absenceName = absence;
+      
      }
 
      processAbcenceData(){
         let absenceData = {
         absencestart: this.startDate ,
-        // absenceend:this.endDate,
+        absenceend:this.endDate,
         absencetype: this.absenceName 
         }
         console.log(absenceData)
