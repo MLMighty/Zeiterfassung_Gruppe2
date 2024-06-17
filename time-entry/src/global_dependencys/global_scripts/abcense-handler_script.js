@@ -28,9 +28,9 @@ export class AbcenseHandler {
 
      processAbcenceData(){
         let absenceData = {
-         startDate: this.startDate ,
-         endDate:this.endDate,
-         absenceName: this.absenceName 
+        absencestart: this.startDate ,
+        absenceend:this.endDate,
+        absencetype: this.absenceName 
         }
         this.post_ApiInterfaceHandler.abcenseApiHandler(absenceData);
      }
