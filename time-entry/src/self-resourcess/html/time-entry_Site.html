@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
     <title>Zeiterfassung</title>
-
-   <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
-
+    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
     <link rel="stylesheet" href="../css/time-entry_Style.css">
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
-    <header> 
+    <header>
 
     </header>
 
@@ -28,6 +28,7 @@
                         </select>
                         <div class="buttons">
                             <button id="editTime" type="button" >Abwesenheit Beeintragen</button>
+                            <button id="adminPage" type="button" >Admin Seite</button>
                         </div>
 
                         <div class="status">
@@ -35,18 +36,17 @@
                         </div>
                 </div>
                 <div class="header-middle">
-                    <div>
-                        <button id="startTime" type="button" onclick="">Start</button>
-                        <select id="projectSelection" class="selects">
-                            <option value="test">Projekt</option>
-                        </select>
-                    </div>
+                    <div id="timerDisplay">00:00:00</div>
+                    <button id="startTime">Start</button>
+                    <button id="endTime">Stopp</button>
                 </div>
                 <div class="header-middle">
                     <div>
-                        <button id="endTime" type="button" onclick="">Stopp</button>
                         <select id="tasktSelection" class="selects">
                             <option value="test">Tätigkeit</option>
+                        </select>
+                        <select id="projectSelection" class="selects">
+                            <option value="test">Projekt</option>
                         </select>
                     </div>
                 </div>
@@ -83,9 +83,7 @@
         <!--load footer here-->
         </footer>
 
-
-        <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>
-
+         <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  -->
 
     <script src="../javascript/time-entry_Script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
