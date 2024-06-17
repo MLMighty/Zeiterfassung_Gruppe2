@@ -17,6 +17,12 @@ body {
     border-radius: 8px;
 }
 
+#timerDisplay {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+
 .containerTable {
     max-width: 90%;
     margin: 0 auto;
@@ -38,7 +44,7 @@ section {
     flex-direction: column;
 }
 
-#editTime, #commitAway {
+#editTime, #commitAway, #adminPage {
     background-color: #573b8a;
     color: white;
     border: none;
@@ -47,7 +53,7 @@ section {
     cursor: pointer;
 }
 
-.editTime:hover, .commitAway:hover {
+.editTime:hover, .commitAway:hover, .adminPage:hover {
     background-color: #6d44b8;
 }
 
