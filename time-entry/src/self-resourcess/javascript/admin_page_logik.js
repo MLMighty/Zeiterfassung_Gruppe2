@@ -21,6 +21,10 @@ for (var i = 0; i < closeBtns.length; i++) {
         this.parentElement.parentElement.style.display = 'none';
     });
 }
+document.getElementById("backPage").addEventListener('click', () => { navigateToPageHome()});
+function navigateToPageHome() {
+    window.location.href = "time-entry_Site.html";
+}
 
 // Formular zum Erstellen eines Benutzers
 var userForm = document.getElementById('userForm');

@@ -1,122 +1,106 @@
-/* Allgemeine Styles */
+/* Grundlegendes Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9; /* Leichtes Grau als Hintergrund */
+    color: #333; /* Dunkles Grau für Text */
     margin: 0;
     padding: 0;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1 {
+header {
+    width: 100%;
+    background-color: #6a0dad; /* Lila */
+    color: white;
     text-align: center;
-    color: #573b8a;
+    padding: 20px 0;
     margin-bottom: 20px;
 }
-.buttons{
-    background-color: #573b8a;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+
+header h1 {
+    margin: 0;
 }
 
-/* Button Styles */
-.time-entry button,
-.view-selection button,
-form button[type="submit"],
-form button[type="button"],
-#deleteEventButton,
-#logoutButton {
-    background-color: #573b8a;
+#main-Container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    color: #6a0dad; /* Lila */
+}
+
+button {
+    background-color: #4CAF50; /* Grün */
     color: white;
     border: none;
     padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 5px;
+    margin: 5px;
     transition: background-color 0.3s ease;
-    margin-right: 10px;
 }
 
-.time-entry button:hover,
-.view-selection button:hover,
-form button[type="submit"]:hover,
-form button[type="button"]:hover,
-#deleteEventButton:hover,
-#logoutButton:hover {
-    background-color: #45a049;
+button:hover {
+    background-color: #45a049; /* Dunkleres Grün */
 }
 
+/* View Selection */
 .view-selection {
-    text-align: center;
-    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
 .view-selection button {
-    margin-right: 10px;
+    margin: 0 10px;
 }
 
-/* Calendar Container Styles */
+/* Kalender Container */
 #calendarContainer {
-    margin-top: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 4px;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-/* Modal Styles */
+/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
 }
-
-.header-right {
-    margin-right: 20px; /* Abstand vom rechten Rand */
-}
-
-.clock {
-    text-align: right; /* Text rechts ausrichten */
-}
-
-.rightText {
-    margin-bottom: 8px; /* Abstand zwischen den Elementen im Uhrbereich */
-}
-
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #fff;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #888;
     width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
-    position: relative;
+    max-width: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .close {
@@ -128,44 +112,38 @@ form button[type="button"]:hover,
 
 .close:hover,
 .close:focus {
-    color: #333;
+    color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Form Styles */
-form {
-    margin-top: 20px;
-}
-
-form label {
+label {
     display: block;
-    margin-bottom: 8px;
-    color: #666;
+    margin: 15px 0 5px;
 }
 
-form input[type="date"],
-form select {
+input[type="datetime-local"], select {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
+    padding: 10px;
+    margin: 5px 0;
+    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
 
-/* Logout Button */
-#logoutButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+button[type="submit"], #deleteEventButton {
+    background-color: #4CAF50; /* Grün */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
 }
 
-/* Delete Event Button */
-#deleteEventButton {
-    background-color: #f44336;
-}
-
-#deleteEventButton:hover {
-    background-color: #c6392c;
+button[type="submit"]:hover, #deleteEventButton:hover {
+    background-color: #45a049; /* Dunkleres Grün */
 }
