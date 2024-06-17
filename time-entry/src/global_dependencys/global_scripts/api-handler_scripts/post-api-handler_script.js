@@ -13,8 +13,8 @@ export class POST_ApiInterfaceHandler {
           throw new Error("Fehler beim senden der Daten");
         }
         const responseData = await response.text();
-        console.log(signUpData);
-        alert(responseData)
+        console.log(responseData);
+
       } catch (err) {
         console.error("A problem occured: " + err);
       }
@@ -37,7 +37,7 @@ export class POST_ApiInterfaceHandler {
           }
   
           const responseData = await response.text(); // For testing
-          console.log("Server responds with: " + responseData);
+      
           return responseData;
       } catch (err) {
           console.error("A problem occurred: " + err);
@@ -60,11 +60,48 @@ export class POST_ApiInterfaceHandler {
         }
   
         const responseData = await response.text(); //test
-        console.log("Der server antwortet mit" + responseData);
+       
         return responseData;
       } catch (err) {
         console.error("A problem occured: " + err);
       }
+    }
+
+
+    async abcenseApiHandler(abcenseData){
+      try {
+        const responseData = await fetch("http://localhost:8080/saveabsence",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(abcenseData),
+        })
+        const response = responseData.status;
+        console.log(response);
+      } catch (error) {
+        console.error("A problem occured: " + error)
+      }
+
+    }
+  
+    async roleApiHandler(roleData){
+      try {
+        const responseData = await fetch("http://localhost:8080//saverole",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(roleData),
+        })
+
+        const response = await responseData.status();
+        console.log(response);
+        
+      } catch (error) {
+        console.error("A problem occured: " + error)
+      }
+
     }
   
 

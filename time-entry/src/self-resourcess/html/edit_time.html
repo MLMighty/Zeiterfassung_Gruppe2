@@ -32,13 +32,13 @@
             <h2>Daten eintragen</h2>
             <form id="eventForm">
                 <label for="start">Startdatum:</label>
-                <input type="date" id="start" name="trip-start" value="" />
+                <input type="date" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
 
                 <label for="end">Enddatum:</label>
-                <input type="date" id="end" name="trip-end" value="" />
+                <input type="date" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
                 
                 <label for="selection">Abwesenheitsart:</label>
-                <select id="selection" name="selection">
+                <select id="selection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenceName(event))" name="selection">
                     <option value="Urlaub">Urlaub</option>
                     <option value="Sonderurlaub">Sonderurlaub</option>
                     <option value="Gleittag">Gleittag</option>
@@ -47,7 +47,7 @@
                     <option value="Dienstreise">Dienstreise</option>
                 </select>
                 
-                <button type="submit">Update</button>
+                <button type="submit" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenseData(event))">Update</button>
                 <button type="button" id="deleteEventButton">Löschen</button>
             </form>
         </div>
