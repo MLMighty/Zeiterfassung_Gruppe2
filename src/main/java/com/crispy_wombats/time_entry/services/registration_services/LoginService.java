@@ -16,10 +16,8 @@ public class LoginService {
     public ResponseEntity<Boolean> loginAuthentication(UsersModel user) {
 
         UsersModel userEmail = userRepository.findByEmail(user.getEmail());
-        System.out.println();
-        System.out.println(HashUtil.hashString(user.getPassword()));
+
        if (userEmail != null && userEmail.getPassword() != null) {
-           System.out.println("passiert");
             if (userEmail.getEmail().equals(user.getEmail()) && userEmail.getPassword().equals(HashUtil.hashString(user.getPassword()))) {
                 return new ResponseEntity<>(true, HttpStatus.OK);
             }
