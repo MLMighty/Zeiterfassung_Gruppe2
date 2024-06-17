@@ -108,11 +108,8 @@ label {
     font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="date"],
-textarea {
+
+textarea > .firstName-Input {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
