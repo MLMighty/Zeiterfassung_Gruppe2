@@ -17,23 +17,12 @@ public class AbsenceService {
         absence.setAbsencetype(absence.getAbsencetype());
         absence.setAbsencestart(absence.getAbsencestart());
         absence.setAbsenceend(absence.getAbsenceend());
-        System.out.println(absence.getAbsencetype());
-        System.out.println(absence.getAbsencestart());
-        System.out.println(absence.getAbsenceend());
 
 
         abscenceRepository.save(absence);
-      /*  absence.setAbcencetype(absence.getAbsencetype());
 
-
-        calculateAbsenceHours(absence);*/
     }
 
 
-  /*  public int calculateAbsenceHours(AbsenceModel absence  ){
-        int absenceHours = absence.getAbsencestart().
 
-        return
-    }
-*/
 }
