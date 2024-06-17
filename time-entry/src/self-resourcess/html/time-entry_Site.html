@@ -28,6 +28,7 @@
                         </select>
                         <div class="buttons">
                             <button id="editTime" type="button" >Abwesenheit Beeintragen</button>
+                            <button id="adminPage" type="button" >Admin Seite</button>
                         </div>
                         <div class="buttons">
                             <button id="adminPage" type="button" >Admin Seite</button>
@@ -38,24 +39,27 @@
                         </div>
                 </div>
                 <div class="header-middle">
-                    <div>
-                        <button id="startTime" type="button">Start</button>
-                        <button id="endTime" type="button">Stopp</button>
-                        <p id="timer" class="rightText"></p> <!-- Timer-Anzeige -->
 
-                    </div>
-                    </div>
+                    <div id="timerDisplay">00:00:00</div>
+                    <button id="startTime">Start</button>
+                    <button id="endTime">Stopp</button>
+                </div>
+                <div class="header-middle">
+                    <div>
+
                         <select id="tasktSelection" class="selects">
                             <option value="test">Tätigkeit</option>
                         </select>
                         <select id="projectSelection" class="selects">
                             <option value="test">Projekt</option>
                         </select>
+
                         <div class="clock">
                             <h1 class="rightText" id="clock"></h1>
                             <p class = "rigthText" id="weekDay"></p>
                             <p class = "rigthText" id="fullDate"></p>
                         </div>
+
                     </div>
                 </div>
                 </div>

@@ -17,8 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
-    document.getElementById("editTime").addEventListener('click', () => { navigateToTimePage()});
-    document.getElementById("adminPage").addEventListener('click', () => { navigateToAdminPage()});
+
+    document.getElementById("editTime").addEventListener('click', () => { navigateToPage2()});
+    document.getElementById("adminPage").addEventListener('click', () => { navigateToPagAdminPage()});
+    
+
+
     /*document.getElementById("commitAway").addEventListener('click', () => { openModal()});
     function openModal() {
         document.getElementById('myModal').style.display = 'block';
@@ -260,9 +264,52 @@ document.addEventListener('DOMContentLoaded', () => {
     function navigateToTimePage() {
         window.location.href = "edit_time.html";
     }
-    function navigateToAdminPage() {
+
+    function navigateToPagAdminPage() {
+
+
         window.location.href = "admin_page.html";
     }
 
     
+});
+
+let startTime;
+let timeInfo;
+let timerInterval;
+let running = false;
+
+const timerDisplay = document.getElementById('timerDisplay');
+const startButton = document.getElementById('startTime');
+const stopButton = document.getElementById('endTime');
+
+function formatTime(ms) {
+  let totalSeconds = Math.floor(ms / 1000);
+  let hours = Math.floor(totalSeconds / 3600);
+  let minutes = Math.floor((totalSeconds % 3600) / 60);
+  let seconds = totalSeconds % 60;
+timeInfo = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+  return timeInfo
+}
+
+startButton.addEventListener('click', () => {
+  if (!running) {
+    running = true;
+    startTime = Date.now();
+
+    // Start updating timer display every second
+    timerInterval = setInterval(() => {
+      const elapsedTime = Date.now() - startTime;
+      timerDisplay.textContent = formatTime(elapsedTime);
+    }, 1000);
+  }
+});
+
+stopButton.addEventListener('click', () => {
+  if (running) {
+    running = false;
+    console.log(timeInfo)
+    clearInterval(timerInterval);
+  }
 });
