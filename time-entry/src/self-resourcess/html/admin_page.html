@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-Seite</title>
-    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
     <link rel="stylesheet" href="../css/admin_pagedesign.css">
+ 
    
 </head>
-<body>
+
+<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+    <main id="main-Container">
     <header>
         <h1>Willkommen auf der Admin-Seite</h1>
     </header>
@@ -30,7 +33,7 @@
             <h2>Benutzer anlegen</h2>
             <form id="userForm">
                 <label for="firstName">Vorname:</label><br>
-                <input type="text" id="firstName" name="firstName" required><br><br>
+                <input type="text" class="firstName-Input" id="firstName" name="firstName" required><br><br>
 
                 <label for="lastName">Nachname:</label><br>
                 <input type="text" id="lastName" name="lastName" required><br><br>
@@ -68,7 +71,8 @@
             </form>
         </div>
     </div>
-    <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  -->
+    </main>
+    <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  
     <script src="../javascript/admin_page_logik.js"></script>
 </body>
 </html>

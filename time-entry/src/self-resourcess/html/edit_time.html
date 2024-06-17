@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeitbuchung</title>
     <link rel="stylesheet" href="../css/style_edit_time.css">
-    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
 </head> 
-<body>
+<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+    <main id="main-Container">
     <div class="container">
         <h1>Zeitbuchung</h1>
         <div class="time-entry">
@@ -57,7 +58,8 @@
             </form>
         </div>
     </div>
-    <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  -->
+    </main>
+    <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
