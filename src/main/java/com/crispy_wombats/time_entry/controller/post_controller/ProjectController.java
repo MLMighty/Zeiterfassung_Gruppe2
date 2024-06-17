@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ProjectController {
 
-    @PostMapping("/saveproject")
+/*    @PostMapping("/saveproject")
     public ResponseEntity<Boolean> absenceController (@RequestBody ProjectModel project){
 
         return
 
-    }
+    }*/
 //
 //    @GetMapping("/projectdata")
 //    public ResponseEntity<ProjectModel> forwardAbsenceController (@RequestBody ProjectModel project){

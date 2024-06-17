@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class RoleController {
 
-    @PostMapping("/saverole")
+/*    @PostMapping("/saverole")
     public ResponseEntity<Boolean> absenceController (@RequestBody RoleModel role){
 
         return
 
-    }
+    }*/
 //
 //    @GetMapping("/absencedata")
 //    public ResponseEntity<RoleModel> forwardAbsenceController (@RequestBody RoleModel role){
