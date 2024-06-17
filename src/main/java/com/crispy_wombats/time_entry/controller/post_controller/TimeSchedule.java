@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class TimeSchedule {
 
-    @PostMapping("/savetime")
+/*    @PostMapping("/savetime")
     public ResponseEntity<Boolean> absenceController (@RequestBody TimeScheduleModel timeSchedule){
 
         return
 
-    }
+    }*/
 //
 //    @GetMapping("/timedata")
 //    public ResponseEntity<TimeScheduleModel> forwardAbsenceController (@RequestBody TimeScheduleModel timeSchedule){

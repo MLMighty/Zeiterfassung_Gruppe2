@@ -2,6 +2,8 @@ package com.crispy_wombats.time_entry.controller.post_controller;
 
 
 import com.crispy_wombats.time_entry.models.AbsenceModel;
+import com.crispy_wombats.time_entry.services.AbsenceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class AbsenceController {
 
+    @Autowired
+    AbsenceService absenceService;
 
     @PostMapping("/saveabsence")
-    public ResponseEntity<Boolean> absenceController (@RequestBody AbsenceModel absence){
+    public void absenceController (@RequestBody AbsenceModel absence){
 
-        return
-
+        absenceService.addAbsence(absence);
     }
 
 //    @GetMapping("/absencedata")
