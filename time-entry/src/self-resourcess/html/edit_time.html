@@ -38,10 +38,10 @@
             <h2>Daten eintragen</h2>
             <form id="eventForm">
                 <label for="start">Startdatum:</label>
-                <input type="date" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
+                <input type="datetime-local" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
 
                 <label for="end">Enddatum:</label>
-                <input type="date" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
+                <input type="datetime-local" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
                 
                 <label for="selection">Abwesenheitsart:</label>
                 <select id="selection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenceName(event))" name="selection">
@@ -58,8 +58,10 @@
             </form>
         </div>
     </div>
+
     </main>
     <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
