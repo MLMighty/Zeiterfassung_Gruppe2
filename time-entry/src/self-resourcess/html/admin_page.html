@@ -1,80 +1,77 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin-Seite</title>
-    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+
     <link rel="stylesheet" href="../css/admin_pagedesign.css">
- 
-   
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
 </head>
 
-<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+<body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
     <main id="main-Container">
-    <header>
-        <h1>Willkommen auf der Admin-Seite</h1>
-    </header>
-    <main>
+        <header>
+            <h1>Willkommen auf der Admin-Seite</h1>
+        </header>
         <section>
             <h2>Aktionen</h2>
-            <button id="createUserBtn" >Benutzer anlegen</button>
-            <button id="createProjectBtn" >Projekt erstellen</button>
+            <button id="createUserButton">Benutzer anlegen</button>
+            <button id="createProjectButton">Projekt erstellen</button>
         </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Dein Name</p>
-    </footer>
+        <button id="backButton" type="button">Zurück</button>
+        
+        <footer>
+            <p>&copy; 2024 Knusprige Wombats</p>
+        </footer>
 
-    <!-- Modal für Benutzer anlegen -->
-    <div id="createUserModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Benutzer anlegen</h2>
-            <form id="userForm">
-                <label for="firstName">Vorname:</label><br>
-                <input type="text" class="firstName-Input" id="firstName" name="firstName" required><br><br>
+        <!-- Modal für Benutzer anlegen -->
+        <div id="createUserModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Benutzer anlegen</h2>
+                <form id="createUserForm">
+                    <label for="userFirstName">Vorname:</label><br>
+                    <input type="text" class="Inputs-S" id="userFirstName" name="userFirstName" required><br><br>
 
-                <label for="lastName">Nachname:</label><br>
-                <input type="text" id="lastName" name="lastName" required><br><br>
+                    <label for="userLastName">Nachname:</label><br>
+                    <input type="text" class="Inputs-S" id="userLastName" name="userLastName" required><br><br>
 
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br><br>
+                    <label for="newUserEmail">Email:</label><br>
+                    <input type="email" class="Inputs-S" id="newUserEmail" name="newUserEmail" required><br><br>
 
-                <label for="password">Passwort:</label><br>
-                <input type="password" id="password" name="password" required><br><br>
+                    <label for="newUserPassword">Passwort:</label><br>
+                    <input type="password" class="Inputs-S" id="newUserPassword" name="newUserPassword" required><br><br>
 
-                <button type="submit">Benutzer anlegen</button>
-            </form>
+                    <button type="submit">Benutzer anlegen</button>
+                </form>
+            </div>
         </div>
-    </div>
 
-    <!-- Modal für Projekt erstellen -->
-    <div id="createProjectModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Projekt erstellen</h2>
-            <form id="projectForm">
-                <label for="projectName">Projektname:</label><br>
-                <input type="text" id="projectName" name="projectName" required><br><br>
+        <!-- Modal für Projekt erstellen -->
+        <div id="createProjectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Projekt erstellen</h2>
+                <form id="createProjectForm">
+                    <label for="projectName">Projektname:</label><br>
+                    <input type="text" id="projectName" name="projectName" required><br><br>
 
-                <label for="startDate">Startdatum:</label><br>
-                <input type="date" id="startDate" name="startDate" required><br><br>
+                    <label for="projectStartDate">Startdatum:</label><br>
+                    <input type="date" id="projectStartDate" name="projectStartDate" required><br><br>
 
-                <label for="endDate">Enddatum:</label><br>
-                <input type="date" id="endDate" name="endDate" required><br><br>
+                    <label for="projectEndDate">Enddatum:</label><br>
+                    <input type="date" id="projectEndDate" name="projectEndDate" required><br><br>
 
-                <label for="emailList">Personen (Emails durch Komma getrennt):</label><br>
-                <textarea id="emailList" name="emailList" rows="4"></textarea><br><br>
+                    <label for="projectEmailList">Personen (Emails durch Komma getrennt):</label><br>
+                    <textarea id="projectEmailList" name="projectEmailList" rows="4"></textarea><br><br>
 
-                <button type="submit">Projekt erstellen</button>
-            </form>
+                    <button type="submit">Projekt erstellen</button>
+                </form>
+            </div>
         </div>
-    </div>
     </main>
     <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  
     <script src="../javascript/admin_page_logik.js"></script>
 </body>
 </html>
-

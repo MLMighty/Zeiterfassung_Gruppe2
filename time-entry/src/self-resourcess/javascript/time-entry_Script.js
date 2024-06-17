@@ -17,12 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
-
-    document.getElementById("editTime").addEventListener('click', () => { navigateToPage2()});
+    document.getElementById("editTime").addEventListener('click', () => { navigateToPageTimeEditpage()});
     document.getElementById("adminPage").addEventListener('click', () => { navigateToPagAdminPage()});
     
-
-
     /*document.getElementById("commitAway").addEventListener('click', () => { openModal()});
     function openModal() {
         document.getElementById('myModal').style.display = 'block';
@@ -88,40 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
             break;
           }
     });
-            // DOM-Elemente
-        const startTimeBtn = document.getElementById('startTime');
-        const endTimeBtn = document.getElementById('endTime');
-        const timerDisplay = document.getElementById('timer');
-
-        let timerInterval; // Variable für den Timer-Intervall
-
-        startTimeBtn.addEventListener('click', function() {
-            startTimeBtn.disabled = true; // Start-Button deaktivieren
-            endTimeBtn.disabled = false; // Stopp-Button aktivieren
-            let seconds = 0;
-
-            // Starte Timer
-            timerInterval = setInterval(function() {
-                seconds++;
-                timerDisplay.textContent = formatTime(seconds);
-            }, 1000);
-        });
-
-        endTimeBtn.addEventListener('click', function() {
-            endTimeBtn.disabled = true; // Stopp-Button deaktivieren
-            startTimeBtn.disabled = false; // Start-Button aktivieren
-            clearInterval(timerInterval); // Timer-Intervall stoppen
-            timerDisplay.textContent = ''; // Timer-Anzeige zurücksetzen
-        });
-
-        // Funktion zur Formatierung der Zeit (z.B. 00:00:00)
-        function formatTime(seconds) {
-            const hours = Math.floor(seconds / 3600);
-            const minutes = Math.floor((seconds % 3600) / 60);
-            const remainingSeconds = seconds % 60;
-            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-        }
-
 
     prevButton.addEventListener('click', () => {
         var e = viewSelection.value; //get Value of viewSelection to adapt function of buttons to one week/month/quarter/year before
@@ -261,13 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     callFunctions();
         
-    function navigateToTimePage() {
+    function navigateToPageTimeEditpage() {
         window.location.href = "edit_time.html";
     }
-
     function navigateToPagAdminPage() {
-
-
         window.location.href = "admin_page.html";
     }
 

@@ -18,7 +18,11 @@ window.onclick = function(event) {
 document.getElementsByClassName('close')[0].onclick = function() {
     closeModal();
 }
+document.getElementById("backPage").addEventListener('click', () => { navigateToPageHome()});
 
+function navigateToPageHome() {
+    window.location.href = "time-entry_Site.html";
+}
 $(document).ready(function() {
     $('#calendar').fullCalendar({
         header: {
