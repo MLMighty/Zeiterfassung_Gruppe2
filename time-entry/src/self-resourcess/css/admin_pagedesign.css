@@ -109,7 +109,7 @@ label {
 }
 
 
-textarea > .firstName-Input {
+textarea  {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
@@ -117,6 +117,13 @@ textarea > .firstName-Input {
     border-radius: 4px;
 }
 
+.Inputs-S {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 textarea {
     resize: vertical;
 }
