@@ -19,13 +19,20 @@ body {
 h1 {
     text-align: center;
     color: #573b8a;
+    margin-bottom: 20px;
 }
 
-.time-entry button {
+/* Button Styles */
+.time-entry button,
+.view-selection button,
+form button[type="submit"],
+form button[type="button"],
+#deleteEventButton,
+#logoutButton {
     background-color: #573b8a;
     color: white;
     border: none;
-    padding: 12px 24px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -33,34 +40,28 @@ h1 {
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.3s ease;
-}
-
-.time-entry button:hover {
-    background-color: #573b8a;
-}
-
-
-.view-selection {
-    text-align: center;
-    margin: px auto;
-    margin-bottom: 20px;
-}
-
-.view-selection button {
-    background-color: #573b8a;
-    color: white;
-    border: none;
-    padding: 10px 20px;
     margin-right: 10px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-.view-selection button:hover {
+.time-entry button:hover,
+.view-selection button:hover,
+form button[type="submit"]:hover,
+form button[type="button"]:hover,
+#deleteEventButton:hover,
+#logoutButton:hover {
     background-color: #45a049;
 }
 
+.view-selection {
+    text-align: center;
+    margin: 0 auto 20px;
+}
+
+.view-selection button {
+    margin-right: 10px;
+}
+
+/* Calendar Container Styles */
 #calendarContainer {
     margin-top: 20px;
     border: 1px solid #ddd;
@@ -80,6 +81,19 @@ h1 {
     overflow: auto;
     background-color: rgba(0,0,0,0.4);
 }
+
+.header-right {
+    margin-right: 20px; /* Abstand vom rechten Rand */
+}
+
+.clock {
+    text-align: right; /* Text rechts ausrichten */
+}
+
+.rightText {
+    margin-bottom: 8px; /* Abstand zwischen den Elementen im Uhrbereich */
+}
+
 
 .modal-content {
     background-color: #fefefe;
@@ -127,53 +141,18 @@ form select {
     box-sizing: border-box;
 }
 
-form button[type="submit"],
-form button[type="button"] {
-    background-color: #573b8a;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    margin-right: 10px;
-    transition: background-color 0.3s ease;
-}
-
-form button[type="submit"]:hover,
-form button[type="button"]:hover {
-    background-color: #573b8a;
-}
-
-#deleteEventButton {
-    background-color: #f44336;
-}
-
-#deleteEventButton:hover {
-    background-color: #c6392c;
-}
-
 /* Logout Button */
 #logoutButton {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-#logoutButton:hover {
+/* Delete Event Button */
+#deleteEventButton {
+    background-color: #f44336;
+}
+
+#deleteEventButton:hover {
     background-color: #c6392c;
 }

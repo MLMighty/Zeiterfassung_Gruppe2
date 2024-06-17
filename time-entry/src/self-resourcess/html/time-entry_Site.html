@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
     <title>Zeiterfassung</title>
-    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <!--link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"-->
     <link rel="stylesheet" href="../css/time-entry_Style.css">
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
@@ -27,6 +27,9 @@
                         <div class="buttons">
                             <button id="editTime" type="button" >Abwesenheit Beeintragen</button>
                         </div>
+                        <div class="buttons">
+                            <button id="adminPage" type="button" >Admin Seite</button>
+                        </div>
 
                         <div class="status">
                             <p id="overtime">Überstunden: </p>
@@ -34,27 +37,27 @@
                 </div>
                 <div class="header-middle">
                     <div>
-                        <button id="startTime" type="button" onclick="">Start</button>
-                        <select id="projectSelection" class="selects">
-                            <option value="test">Projekt</option>
-                        </select>
+                        <button id="startTime" type="button">Start</button>
+                        <button id="endTime" type="button">Stopp</button>
+                        <p id="timer" class="rightText"></p> <!-- Timer-Anzeige -->
+
                     </div>
-                </div>
-                <div class="header-middle">
-                    <div>
-                        <button id="endTime" type="button" onclick="">Stopp</button>
+                    </div>
                         <select id="tasktSelection" class="selects">
                             <option value="test">Tätigkeit</option>
                         </select>
+                        <select id="projectSelection" class="selects">
+                            <option value="test">Projekt</option>
+                        </select>
+                        <div class="clock">
+                            <h1 class="rightText" id="clock"></h1>
+                            <p class = "rigthText" id="weekDay"></p>
+                            <p class = "rigthText" id="fullDate"></p>
+                        </div>
                     </div>
                 </div>
-                <div class="header-right">
-                    <div class="clock">
-                        <h1 class="rightText" id="clock"></h1>
-                        <p class = "rigthText" id="weekDay"></p>
-                        <p class = "rigthText" id="fullDate"></p>
-                    </div>
                 </div>
+
             </div>
             <div class="containerTable">
                 <section>
@@ -78,10 +81,10 @@
             </div>
             
         <footer>
-        <!--load footer here-->
+        <p>Kein Bock mehr!</p>
         </footer>
 
-         <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+         <!--script src="../../global_dependencys/global_html_scripts/login-html_script.js"--></script> 
 
     <script src="../javascript/time-entry_Script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
