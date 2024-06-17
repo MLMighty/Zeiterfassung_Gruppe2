@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Seite</title>
+    <link rel="stylesheet" href="../css/admin_pagedesign.css">
+</head>
+<body>
+    <header>
+        <h1>Willkommen auf der Admin-Seite</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Aktionen</h2>
+            <button id="createUserBtn">Benutzer anlegen</button>
+            <button id="createProjectBtn">Projekt erstellen</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Dein Name</p>
+    </footer>
+
+    <!-- Modal für Benutzer anlegen -->
+    <div id="createUserModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Benutzer anlegen</h2>
+            <form id="userForm">
+                <label for="firstName">Vorname:</label><br>
+                <input type="text" id="firstName" name="firstName" required><br><br>
+
+                <label for="lastName">Nachname:</label><br>
+                <input type="text" id="lastName" name="lastName" required><br><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Passwort:</label><br>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <button type="submit">Benutzer anlegen</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal für Projekt erstellen -->
+    <div id="createProjectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Projekt erstellen</h2>
+            <form id="projectForm">
+                <label for="projectName">Projektname:</label><br>
+                <input type="text" id="projectName" name="projectName" required><br><br>
+
+                <label for="startDate">Startdatum:</label><br>
+                <input type="date" id="startDate" name="startDate" required><br><br>
+
+                <label for="endDate">Enddatum:</label><br>
+                <input type="date" id="endDate" name="endDate" required><br><br>
+
+                <label for="emailList">Personen (Emails durch Komma getrennt):</label><br>
+                <textarea id="emailList" name="emailList" rows="4"></textarea><br><br>
+
+                <button type="submit">Projekt erstellen</button>
+            </form>
+        </div>
+    </div>
+    <script src="../javascript/admin_page_logik.js"></script>
+</body>
+</html>

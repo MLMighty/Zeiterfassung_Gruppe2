@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentYear = today.getFullYear();
 
     document.getElementById("editTime").addEventListener('click', () => { navigateToPage2()});
+    document.getElementById("adminPage").addEventListener('click', () => { navigateToPagAdminPage()});
+    
     /*document.getElementById("commitAway").addEventListener('click', () => { openModal()});
     function openModal() {
         document.getElementById('myModal').style.display = 'block';
@@ -224,6 +226,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
     function navigateToPage2() {
         window.location.href = "edit_time.html";
+    }
+    function navigateToPagAdminPage() {
+        window.location.href = "admin_page.html";
     }
 
     
