@@ -97,11 +97,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Erstelle ein erstes Eingabefeld für Mitarbeiter-E-Mail beim Laden der Seite
     createMemberInput();
 
-    document.getElementById("backButton").addEventListener('click', navigateHome);
-    function navigateHome() {
-        window.location.href = "time-entry_Site.html";
-    }
 });
+
+document.getElementById("backButton").addEventListener('click', navigateToMainPage);
+function navigateToMainPage() {
+    window.location.href = "time-entry_Site.html";
+  }
 
 document.addEventListener('DOMContentLoaded', function() {
     const approvalList = document.getElementById('approvalList');
