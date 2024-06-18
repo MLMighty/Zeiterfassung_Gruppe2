@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tableData = []; // Array für die Tabellenzeilen
   
     // Eventlistener
-    document.getElementById("editTime").addEventListener('click', navigateToPage2);
+   // document.getElementById("editTime").addEventListener('click', navigateToPage2);
     document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
     document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
     viewSelection.addEventListener('change', updateTableViewInfo);
