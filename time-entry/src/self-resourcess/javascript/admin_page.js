@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tableData = []; // Array für die Tabellenzeilen
   
     // Eventlistener
+    document.getElementById("logOut").addEventListener('click', deleteCookie); 
     document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
     document.getElementById("backButton").addEventListener('click', navigateToMainPage);
     document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
@@ -190,6 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function navigateToTeamLeadPage() {
       window.location.href = "teamlead_Site.html";
     }
+
+    function deleteCookie(){
+      document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+      document.cookie = 'uuid=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+
+      window.location = "time-entry_Site.html";;
+    }
+
+
   
     // Initialisierung
     updateTableViewInfo();
@@ -198,3 +208,30 @@ document.addEventListener('DOMContentLoaded', () => {
     setDateText();
     renderTableHeader();
   });
+  // Delete
+  function renderTableBody(data) {
+    var tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = ''; // leert den aktuellen Inhalt
+
+    data.forEach(function(entry) {
+        var row = document.createElement('tr');
+
+        // Beispiel: Fülle die Zeile mit Daten aus dem 'entry'-Objekt
+        var columns = ['datum', 'start', 'ende', 'ist', 'soll', 'projekt', 'tätigkeit', 'freigegeben'];
+        columns.forEach(function(column) {
+            var cell = document.createElement('td');
+            cell.textContent = entry[column]; // annehmen, dass 'entry' ein Objekt ist
+            row.appendChild(cell);
+        });
+
+        tableBody.appendChild(row);
+    });
+}
+//Bespieldaten
+var exampleData = [
+  { datum: '2024-06-18', start: '09:00', ende: '17:00', ist: '8', soll: '8', projekt: 'Projekt A', tätigkeit: 'Entwicklung', freigegeben: 'Ja' },
+  { datum: '2024-06-19', start: '09:30', ende: '18:00', ist: '8.5', soll: '8', projekt: 'Projekt B', tätigkeit: 'Design', freigegeben: 'Nein' }
+];
+
+// Beispielaufruf der Funktion, um die Tabelle mit den Beispieldaten zu aktualisieren
+renderTableBody(exampleData);

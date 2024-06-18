@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectForm = document.getElementById('projectForm');
     const memberContainer = document.getElementById('memberContainer');
     const addMemberButton = document.getElementById('addMember');
+    const approvalList = document.getElementById('approvalList');
+    const backButton = document.getElementById('backButton');
 
     // Variablen für Mitarbeiterdaten
     let employeeFirstName;
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Variablen für Projektdaten
     let projectName;
+    let projectInfo;
     let projectStartDate;
     let projectEndDate;
     let projectMembers = [];
@@ -28,6 +31,12 @@ document.addEventListener('DOMContentLoaded', function() {
         taskNameInput.name = 'taskName';
         taskNameInput.placeholder = 'Tätigkeit';
         taskNameInput.required = true;
+
+        const taskInfoInput = document.createElement('input');
+        taskInfoInput.type = 'text';
+        taskInfoInput.name = 'taskInfo';
+        taskInfoInput.placeholder = 'Beschreibung';
+        taskInfoInput.required = false;
 
         const taskStartDateInput = document.createElement('input');
         taskStartDateInput.type = 'date';
@@ -46,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         removeTaskButton.addEventListener('click', removeTaskInput);
 
         taskInput.appendChild(taskNameInput);
+        taskInput.appendChild(taskInfoInput);
         taskInput.appendChild(taskStartDateInput);
         taskInput.appendChild(taskEndDateInput);
         taskInput.appendChild(removeTaskButton);
@@ -97,29 +107,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Erstelle ein erstes Eingabefeld für Mitarbeiter-E-Mail beim Laden der Seite
     createMemberInput();
 
-});
+    // Funktion zum Genehmigen eines Eintrags
+    function approveEntry(entry) {
+        console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
 
-document.getElementById("backButton").addEventListener('click', navigateToMainPage);
-function navigateToMainPage() {
-    window.location.href = "time-entry_Site.html";
-  }
+        // Entferne den genehmigten Eintrag aus dem approvalEntries-Array
+        approvalEntries = approvalEntries.filter(e => e !== entry);
 
-document.addEventListener('DOMContentLoaded', function() {
-    const approvalList = document.getElementById('approvalList');
-    const backButton = document.getElementById('backButton');
+        // Aktualisiere die Tabelle mit den verbleibenden Einträgen
+        renderApprovalEntries(approvalEntries);
+    }
 
-    // Variablen für die Genehmigungsliste
-    let approvalEntries = [];
+    // Funktion zum Ablehnen eines Eintrags
+    function rejectEntry(entry) {
+        console.log(`Eintrag abgelehnt: ${entry.employee} - ${entry.project} - ${entry.task}`);
 
-    // Funktion zum Abrufen der zu genehmigenden Einträge (Beispiel mit Dummy-Daten)
-    function fetchApprovalEntries() {
-        const dummyEntries = [
-            { date: '2023-06-01', employee: 'Max Mustermann', project: 'Projekt A', task: 'Aufgabe 1', hours: 4 },
-            { date: '2023-06-02', employee: 'Anna Musterfrau', project: 'Projekt B', task: 'Aufgabe 2', hours: 6 },
-            { date: '2023-06-03', employee: 'Peter Beispiel', project: 'Projekt C', task: 'Aufgabe 3', hours: 3 },
-        ];
+        // Entferne den abgelehnten Eintrag aus dem approvalEntries-Array
+        approvalEntries = approvalEntries.filter(e => e !== entry);
 
-        return dummyEntries;
+        // Aktualisiere die Tabelle mit den verbleibenden Einträgen
+        renderApprovalEntries(approvalEntries);
     }
 
     // Funktion zum Rendern der zu genehmigenden Einträge in der Tabelle
@@ -167,43 +174,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Beispiel: Abrufen von Dummy-Daten für die Genehmigungsliste
+    function fetchApprovalEntries() {
+        const dummyEntries = [
+            { date: '2023-06-01', employee: 'Max Mustermann', project: 'Projekt A', task: 'Aufgabe 1', hours: 4 },
+            { date: '2023-06-02', employee: 'Anna Musterfrau', project: 'Projekt B', task: 'Aufgabe 2', hours: 6 },
+            { date: '2023-06-03', employee: 'Peter Beispiel', project: 'Projekt C', task: 'Aufgabe 3', hours: 3 },
+        ];
 
-    
-    // Funktion zum Genehmigen eines Eintrags (Beispiel)
-    function approveEntry(entry) {
-        console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
-        // Hier kannst du die Logik zum Genehmigen des Eintrags implementieren
+        return dummyEntries;
     }
 
-    // Funktion zum Ablehnen eines Eintrags (Beispiel)
-    function rejectEntry(entry) {
-        console.log(`Eintrag abgelehnt: ${entry.employee} - ${entry.project} - ${entry.task}`);
-        // Hier kannst du die Logik zum Ablehnen des Eintrags implementieren
-    }
-
-
-    // Initialisierung
+    // Initialisierung der Genehmigungsliste
     approvalEntries = fetchApprovalEntries();
     renderApprovalEntries(approvalEntries);
+
+    // Zurück zur Hauptseite navigieren
+    backButton.addEventListener('click', function() {
+        window.location.href = "time-entry_Site.html";
+    });
+
 });
-// Funktion zum Genehmigen eines Eintrags
-function approveEntry(entry) {
-    console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
-
-    // Entferne den genehmigten Eintrag aus dem approvalEntries-Array
-    approvalEntries = approvalEntries.filter(e => e !== entry);
-
-    // Aktualisiere die Tabelle mit den verbleibenden Einträgen
-    renderApprovalEntries(approvalEntries);
-}
-
-// Funktion zum Ablehnen eines Eintrags
-function rejectEntry(entry) {
-    console.log(`Eintrag abgelehnt: ${entry.employee} - ${entry.project} - ${entry.task}`);
-
-    // Entferne den abgelehnten Eintrag aus dem approvalEntries-Array
-    approvalEntries = approvalEntries.filter(e => e !== entry);
-
-    // Aktualisiere die Tabelle mit den verbleibenden Einträgen
-    renderApprovalEntries(approvalEntries);
-}
