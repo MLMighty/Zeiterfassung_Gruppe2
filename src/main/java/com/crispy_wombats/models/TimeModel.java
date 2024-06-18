@@ -12,6 +12,8 @@ import java.util.Set;
 public class TimeModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Getter
+    @Setter
     @Column(name = "time_id")
     private int time_id;
 

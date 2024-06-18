@@ -20,7 +20,6 @@ public class AuthentificationController {
         @PostMapping("/login")
         public ResponseEntity<Object> loginController(@RequestBody UsersModel user)
         {
-            System.out.println("Wird aufgerufen Controller");
             return loginService.loginAuthentication(user);
         }
 
@@ -28,7 +27,6 @@ public class AuthentificationController {
         @PostMapping("/signup")
         public ResponseEntity<String> signUpController(@RequestBody UsersModel user)
         {
-            System.out.println("Wird aufgerufen Controller");
             return signUpService.createUser(user);
         }
     }

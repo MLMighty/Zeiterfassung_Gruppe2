@@ -11,6 +11,8 @@ import java.util.Set;
 public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Getter
+    @Setter
     @Column(name = "task_id")
     private int task_id;
 

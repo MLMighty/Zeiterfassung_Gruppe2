@@ -12,6 +12,9 @@ public class TimeScheduleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+
+    @Getter
+    @Setter
     @Column(name = "timeschedule_id")
     private int timeschedule_id;
 

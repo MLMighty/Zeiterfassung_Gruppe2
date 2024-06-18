@@ -15,6 +15,8 @@ public class RoleModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Getter
+    @Setter
     @Column(name = "role_id")
     private int role_id;
 
