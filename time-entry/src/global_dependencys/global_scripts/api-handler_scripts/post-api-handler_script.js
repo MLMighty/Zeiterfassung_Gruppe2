@@ -53,6 +53,7 @@ export class POST_ApiInterfaceHandler {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(postData),
+          credentials: 'include'
         });
   
         if (!response.ok) {
@@ -76,6 +77,7 @@ export class POST_ApiInterfaceHandler {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(abcenseData),
+          credentials: 'include'
         })
         const response = responseData.status;
         console.log(response);
@@ -94,6 +96,7 @@ export class POST_ApiInterfaceHandler {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(timeEntryData),
+          credentials: 'include'
         })
         const response = responseData.status;
         console.log(response);
@@ -113,6 +116,7 @@ export class POST_ApiInterfaceHandler {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(roleData),
+          credentials: 'include'
         })
 
         const response = await responseData.status();
