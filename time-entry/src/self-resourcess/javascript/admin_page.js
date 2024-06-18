@@ -178,13 +178,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     function navigateToPage2() {
-      window.location.href = "timeEntry_page.html";
+      window.location.href = "time-entry_Site.html";
     }
     function navigateToAdminPage() {
-      window.location.href = "admin_main.html";
+      window.location.href = "admin-main_Site.html";
     }
     function navigateToTeamLeadPage() {
-      window.location.href = "teamlead_page.html";
+      window.location.href = "teamlead_Site.html";
     }
   
     // Initialisierung
