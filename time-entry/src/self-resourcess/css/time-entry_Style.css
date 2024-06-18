@@ -47,12 +47,7 @@ header h1 {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-#main-Container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
+
 
 h1 {
     text-align: center;
