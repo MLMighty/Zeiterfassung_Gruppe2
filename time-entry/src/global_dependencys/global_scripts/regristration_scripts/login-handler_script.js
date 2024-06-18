@@ -57,9 +57,10 @@ export class LoginHandler {
     }
 
     accountExistsCheck(succesfullLogin){
-        if(succesfullLogin === "true"){
+        if(succesfullLogin !== "false"){
+            const uuid = succesfullLogin;
             this.loggedIn_display.classList.add("loggedIn-true");
-            this.cookieHandler.setCookie("loggedIn", "true" , 3);
+            this.cookieHandler.setCookie("uuid", uuid ,"loggedIn", "true" , 3);
             setTimeout(() => {
                 this.login_Container_Visibility.style.display ="none";
             }, 1000);
@@ -67,13 +68,6 @@ export class LoginHandler {
             alert("Sie haben noch kein Konto, melden Sie sich an");
         }
     }
-
-
-
-
-
-
-
 }
 
 
