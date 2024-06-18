@@ -29,7 +29,7 @@ export class POST_ApiInterfaceHandler {
                   "Content-Type": "application/json",
               },
               body: JSON.stringify(loginData),
-              credentials: 'include' // This ensures cookies are included in the request if needed
+              credentials: 'include'
           });
   
           if (!response.ok) {
