@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
     <title>Zeiterfassung</title>
-    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
     <link rel="stylesheet" href="../css/time-entry_Style.css">
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
@@ -36,17 +36,21 @@
                         </div>
                 </div>
                 <div class="header-middle">
-                    <div id="timerDisplay">00:00:00</div>
-                    <button id="startTime">Start</button>
-                    <button id="endTime">Stopp</button>
+                    <div id="timerDisplay"></div>
+                    <button id="startTime" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryStartDate(event)})">Start</button>
+                    <button id="endTime" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryEndDate(event)})">Stopp</button>
                 </div>
                 <div class="header-middle">
                     <div>
-                        <select id="tasktSelection" class="selects">
+                        <select id="tasktSelection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryTaskType(event)})" class="selects">
                             <option value="test">Tätigkeit</option>
+                            <option >create hungu style</option>
+                            <option >Fisch essen</option>
                         </select>
-                        <select id="projectSelection" class="selects">
+                        <select id="projectSelection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryProjectType(event)})" class="selects">
                             <option value="test">Projekt</option>
+                            <option >UI-LIB</option>
+                            <option >Slay</option>
                         </select>
                     </div>
                 </div>
@@ -83,7 +87,7 @@
         <!--load footer here-->
         </footer>
 
-         <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  -->
+         <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
 
     <script src="../javascript/time-entry_Script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

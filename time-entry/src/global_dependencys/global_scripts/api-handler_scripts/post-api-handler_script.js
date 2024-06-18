@@ -84,6 +84,26 @@ export class POST_ApiInterfaceHandler {
       }
 
     }
+
+    
+    async timeEntryApiHandler(timeEntryData){
+      try {
+        const responseData = await fetch("http://localhost:8080/timeentry",{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(timeEntryData),
+        })
+        const response = responseData.status;
+        console.log(response);
+      } catch (error) {
+        console.error("A problem occured: " + error)
+      }
+
+    }
+
+
   
     async roleApiHandler(roleData){
       try {
