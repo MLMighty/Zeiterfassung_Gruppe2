@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+    <title>Zeiterfassung</title>
+    <link rel="stylesheet" href="../css/admin_style.css">
+</head>
+<body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+
+    <main id="main-Container">
+            <div class="containerTop">
+                
+              <div class="header-1">
+              
+                        <h1 class="personName" id="name">Mitarbeitername</h1>
+
+                        <div class="navigationButtons">
+                            <button id="editTime" type="button" >Abwesenheiten</button>
+                            <button id="adminPage" type="button" >Admin</button>
+                            <button id="teamleadPage" type="button" >Teamleiter</button>
+                        </div>
+
+                        <select class="selects" id="viewSelection">
+                          <option value="weekView">Wochenansicht</option>
+                          <option selected="selected" value="monthView">Monatsansicht</option>
+                          <option value="quarterView">Quartalsansicht</option>
+                          <option value="yearView">Jahresansicht</option>
+                      </select>
+
+                        <div class="status">
+                            <p id="overtime">Überstunden: </p>
+                        </div>
+
+              </div>
+
+
+                <div class="header-2">
+                    <!--Hier kommt der timer-->
+                    <!--div>
+                        <button id="startTime" type="button" onclick="">Start</button>
+                        <button id="endTime" type="button" onclick="">Stopp</button>
+                    </div-->
+                </div>
+                
+                <div class="header-3">
+                    <div>
+                        <select id="tasktSelection" class="selects">
+                            <option value="test">Tätigkeit</option>
+                        </select>
+                        <select id="projectSelection" class="selects">
+                          <option value="test">Projekt</option>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="header-4">
+                    <div class="clock">
+                        <h1 class="rightText" id="clock"></h1>
+                        <p class = "rigthText" id="weekDay"></p>
+                        <p class = "rigthText" id="fullDate"></p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="containerTable">
+                <section>
+                        <h1>Arbeitszeiten</h1>
+                    <div id="tableControl" class="tableControl">
+                        <button id="exportExcel">Download Excel</button>
+                        <button id="exportPdf">Download PDF</button>
+                        <button id="prev">&lt;</button>
+                        <span id="tableViewInfo"></span>
+                        <button id="next">&gt;</button>
+                    </div>
+                </section>
+
+                <table id="table">
+                    <thead id="tableHead">
+                    <!-- table data will be inserted here dynamically -->
+                    </thead>
+                    <tbody id="tableBody">
+                    <!-- table data will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <footer>
+                <button id="backButton" type="button">Zurück</button>
+            </footer>
+
+
+    <script src="../java_skript/admin_logic.js"></script>
+    </main>
+</body>
+</html>
