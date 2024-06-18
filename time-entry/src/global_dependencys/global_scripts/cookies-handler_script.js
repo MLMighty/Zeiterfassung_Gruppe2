@@ -4,12 +4,20 @@ export class CookieHandler{
     constructor(){
     }
 
-    setCookie(uuidName,uuid, name, value , hours){
-        //const cookieTimeout = (cookieCreationTime + (hours*60*60*1000));
+    setCookie (name, value , hours){
+      
         const date = new Date();
         date.setTime(date.getTime() + (hours*60*60*1000));
         let expires = "expires=" + date.toUTCString();
-        document.cookie = uuidName + "=" + uuid + ";" + name + "=" + value + ";" + expires + ";path=/";
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        
+    }
+
+    setUUIDCookie(uuidName,uuid,hours){
+        const date = new Date();
+        date.setTime(date.getTime() + (hours*60*60*1000));
+        let expires = "expires=" + date.toUTCString();
+        document.cookie = uuidName + "=" + uuid + ";" + expires + ";path=/";
     }
 
     getCookie(cookie){
@@ -20,6 +28,7 @@ export class CookieHandler{
             let charV = splittedCookie[i];
             while(charV.charAt(i) == " "){
                 charV = charV.substring(1);
+            
             }
             if(charV.indexOf(cookieValue) == 0){
                 return charV.substring(cookieValue.length, charV.length)

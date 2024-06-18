@@ -11,7 +11,7 @@ export class LoginHandler {
         this.login_Container_Visibility = document.getElementById("login-Container-Visbility");
         this.email = document.getElementById("login-email");
         this.password = document.getElementById("login-password");
-
+        this.fisch;
         this.neededSanatizing = [];
         this.post_apiInterfaceHandler = new POST_ApiInterfaceHandler();
         this.cookieHandler = new CookieHandler;
@@ -35,7 +35,7 @@ export class LoginHandler {
                     email: this.email.value,
                     password: this.password.value,
                 }
-                this.post_apiInterfaceHandler.loginApiHandler(loginData).then(succesfullLogin =>  this.accountExistsCheck(succesfullLogin));
+                this.post_apiInterfaceHandler.loginApiHandler(loginData).then(succesfullLogin =>  this.accountExistsCheck(succesfullLogin, "true"));
             }else{throw new Error("youre Data wasnt authorized");}
 
         }catch(err){
@@ -56,11 +56,13 @@ export class LoginHandler {
         }
     }
 
-    accountExistsCheck(succesfullLogin){
-        if(succesfullLogin !== "false"){
+    accountExistsCheck(succesfullLogin,fisch){
+        if(fisch === "true"){
+            fisch = "false";
             const uuid = succesfullLogin;
             this.loggedIn_display.classList.add("loggedIn-true");
-            this.cookieHandler.setCookie("uuid", uuid ,"loggedIn", "true" , 3);
+            this.cookieHandler.setCookie("loggedIn", "true" , 3);
+            this.cookieHandler.setUUIDCookie("uuid", uuid,    3);
             setTimeout(() => {
                 this.login_Container_Visibility.style.display ="none";
             }, 1000);
