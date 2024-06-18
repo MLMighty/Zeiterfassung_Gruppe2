@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class AbsenceController {
 
-    @Autowired
+   /* @Autowired
     AbsenceService absenceService;
 
     @PostMapping("/saveabsence")
     public void absenceController (@RequestBody AbsenceModel absence){
 
         absenceService.addAbsence(absence);
-    }
+    }*/
 
 //    @GetMapping("/absencedata")
 //    public ResponseEntity<AbsenceModel> forwardAbsenceController (@RequestBody AbsenceModel absence){

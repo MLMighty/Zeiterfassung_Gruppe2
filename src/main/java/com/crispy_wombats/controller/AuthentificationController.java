@@ -18,7 +18,7 @@ public class AuthentificationController {
 
 
         @PostMapping("/login")
-        public ResponseEntity<Boolean> loginController(@RequestBody UsersModel user)
+        public ResponseEntity<Object> loginController(@RequestBody UsersModel user)
         {
             System.out.println("Wird aufgerufen Controller");
             return loginService.loginAuthentication(user);

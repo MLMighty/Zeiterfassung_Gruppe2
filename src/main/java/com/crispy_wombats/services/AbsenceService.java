@@ -1,8 +1,8 @@
 package com.crispy_wombats.services;
 
 
-import com.crispy_wombats.time_entry.models.AbsenceModel;
-import com.crispy_wombats.time_entry.repositorys.AbscenceRepository;
+import com.crispy_wombats.models.AbsenceModel;
+import com.crispy_wombats.repositorys.AbscenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
