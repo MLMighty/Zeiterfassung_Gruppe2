@@ -2,16 +2,14 @@
 export class CookieHandler{
 
     constructor(){
-
     }
 
-    setCookie(name, value , hours){
+    setCookie(uuidName,uuid, name, value , hours){
+        //const cookieTimeout = (cookieCreationTime + (hours*60*60*1000));
         const date = new Date();
         date.setTime(date.getTime() + (hours*60*60*1000));
         let expires = "expires=" + date.toUTCString();
-        document.cookie = name + "=" + value + ";" + expires + ";path=/";
-
-
+        document.cookie = uuidName + "=" + uuid + ";" + name + "=" + value + ";" + expires + ";path=/";
     }
 
     getCookie(cookie){
@@ -25,14 +23,11 @@ export class CookieHandler{
             }
             if(charV.indexOf(cookieValue) == 0){
                 return charV.substring(cookieValue.length, charV.length)
-
             }
 
         }
-
         return "";
 
     }
-
 
 }

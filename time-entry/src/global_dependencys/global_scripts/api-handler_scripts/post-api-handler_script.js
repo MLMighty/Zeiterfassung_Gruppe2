@@ -38,7 +38,7 @@ export class POST_ApiInterfaceHandler {
   
           const responseData = await response.text(); // For testing
           console.log("Server responds with: " + responseData);
-          return responseData;
+          return responseData; //response if login is successful will be a uuid
       } catch (err) {
           console.error("A problem occurred: " + err);
       }
