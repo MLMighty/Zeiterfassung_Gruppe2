@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitarbeiter und Projekte erstellen</title>
+    <link rel="stylesheet" href="../css/adminMain_style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Seite</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Zu genehmigende Einträge</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Mitarbeiter</th>
+                        <th>Projekt</th>
+                        <th>Tätigkeit</th>
+                        <th>Stunden</th>
+                        <th>Genehmigen</th>
+                        <th>Ablehnen</th>
+                    </tr>
+                </thead>
+                <tbody id="approvalList">
+                    <!-- Hier werden die zu genehmigenden Einträge dynamisch hinzugefügt -->
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Mitarbeiter erstellen</h2>
+            <form id="employeeForm">
+                <label for="firstName">Vorname:</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Nachname:</label>
+                <input type="text" id="lastName" name="lastName" required>
+
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Passwort:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Mitarbeiter erstellen</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Projekt erstellen</h2>
+            <form id="projectForm">
+                <label for="projectName">Projektname:</label>
+                <input type="text" id="projectName" name="projectName" required>
+
+                <label for="startDate">Startdatum:</label>
+                <input type="date" id="startDate" name="startDate" required>
+
+                <label for="endDate">Enddatum:</label>
+                <input type="date" id="endDate" name="endDate" required>
+
+                <label for="projectMembers">Mitarbeiter (E-Mail):</label>
+                <div id="memberContainer">
+                    <!-- Hier werden die Eingabefelder für Mitarbeiter-E-Mails dynamisch hinzugefügt -->
+                </div>
+                <button type="button" id="addMember">Mitarbeiter hinzufügen</button>
+
+                <h3>Tätigkeiten</h3>
+                <div id="taskContainer">
+                    <!-- Hier werden die Tätigkeiten dynamisch hinzugefügt -->
+                </div>
+                <button type="button" id="addTask">Tätigkeit hinzufügen</button>
+
+                <button type="submit">Projekt erstellen</button>
+            </form>
+        </section>
+    </main>
+    <button id="backButton" type="button">Zurück</button>
+</footer>
+    <script src="../java_skript/adminMain_logic.js"></script>
+</body>
+</html>

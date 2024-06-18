@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeitbuchung</title>
+    <link rel="stylesheet" href="../css/timeEntry_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+</head>
+<body>
+    <header>
+        <h1>Zeitbuchung</h1>
+    </header>
+    <main>
+        <div class="time-entry">
+            <button type="button" onclick="openModal()">Abwesenheit eintragen</button>
+        </div>
+        <div class="view-selection">
+            <button id="monthView" class="view-btn">Monat</button>
+            <button id="weekView" class="view-btn">Woche</button>
+            <button id="dayView" class="view-btn">Tag</button>
+        </div>
+        <div id="calendarContainer">
+            <div id="calendar"></div>
+        </div>
+    </main>
+    <footer>
+        <button id="backButton" type="button">Zurück</button>
+    </footer>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Daten eintragen</h2>
+            <form id="eventForm">
+                <label for="start">Startdatum:</label>
+                <input type="date" id="start" name="trip-start" required>
+
+                <label for="end">Enddatum:</label>
+                <input type="date" id="end" name="trip-end" required>
+                
+                <label for="selection">Abwesenheitsart:</label>
+                <select id="selection" name="selection" required>
+                    <option value="" disabled selected>Bitte auswählen</option>
+                    <option value="Urlaub">Urlaub</option>
+                    <option value="Sonderurlaub">Sonderurlaub</option>
+                    <option value="Gleittag">Gleittag</option>
+                    <option value="Krankheit mit Attest">Krankheit mit Attest</option>
+                    <option value="Krankheit ohne Attest">Krankheit ohne Attest</option>
+                    <option value="Dienstreise">Dienstreise</option>
+                </select>
+                
+                <div class="form-buttons">
+                    <button type="submit" class="form-btn">Update</button>
+                    <button type="button" id="deleteEventButton" class="form-btn">Löschen</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Knusprige Wombats</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script src="../java_skript/timeEntry_logic.js"></script>
+</body>
+</html>
