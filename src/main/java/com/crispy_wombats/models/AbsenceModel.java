@@ -13,6 +13,8 @@ import java.util.List;
 public class AbsenceModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     @Column(name = "absence_id")
     private int absence_id;
 

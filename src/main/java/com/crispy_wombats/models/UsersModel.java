@@ -15,6 +15,8 @@ import java.util.UUID;
 public class UsersModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    @Setter
     @Column(name = "user_id")
     private int user_id;
 

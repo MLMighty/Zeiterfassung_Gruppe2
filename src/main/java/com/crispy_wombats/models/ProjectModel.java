@@ -12,6 +12,8 @@ public class ProjectModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Getter
+    @Setter
     @Column(name = "project_id")
     private int project_id;
 
