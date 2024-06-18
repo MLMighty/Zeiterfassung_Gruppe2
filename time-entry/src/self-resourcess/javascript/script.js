@@ -194,4 +194,38 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = "time-entry_Site.html";
     });
 
+    // Ereignislistener für das Erstellen eines Projekts
+    projectForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const projectName = document.getElementById('projectName').value;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const memberEmails = Array.from(document.querySelectorAll('input[name="projectMembers"]')).map(input => input.value);
+        const tasks = Array.from(taskContainer.getElementsByClassName('taskInput')).map(taskInput => ({
+            taskName: taskInput.querySelector('input[name="taskName"]').value,
+            taskInfo: taskInput.querySelector('input[name="taskInfo"]').value,
+            taskStartDate: taskInput.querySelector('input[name="taskStartDate"]').value,
+            taskEndDate: taskInput.querySelector('input[name="taskEndDate"]').value
+        }));
+
+        console.log('Projekt erstellt:');
+        console.log('Projektname:', projectName);
+        console.log('Startdatum:', startDate);
+        console.log('Enddatum:', endDate);
+        console.log('Mitarbeiter:', memberEmails);
+        console.log('Tätigkeiten:', tasks);
+
+        // Formular zurücksetzen
+        projectForm.reset();
+
+        // Vorhandene Aufgaben- und Mitgliederfelder entfernen
+        taskContainer.innerHTML = '';
+        memberContainer.innerHTML = '';
+
+        // Neue leere Eingabefelder für Aufgaben und Mitglieder hinzufügen
+        createTaskInput();
+        createMemberInput();
+    });
+
 });
