@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let tableData = []; // Array für die Tabellenzeilen
   
     // Eventlistener
-   // document.getElementById("editTime").addEventListener('click', navigateToPage2);
+    document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
+    document.getElementById("backButton").addEventListener('click', navigateToMainPage);
     document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
     document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
     viewSelection.addEventListener('change', updateTableViewInfo);
@@ -177,8 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return num.toString().padStart(2, '0');
     }
   
-    function navigateToPage2() {
+    function navigateToMainPage() {
       window.location.href = "time-entry_Site.html";
+    }
+    function navigateToTimeEntryPage() {
+      window.location.href = "edit-time_Site.html";
     }
     function navigateToAdminPage() {
       window.location.href = "admin-main_Site.html";
