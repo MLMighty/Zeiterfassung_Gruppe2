@@ -166,7 +166,7 @@ $(document).ready(function() {
 
     document.getElementById("backButton").addEventListener('click', navigateHome);
     function navigateHome() {
-        window.location.href = "admin_page.html";
+        window.location.href = "time-entry_Site.html";
     }
 
 });
