@@ -66,6 +66,7 @@ export class LoginHandler {
             setTimeout(() => {
                 this.login_Container_Visibility.style.display ="none";
             }, 1000);
+            window.location=window.location;
         }else{
             alert("Sie haben noch kein Konto, melden Sie sich an");
         }

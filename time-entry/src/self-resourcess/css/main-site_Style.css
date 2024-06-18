@@ -209,3 +209,47 @@ button {
 button:hover {
     box-shadow: 0 0 0 0.15rem #D35400;
 }
+
+#startTime{
+    background-color: #15ff00;
+    color: #000000;
+}
+#endTime{
+    background-color: #ff0000;
+}
+/* delete */
+
+
+/* Allgemeine Stile für Tabellen */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Stile für Tabellenheader */
+#tableHead th {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Stile für Tabellenzeilen im tbody */
+#tableBody tr {
+    background-color: #fff; /* Hintergrundfarbe der Zeilen */
+    color: #333; /* Textfarbe */
+    border-bottom: 1px solid #ddd; /* Unterstrich zwischen den Zeilen */
+}
+
+/* Stile für die letzte Zeile im tbody (optional) */
+#tableBody tr:last-child {
+    border-bottom: none; /* Kein Unterstrich für die letzte Zeile */
+}
+
+/* Stile für Zeilen bei Hover (optional) */
+#tableBody tr:hover {
+    background-color: #f2f2f2; /* Hintergrundfarbe ändern bei Hover */
+}
+
