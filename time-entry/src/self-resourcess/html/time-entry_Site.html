@@ -3,90 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeiterfassung</title>
     <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <link rel="stylesheet" href="../css/main-site_Style.css">
     <link rel="stylesheet" href="../css/time-entry_Style.css">
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
     <header>
-
+        <h1>Zeiterfassung</h1>
     </header>
 
     <main id="main-Container">
             <div class="containerTop">
-                <div class="header-left">
-                        <h1 class="leftText" id="name">Max Mustermann</h1>
-                        <select class="selects" id="viewSelection">
-                            <option value="weekView">Wochenansicht</option>
-                            <option selected="selected" value="monthView">Monatsansicht</option>
-                            <option value="quarterView">Quartalsansicht</option>
-                            <option value="yearView">Jahresansicht</option>
-                        </select>
-                        <div class="buttons">
-                            <button id="editTime" type="button" >Abwesenheit Beeintragen</button>
+                
+              <div class="header-1">
+              
+                        <h1 class="personName" id="name">Mitarbeitername</h1>
+
+                        <div class="navigationButtons">
+                            <button id="editTime" type="button" >Abwesenheiten</button>
+                            <button id="adminPage" type="button" >Admin</button>
+                            <button id="teamleadPage" type="button" >Teamleiter</button>
                         </div>
+
+                        <select class="selects" id="viewSelection">
+                          <option value="weekView">Wochenansicht</option>
+                          <option selected="selected" value="monthView">Monatsansicht</option>
+                          <option value="quarterView">Quartalsansicht</option>
+                          <option value="yearView">Jahresansicht</option>
+                      </select>
 
                         <div class="status">
                             <p id="overtime">Überstunden: </p>
                         </div>
+
+              </div>
+
+
+                <div class="header-2">
+         
+                        <div id="ShowContext"></div>
+                        <button id="startTime" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryStartDate(event)})">Start</button>
+                        <button id="endTime" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryEndDate(event)})">Stopp</button>
+              
                 </div>
-                <div class="header-middle">
+                
+                <div class="header-3">
                     <div>
-                        <button id="startTime" type="button" onclick="">Start</button>
-                        <select id="projectSelection" class="selects">
-                            <option value="test">Projekt</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="header-middle">
-                    <div>
-                        <button id="endTime" type="button" onclick="">Stopp</button>
-                        <select id="tasktSelection" class="selects">
+                        <select id="tasktSelection"onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryTaskType(event)})" class="selects">
                             <option value="test">Tätigkeit</option>
+                            <option >create hungu style</option>
+                            <option >Fisch essen</option>
                         </select>
+                        <select id="projectSelection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryProjectType(event)})" class="selects">
+                          <option value="test">Projekt</option>
+                          <option >UI-LIB</option>
+                          <option >Slay</option>
+                      </select>
                     </div>
                 </div>
-                <div class="header-right">
+
+                <div class="header-4">
                     <div class="clock">
                         <h1 class="rightText" id="clock"></h1>
                         <p class = "rigthText" id="weekDay"></p>
                         <p class = "rigthText" id="fullDate"></p>
                     </div>
                 </div>
+
             </div>
+
+
+
             <div class="containerTable">
                 <section>
-                    <h1>Arbeitszeiten</h1>
+                        <h1>Arbeitszeiten</h1>
                     <div id="tableControl" class="tableControl">
-                        <button id="exportExcel">Download als Excel</button>
-                        <button id="exportPdf">Download als PDF</button>
+                        <button id="exportExcel">Download Excel</button>
+                        <button id="exportPdf">Download PDF</button>
                         <button id="prev">&lt;</button>
                         <span id="tableViewInfo"></span>
                         <button id="next">&gt;</button>
                     </div>
                 </section>
+
                 <table id="table">
                     <thead id="tableHead">
+        <div class="containerTop">
+            <div class="header-left">
+                <h1 class="leftText" id="name">Max Mustermann</h1>
+                <select class="selects" id="viewSelection">
+                    <option value="weekView">Wochenansicht</option>
+                    <option selected="selected" value="monthView">Monatsansicht</option>
+                    <option value="quarterView">Quartalsansicht</option>
+                    <option value="yearView">Jahresansicht</option>
+                </select>
+                <div class="buttons">
+                    <button id="editTime" type="button">Abwesenheit Beeintragen</button>
+                    <button id="adminPage" type="button">Admin Seite</button>
+                </div>
+                <div class="status">
+                    <p id="overtime">Überstunden:</p>
+                </div>
+            </div>
+            <div class="header-middle">
+                <div id="timerDisplay">00:00:00</div>
+                <button id="startTime">Start</button>
+                <button id="endTime">Stopp</button>
+            </div>
+            <div class="header-middle">
+                <div>
+                    <select id="taskSelection" class="selects">
+                        <option value="test">Tätigkeit</option>
+                    </select>
+                    <select id="projectSelection" class="selects">
+                        <option value="test">Projekt</option>
+                    </select>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="clock">
+                    <h1 class="rightText" id="clock"></h1>
+                    <p class="rightText" id="weekDay"></p>
+                    <p class="rightText" id="fullDate"></p>
+                </div>
+            </div>
+        </div>
+        <div class="containerTable">
+            <section>
+                <h1>Arbeitszeiten</h1>
+                <div id="tableControl" class="tableControl">
+                    <button id="exportExcel">Download als Excel</button>
+                    <button id="exportPdf">Download als PDF</button>
+                    <button id="prev">&lt;</button>
+                    <span id="tableViewInfo"></span>
+                    <button id="next">&gt;</button>
+                </div>
+            </section>
+            <table id="table">
+                <thead id="tableHead">
                     <!-- table data will be inserted here dynamically -->
-                    </thead>
-                    <tbody id="tableBody">
+                </thead>
+                <tbody id="tableBody">
                     <!-- table data will be inserted here dynamically -->
                     </tbody>
                 </table>
             </div>
             
-        <footer>
+            <footer>
+                <button id="backButton" type="button">Zurück</button>
+            </footer>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
         <!--load footer here-->
-        </footer>
+    </footer>
 
-         <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+    <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
 
+    <script src="../javascript/admin_page.js"></script>
+    </main>
     <script src="../javascript/time-entry_Script.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    </main>
 </body>
 </html>

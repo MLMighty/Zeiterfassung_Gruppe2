@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zeitbuchung</title>
-    <link rel="stylesheet" href="../css/style_edit_time.css">
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <link rel="stylesheet" href="../css/time-entry_Style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
-</head>
-<body>
+</head> 
+<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+    <main id="main-Container">
     <div class="container">
         <h1>Zeitbuchung</h1>
+        <button id="backPage" type="button">Zurück</button>
         <div class="time-entry">
             <button type="button" onclick="openModal()">Abwesenheit eintragen</button>
         </div>
+
+        <!-- shfoafkabwfAFawfsfsedf<sf -->
+       
         <div class="view-selection">
             <button id="monthView">Monat</button>
             <button id="weekView">Woche</button>
             <button id="dayView">Tag</button>
         </div>
+        
         <div id="calendarContainer">
             <!-- Hier wird der Kalender angezeigt -->
             <div id="calendar"></div>
         </div>
-        <button id="logoutButton" type="button">Abmelden</button>
+        
     </div>
 
     <!-- Modal -->
@@ -32,13 +39,13 @@
             <h2>Daten eintragen</h2>
             <form id="eventForm">
                 <label for="start">Startdatum:</label>
-                <input type="date" id="start" name="trip-start" value="" />
+                <input type="datetime-local" id="start" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingStartDate(event))" name="trip-start" value="" />
 
                 <label for="end">Enddatum:</label>
-                <input type="date" id="end" name="trip-end" value="" />
+                <input type="datetime-local" id="end" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingEndDate(event))"  name="trip-end" value="" />
                 
                 <label for="selection">Abwesenheitsart:</label>
-                <select id="selection" name="selection">
+                <select id="selection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenceName(event))" name="selection">
                     <option value="Urlaub">Urlaub</option>
                     <option value="Sonderurlaub">Sonderurlaub</option>
                     <option value="Gleittag">Gleittag</option>
@@ -47,16 +54,19 @@
                     <option value="Dienstreise">Dienstreise</option>
                 </select>
                 
-                <button type="submit">Update</button>
+                <button type="submit" onclick="import('../../global_dependencys/global_scripts/main_script.js').then(module => module.forwardingAbcenseData(event))">Update</button>
                 <button type="button" id="deleteEventButton">Löschen</button>
             </form>
         </div>
     </div>
 
+    </main>
+    <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="../javascript/script.js"></script> 
+    <script src="../javascript/time-entry_Script.js"></script> 
 
 </body>
 </html>

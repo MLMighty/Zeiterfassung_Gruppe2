@@ -1,230 +1,172 @@
-document.addEventListener('DOMContentLoaded', () => {
-    //set important values for functions
-    const weekday = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Sonntag"];
-    const monthNames = [ "Januar", "Februar", "März", "April", "Mai", "Juni",
-                         "Juli", "August", "September", "Oktober", "November", "Dezember" ];
-    //const table = document.getElementById('table');
-    const viewSelection = document.getElementById("viewSelection")
-    const tableViewInfo = document.getElementById('tableViewInfo');
-    const tableHead = document.getElementById('tableHead');
-    const tableBody = document.getElementById('tableBody');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    const clock = document.getElementById("clock");
-    const today = new Date();
-    const week = getWeekNumber(today);
-    let currentWeek = week;
-    let currentMonth = today.getMonth();
-    let currentYear = today.getFullYear();
 
-    document.getElementById("editTime").addEventListener('click', () => { navigateToPage2()});
-    /*document.getElementById("commitAway").addEventListener('click', () => { openModal()});
+let events = []; // Array für die Kalenderereignisse
+
+function openModal() {
+    document.getElementById('myModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById('myModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+document.getElementsByClassName('close')[0].onclick = function() {
+    closeModal();
+}
+
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: ''
+        },
+        defaultView: 'month',
+        editable: true,
+        events: events, // Verwende das events-Array als Datenquelle
+        eventClick: function(event) {
+            // Öffne das Modal und fülle die Felder mit den Event-Daten
+            $('#start').val(event.start.format('YYYY-MM-DD'));
+            $('#end').val(event.end ? event.end.format('YYYY-MM-DD') : event.start.format('YYYY-MM-DD'));
+            $('#selection').val(event.title);
+            
+            // Speichere die Event-ID
+            $('#eventForm').data('eventId', event._id);
+
+            // Zeige den Löschen-Button an
+            $('#deleteEventButton').show();
+
+            // Öffne das Modal
+            openModal();
+        }
+    });
+
+    $('#monthView').on('click', function() {
+        $('#calendar').fullCalendar('changeView', 'month');
+    });
+
+    $('#weekView').on('click', function() {
+        $('#calendar').fullCalendar('changeView', 'agendaWeek');
+    });
+
+    $('#dayView').on('click', function() {
+        $('#calendar').fullCalendar('changeView', 'agendaDay');
+    });
+
+
     function openModal() {
-        document.getElementById('myModal').style.display = 'block';
-    }
-    
-    function closeModal() {
-        document.getElementById('myModal').style.display = 'none';
-    }
-    
-    window.onclick = function(event) {
-        var modal = document.getElementById('myModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-    
-    document.getElementsByClassName('close')[0].onclick = function() {
-        closeModal();
-    }*/
-
-    function renderTableHeader(){
-        tableHead.innerHTML =`<tr>
-                                <th>Datum</th>
-                                <th>Start</th>
-                                <th>Ende</th>
-                                <th>Ist</th>
-                                <th>Soll</th>
-                                <th>Projekt</th>
-                                <th>Tätigkeit</th>
-                                <th>freigegeben</th>
-                              </tr>`;
-    }
-    
-    function getFirstDayOfWeek(date) {
-        const dayOfWeek = date.getDay();
-        const diff = date.getDate() - dayOfWeek + (dayOfWeek === 0? -6 : 1);
-        return new Date(date.setDate(diff));
-    }
-    
-    function getWeekNumber(date) {
-        const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-        const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
-        return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7); //math.ceil rundet
-    }
-    
-
-    //generates table based on the view option chosen
-    viewSelection.addEventListener('change', (event)=> {
-        e = viewSelection.value;
-        switch(e) {
-            case "weekView":
-                tableViewInfo.textContent = `KW ${week} ${today.getFullYear()}`;
-              break;
-            case "monthView":
-                tableViewInfo.textContent = `${checkTime(today.getMonth() +1)}.${today.getFullYear()}`;
-              break;
-            case "quarterView":
-                const currentQuarter = berechneQuartal(today.getMonth() + 1);
-                tableViewInfo.textContent = `Q${currentQuarter} ${today.getFullYear()}`;
-                break;
-            case "yearView":
-                tableViewInfo.textContent = `${today.getFullYear()}`;
-            break;
-          }
-    });
-
-    prevButton.addEventListener('click', () => {
-        var e = viewSelection.value; //get Value of viewSelection to adapt function of buttons to one week/month/quarter/year before
-        switch(e){
-            case "weekView":
-                currentWeek--;
-                if (currentWeek < 1) {
-                    currentWeek = 52;
-                    currentYear--;
-                }
-                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`
-                break;
-            
-            case "monthView":
-                currentMonth--;
-                if (currentMonth < 0) {
-                    currentMonth = 11;
-                    currentYear--;
-                }
-                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`
-                break;
-            
-            case "quarterView":
-                const previousQuarter = berechneQuartal(currentMonth - 3 + 1);
-                if (previousQuarter === 4) currentYear--;
-                currentMonth -= 3;
-                if (currentMonth < 0) {
-                    currentMonth = 11;
-                    currentYear--;
-                }
-                tableViewInfo.textContent = `Q${previousQuarter} ${currentYear}`;
-                break;
-
-            case "yearView":
-                currentYear--;
-                tableViewInfo.textContent = `${currentYear}`;
-                break;
-        }
-    });
-    function berechneQuartal(monat) {
-        let quartal;
-        if (monat >= 1 && monat <= 3) {
-            quartal = 1;
-        } else if (monat >= 4 && monat <= 6) {
-            quartal = 2;
-        } else if (monat >= 7 && monat <= 9) {
-            quartal = 3;
-        } else if (monat >= 10 && monat <= 12) {
-            quartal = 4;
-        }
-        return quartal;
-    }
-
-    nextButton.addEventListener('click', () => {
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
         
-        var e = viewSelection.value; //get Value of viewSelection to adapt function of buttons to one week/month/quarter/year ahead
-        switch(e){
-            case "weekView":
-                currentWeek++;
-                if (currentWeek > 52) {
-                    currentWeek = 1;
-                    currentYear++;
-                }
-                tableViewInfo.textContent = `KW ${currentWeek} ${currentYear}`;
-                break;
-            
-            case "monthView":
-                currentMonth++;
-                if (currentMonth > 11) {
-                    currentMonth = 0;
-                    currentYear++;
-                }
-                tableViewInfo.textContent = `${checkTime(currentMonth+1)}.${currentYear}`;
-                break;
-            
-            case "quarterView":
-                const nextQuarter = berechneQuartal(currentMonth + 3 + 1);
-                if (nextQuarter === 1) currentYear++;
-                currentMonth += 3;
-                if (currentMonth > 11) {
-                    currentMonth = 0;
-                    currentYear++;
-                }
-                tableViewInfo.textContent = `Q${nextQuarter} ${currentYear}`;
-                break;
-
-            case "yearView":
-                currentYear++;
-                tableViewInfo.textContent = `${currentYear}`;
-                break;
+        modal.style.display = "block";
+        
+        span.onclick = function() {
+            modal.style.display = "none";
         }
         
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+    window.openModal = openModal; // Macht die Funktion global zugänglich
+
+    // Ereignis einfügen oder bearbeiten
+    $('#eventForm').submit(function(event) {
+        event.preventDefault();
+        
+        var startDate = $('#start').val();
+        var endDate = $('#end').val();
+        var eventType = $('#selection').val();
+        var eventColor = '';
+
+        switch (eventType) {
+            case 'Urlaub':
+                eventColor = '#1ca800';
+                break;
+            case 'Sonderurlaub':
+                eventColor = '#CC2200';
+                break;
+            case 'Gleittag':
+                eventColor = '#a87000';
+                break;
+            case 'Krankheit mit Attest':
+                eventColor = '#D919FF';
+                break;
+            case 'Krankheit ohne Attest':
+                eventColor = '#FF1966';
+                break;
+            case 'Dienstreise':
+                eventColor = '#3377FF';
+                break;
+        }
+
+        var calendar = $('#calendar');
+        var eventId = $('#eventForm').data('eventId');
+
+        if (startDate && endDate && eventType) {
+            if (eventId) {
+                // Ereignis bearbeiten
+                var event = calendar.fullCalendar('clientEvents', eventId)[0];
+                event.title = eventType;
+                event.start = startDate;
+                event.end = endDate;
+                event.color = eventColor;
+                calendar.fullCalendar('updateEvent', event);
+            } else {
+                // Neues Ereignis einfügen
+                var newEvent = {
+                    title: eventType,
+                    start: startDate,
+                    end: endDate,
+                    color: eventColor
+                };
+                events.push(newEvent); // Füge das neue Ereignis zum events-Array hinzu
+                calendar.fullCalendar('renderEvent', newEvent, true); // True, um das Event an den Kalender zu binden
+            }
+        }
+
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+        
+        // Event-ID und Formular zurücksetzen
+        $('#eventForm').data('eventId', null);
+        $('#eventForm')[0].reset();
+        $('#deleteEventButton').hide();
     });
 
-    //sets text for the week Day in top container
-    function setWeekDay(){
-        let day = weekday[today.getDay()];
-        document.getElementById("weekDay").innerHTML = day;
-    }
-
-    //set text for date in top container
-    function setDateText(){
-        let myArray = today.toLocaleDateString().split(".");
-        for (let i = 0; i < myArray.length ; i++){
-            myArray[i]=checkTime(myArray[i]); 
+    // Ereignis löschen
+    $('#deleteEventButton').on('click', function() {
+        var eventId = $('#eventForm').data('eventId');
+        if (eventId) {
+            var event = $('#calendar').fullCalendar('clientEvents', eventId)[0];
+            events = events.filter(e => e !== event); // Entferne das Ereignis aus dem events-Array
+            $('#calendar').fullCalendar('removeEvents', eventId);
+            
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+            
+            // Event-ID und Formular zurücksetzen
+            $('#eventForm').data('eventId', null);
+            $('#eventForm')[0].reset();
+            $('#deleteEventButton').hide();
         }
-        document.getElementById("fullDate").innerHTML = myArray[0] + "." + myArray[1] + "." + myArray[2];
+    });
+
+    // Verstecke den Löschen-Button standardmäßig
+    $('#deleteEventButton').hide();
+
+    document.getElementById("backButton").addEventListener('click', navigateHome);
+    function navigateHome() {
+        window.location.href = "admin_page.html";
     }
 
-    //starts clock for top container
-    function startTime() {
-        let d = new Date()
-        let h = d.getHours();
-        let m = d.getMinutes();
-        let s = d.getSeconds();
-        h = checkTime(h);
-        m = checkTime(m);
-        s = checkTime(s);
-        clock.innerHTML =  h + ":" + m + ":" + s;
-        setTimeout(startTime, 1000);
-    }
-
-    //checkTime for numbers < 10 to add a 0 in front
-    function checkTime(i) {
-        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-        return i;
-    }
-
-    //calls all important functions at start
-    function callFunctions(){
-        tableViewInfo.textContent = `${checkTime(currentMonth + 1)}.${currentYear}` //standardmäßig Monat
-        startTime();
-        setWeekDay();
-        setDateText();
-        renderTableHeader();
-    }
-
-    callFunctions();
-        
-    function navigateToPage2() {
-        window.location.href = "edit_time.html";
-    }
-
-    
 });
