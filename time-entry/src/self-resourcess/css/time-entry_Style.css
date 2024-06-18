@@ -1,10 +1,6 @@
 /* Allgemeine Styles */
-/* Grundlegendes Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9; /* Leichtes Grau als Hintergrund */
-    color: #333; /* Dunkles Grau für Text */
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
@@ -26,46 +22,25 @@ button, #backButton {
     background-color: #E67E22;
     border-radius: 50px;
     transition: box-shadow 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-header {
-    width: 100%;
-    background-color: #6a0dad; /* Lila */
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    margin-bottom: 20px;
-}
 
-header h1 {
-    margin: 0;
-}
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-
+    padding: 20px;
+}
 
 h1 {
     text-align: center;
     margin-bottom: 30px;
     color: #2c3e50;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
 }
 
 /* Zeitbuchung */
 .time-entry {
     text-align: center;
-/* Container Styling */
-.containerTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
     margin-bottom: 20px;
 }
 
@@ -77,66 +52,31 @@ h1 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-.header-left, .header-middle, .header-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 10px;
-}
-
-.header-left {
-    flex: 1;
-}
-
-.header-middle {
-    flex: 1;
-    align-items: center;
 }
 
 .time-entry button:hover {
     background-color: #34495e;
-.header-right {
-    flex: 1;
 }
 
 /* Ansichtsauswahl */
 .view-selection {
     text-align: center;
     margin-bottom: 20px;
-.leftText {
-    color: #6a0dad; /* Lila */
-    margin-bottom: 10px;
 }
 
 .view-selection button {
     background-color: #e67e22;
     color: #fff;
-.buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.buttons button {
-    background-color: #4CAF50; /* Grün */
-    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 14px;
     cursor: pointer;
     margin-right: 10px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    margin: 5px;
     transition: background-color 0.3s ease;
 }
 
 .view-selection button:hover {
     background-color: #d35400;
-.buttons button:hover {
-    background-color: #45a049; /* Dunkleres Grün */
 }
 
 /* Kalender */
@@ -155,58 +95,15 @@ h1 {
     margin: 0 auto;
     background-color: #c0392b;
     color: #fff;
-.status {
-    margin-top: 10px;
-}
-
-.status p {
-    color: #6a0dad; /* Lila */
-}
-
-#timerDisplay {
-    font-size: 2em;
-    margin-bottom: 10px;
-    color: #6a0dad; /* Lila */
-}
-
-.header-middle button {
-    background-color: #6a0dad; /* Lila */
-    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    margin: 5px;
     transition: background-color 0.3s ease;
 }
 
 #logoutButton:hover {
     background-color: #e74c3c;
-.header-middle button:hover {
-    background-color: #5a0dac; /* Etwas dunkleres Lila */
-}
-
-.selects {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.clock h1 {
-    margin: 0;
-    font-size: 2em;
-    color: #6a0dad; /* Lila */
-}
-
-.clock p {
-    margin: 5px 0;
-    color: #6a0dad; /* Lila */
 }
 
 /* Modal */
@@ -220,9 +117,6 @@ h1 {
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-/* Tabelle Styling */
-.containerTable {
-    margin-top: 20px;
 }
 
 .modal-content {
@@ -231,46 +125,26 @@ h1 {
     padding: 20px;
     border: 1px solid #888;
     width: 30%;
-.containerTable section h1 {
-    color: #6a0dad; /* Lila */
-    text-align: center;
 }
 
-.tableControl {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
-.tableControl button {
-    background-color: #4CAF50; /* Grün */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
     cursor: pointer;
-    border-radius: 5px;
-    margin: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.tableControl button:hover {
-    background-color: #45a049; /* Dunkleres Grün */
 }
 
 /* Formular */
 form label {
     display: block;
     margin-bottom: 5px;
-#table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
 }
 
 form input,
@@ -278,7 +152,6 @@ form select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-#table th, #table td {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -307,21 +180,8 @@ form button:hover {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    padding: 10px;
-    text-align: left;
-}
-
-#table th {
-    background-color: #6a0dad; /* Lila */
-    color: white;
-}
-
-#table tr:nth-child(even) {
-    background-color: #f4f4f9; /* Leichtes Grau */
 }
 
 #deleteEventButton:hover {
     background-color: #e74c3c;
-#table tr:hover {
-    background-color: #ddd;
 }
