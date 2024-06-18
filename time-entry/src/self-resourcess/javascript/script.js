@@ -1,168 +1,208 @@
-// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const taskContainer = document.getElementById('taskContainer');
+    const addTaskButton = document.getElementById('addTask');
+    const projectForm = document.getElementById('projectForm');
+    const memberContainer = document.getElementById('memberContainer');
+    const addMemberButton = document.getElementById('addMember');
 
-function openModal() {
-    document.getElementById('myModal').style.display = 'block';
-}
+    // Variablen für Mitarbeiterdaten
+    let employeeFirstName;
+    let employeeLastName;
+    let employeeEmail;
+    let employeePassword;
 
-function closeModal() {
-    document.getElementById('myModal').style.display = 'none';
-}
+    // Variablen für Projektdaten
+    let projectName;
+    let projectStartDate;
+    let projectEndDate;
+    let projectMembers = [];
+    let projectTasks = [];
 
-window.onclick = function(event) {
-    var modal = document.getElementById('myModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-}
+    // Funktion zum Erstellen eines neuen Tätigkeitseintrags
+    function createTaskInput() {
+        const taskInput = document.createElement('div');
+        taskInput.classList.add('taskInput');
 
-document.getElementsByClassName('close')[0].onclick = function() {
-    closeModal();
-}
+        const taskNameInput = document.createElement('input');
+        taskNameInput.type = 'text';
+        taskNameInput.name = 'taskName';
+        taskNameInput.placeholder = 'Tätigkeit';
+        taskNameInput.required = true;
 
-$(document).ready(function() {
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: ''
-        },
-        defaultView: 'month',
-        editable: true,
-        events: [],
-        eventClick: function(event) {
-            // Öffne das Modal und fülle die Felder mit den Event-Daten
-            $('#start').val(event.start.format('YYYY-MM-DD'));
-            $('#end').val(event.end ? event.end.format('YYYY-MM-DD') : event.start.format('YYYY-MM-DD'));
-            $('#selection').val(event.title);
-            
-            // Speichere die Event-ID
-            $('#eventForm').data('eventId', event._id);
+        const taskStartDateInput = document.createElement('input');
+        taskStartDateInput.type = 'date';
+        taskStartDateInput.name = 'taskStartDate';
+        taskStartDateInput.required = true;
 
-            // Zeige den Löschen-Button an
-            $('#deleteEventButton').show();
+        const taskEndDateInput = document.createElement('input');
+        taskEndDateInput.type = 'date';
+        taskEndDateInput.name = 'taskEndDate';
+        taskEndDateInput.required = true;
 
-            // Öffne das Modal
-            openModal();
-        }
-    });
+        const removeTaskButton = document.createElement('button');
+        removeTaskButton.type = 'button';
+        removeTaskButton.classList.add('removeTask');
+        removeTaskButton.textContent = 'Entfernen';
+        removeTaskButton.addEventListener('click', removeTaskInput);
 
-    $('#monthView').on('click', function() {
-        $('#calendar').fullCalendar('changeView', 'month');
-    });
+        taskInput.appendChild(taskNameInput);
+        taskInput.appendChild(taskStartDateInput);
+        taskInput.appendChild(taskEndDateInput);
+        taskInput.appendChild(removeTaskButton);
 
-    $('#weekView').on('click', function() {
-        $('#calendar').fullCalendar('changeView', 'agendaWeek');
-    });
-
-    $('#dayView').on('click', function() {
-        $('#calendar').fullCalendar('changeView', 'agendaDay');
-    });
-
-    document.getElementById('logoutButton').addEventListener('click', function() {
-        alert("Sie haben sich erfolgreich abgemeldet!");
-        window.location.href = 'login.html';
-    });
-
-    function openModal() {
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];
-        
-        modal.style.display = "block";
-        
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        taskContainer.appendChild(taskInput);
     }
 
-    window.openModal = openModal; // Macht die Funktion global zugänglich
+    // Funktion zum Entfernen eines Tätigkeitseintrags
+    function removeTaskInput(event) {
+        const taskInput = event.target.parentNode;
+        taskContainer.removeChild(taskInput);
+    }
 
-    // Ereignis einfügen oder bearbeiten
-    $('#eventForm').submit(function(event) {
-        event.preventDefault();
-        
-        var startDate = $('#start').val();
-        var endDate = $('#end').val();
-        var eventType = $('#selection').val();
-        var eventColor = '';
+    // Ereignislistener für das Hinzufügen einer neuen Tätigkeit
+    addTaskButton.addEventListener('click', createTaskInput);
 
-        switch (eventType) {
-            case 'Urlaub':
-                eventColor = '#1ca800';
-                break;
-            case 'Sonderurlaub':
-                eventColor = '#CC2200';
-                break;
-            case 'Gleittag':
-                eventColor = '#a87000';
-                break;
-            case 'Krankheit mit Attest':
-                eventColor = '#D919FF';
-                break;
-            case 'Krankheit ohne Attest':
-                eventColor = '#FF1966';
-                break;
-            case 'Dienstreise':
-                eventColor = '#3377FF';
-                break;
-        }
+    // Erstelle eine erste Tätigkeit beim Laden der Seite
+    createTaskInput();
 
-        var calendar = $('#calendar');
-        var eventId = $('#eventForm').data('eventId');
+    // Funktion zum Erstellen eines neuen Eingabefelds für Mitarbeiter-E-Mail
+    function createMemberInput() {
+        const memberInput = document.createElement('div');
+        memberInput.classList.add('member-input');
 
-        if (startDate && endDate && eventType) {
-            if (eventId) {
-                // Ereignis bearbeiten
-                var event = calendar.fullCalendar('clientEvents', eventId)[0];
-                event.title = eventType;
-                event.start = startDate;
-                event.end = endDate;
-                event.color = eventColor;
-                calendar.fullCalendar('updateEvent', event);
-            } else {
-                // Neues Ereignis einfügen
-                calendar.fullCalendar('renderEvent', {
-                    title: eventType,
-                    start: startDate,
-                    end: endDate,
-                    color: eventColor
-                }, true); // True, um das Event an den Kalender zu binden
-            }
-        }
+        const emailInput = document.createElement('input');
+        emailInput.type = 'email';
+        emailInput.name = 'projectMembers';
+        emailInput.required = true;
 
-        var modal = document.getElementById("myModal");
-        modal.style.display = "none";
-        
-        // Event-ID und Formular zurücksetzen
-        $('#eventForm').data('eventId', null);
-        $('#eventForm')[0].reset();
-        $('#deleteEventButton').hide();
-    });
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.textContent = 'Entfernen';
+        removeButton.addEventListener('click', removeMemberInput);
 
-    // Ereignis löschen
-    $('#deleteEventButton').on('click', function() {
-        var eventId = $('#eventForm').data('eventId');
-        if (eventId) {
-            $('#calendar').fullCalendar('removeEvents', eventId);
-            
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-            
-            // Event-ID und Formular zurücksetzen
-            $('#eventForm').data('eventId', null);
-            $('#eventForm')[0].reset();
-            $('#deleteEventButton').hide();
-        }
-    });
+        memberInput.appendChild(emailInput);
+        memberInput.appendChild(removeButton);
+        memberContainer.appendChild(memberInput);
+    }
 
-    // Verstecke den Löschen-Button standardmäßig
-    $('#deleteEventButton').hide();
+    // Funktion zum Entfernen eines Eingabefelds für Mitarbeiter-E-Mail
+    function removeMemberInput(event) {
+        const memberInput = event.target.parentNode;
+        memberContainer.removeChild(memberInput);
+    }
 
+    // Ereignislistener für das Hinzufügen eines neuen Mitarbeiters
+    addMemberButton.addEventListener('click', createMemberInput);
 
+    // Erstelle ein erstes Eingabefeld für Mitarbeiter-E-Mail beim Laden der Seite
+    createMemberInput();
 
+    document.getElementById("backButton").addEventListener('click', navigateHome);
+    function navigateHome() {
+        window.location.href = "admin_page.html";
+    }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const approvalList = document.getElementById('approvalList');
+    const backButton = document.getElementById('backButton');
+
+    // Variablen für die Genehmigungsliste
+    let approvalEntries = [];
+
+    // Funktion zum Abrufen der zu genehmigenden Einträge (Beispiel mit Dummy-Daten)
+    function fetchApprovalEntries() {
+        const dummyEntries = [
+            { date: '2023-06-01', employee: 'Max Mustermann', project: 'Projekt A', task: 'Aufgabe 1', hours: 4 },
+            { date: '2023-06-02', employee: 'Anna Musterfrau', project: 'Projekt B', task: 'Aufgabe 2', hours: 6 },
+            { date: '2023-06-03', employee: 'Peter Beispiel', project: 'Projekt C', task: 'Aufgabe 3', hours: 3 },
+        ];
+
+        return dummyEntries;
+    }
+
+    // Funktion zum Rendern der zu genehmigenden Einträge in der Tabelle
+    function renderApprovalEntries(entries) {
+        approvalList.innerHTML = '';
+
+        entries.forEach(entry => {
+            const row = document.createElement('tr');
+
+            const dateCell = document.createElement('td');
+            dateCell.textContent = entry.date;
+            row.appendChild(dateCell);
+
+            const employeeCell = document.createElement('td');
+            employeeCell.textContent = entry.employee;
+            row.appendChild(employeeCell);
+
+            const projectCell = document.createElement('td');
+            projectCell.textContent = entry.project;
+            row.appendChild(projectCell);
+
+            const taskCell = document.createElement('td');
+            taskCell.textContent = entry.task;
+            row.appendChild(taskCell);
+
+            const hoursCell = document.createElement('td');
+            hoursCell.textContent = entry.hours;
+            row.appendChild(hoursCell);
+
+            const approveCell = document.createElement('td');
+            const approveButton = document.createElement('button');
+            approveButton.textContent = 'Genehmigen';
+            approveButton.addEventListener('click', () => approveEntry(entry));
+            approveCell.appendChild(approveButton);
+            row.appendChild(approveCell);
+
+            const rejectCell = document.createElement('td');
+            const rejectButton = document.createElement('button');
+            rejectButton.textContent = 'Ablehnen';
+            rejectButton.addEventListener('click', () => rejectEntry(entry));
+            rejectCell.appendChild(rejectButton);
+            row.appendChild(rejectCell);
+
+            approvalList.appendChild(row);
+        });
+    }
+
+
+    
+    // Funktion zum Genehmigen eines Eintrags (Beispiel)
+    function approveEntry(entry) {
+        console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
+        // Hier kannst du die Logik zum Genehmigen des Eintrags implementieren
+    }
+
+    // Funktion zum Ablehnen eines Eintrags (Beispiel)
+    function rejectEntry(entry) {
+        console.log(`Eintrag abgelehnt: ${entry.employee} - ${entry.project} - ${entry.task}`);
+        // Hier kannst du die Logik zum Ablehnen des Eintrags implementieren
+    }
+
+
+    // Initialisierung
+    approvalEntries = fetchApprovalEntries();
+    renderApprovalEntries(approvalEntries);
+});
+// Funktion zum Genehmigen eines Eintrags
+function approveEntry(entry) {
+    console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
+
+    // Entferne den genehmigten Eintrag aus dem approvalEntries-Array
+    approvalEntries = approvalEntries.filter(e => e !== entry);
+
+    // Aktualisiere die Tabelle mit den verbleibenden Einträgen
+    renderApprovalEntries(approvalEntries);
+}
+
+// Funktion zum Ablehnen eines Eintrags
+function rejectEntry(entry) {
+    console.log(`Eintrag abgelehnt: ${entry.employee} - ${entry.project} - ${entry.task}`);
+
+    // Entferne den abgelehnten Eintrag aus dem approvalEntries-Array
+    approvalEntries = approvalEntries.filter(e => e !== entry);
+
+    // Aktualisiere die Tabelle mit den verbleibenden Einträgen
+    renderApprovalEntries(approvalEntries);
+}

@@ -1,177 +1,110 @@
+/* Allgemeine Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
+    color: #333;
 }
-
-.containerTop {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-#timerDisplay {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-
-
-.containerTable {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header-left, .header-right, .header-middle {
-    display: flex;
-    flex-direction: column;
-}
-
-#editTime, #commitAway, #adminPage {
-    background-color: #573b8a;
-    color: white;
+button, #backButton {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    outline: none;
     border: none;
-    padding: 10px;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 9px 22px;
+    font-size: 15px;
+    height: 40px;
+    color: #FFF;
+    text-align: center;
+    line-height: normal;
+    background-color: #E67E22;
+    border-radius: 50px;
+    transition: box-shadow 0.2s ease;
+}
+
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+/* Zeitbuchung */
+.time-entry {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.time-entry button {
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.editTime:hover, .commitAway:hover, .adminPage:hover {
-    background-color: #6d44b8;
+.time-entry button:hover {
+    background-color: #34495e;
 }
 
-.buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.tableControl {
-    display: flex;
-    align-items: center;
-}
-
-.tableControl button {
-    background-color: #573b8a;
-    color: white;
-    border: none;
-    padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
-}
-
-.tableControl span {
-    font-size: 24px;
-}
-
-#table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#table th, #table td {
-    padding: 10px;
+/* Ansichtsauswahl */
+.view-selection {
     text-align: center;
-    border: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 
-#table td {
-    height: 100px;
-    vertical-align: top;
-}
-
-#table .date {
-    font-weight: bold;
-}
-
-/*.selects {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px ;
-}
-
-.selects select {
-    padding: 10px;
-}*/
-
-.clock{
-    text-align: right;
-    font-weight: bold;
-}
-
-.status p {
-    margin: 5px 0;
-    font-weight: bold;
-}
-
-.status span {
-    font-weight: bold;
-}
-
-.header-right {
-    align-items: flex-end;
-}
-
-.header-left {
-    align-items: flex-start;
-}
-
-.header-right .buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-#startTime, #exportExcel, #awaySubmit {
-    background-color: #1D6F42;
-    color: white;
+.view-selection button {
+    background-color: #e67e22;
+    color: #fff;
     border: none;
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
 }
 
-#endTime, #exportPdf{
-    background-color: #FA0F00;
-    color: white;
+.view-selection button:hover {
+    background-color: #d35400;
+}
+
+/* Kalender */
+#calendarContainer {
+    margin-bottom: 20px;
+}
+
+#calendar {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Abmelden-Button */
+#logoutButton {
+    display: block;
+    margin: 0 auto;
+    background-color: #c0392b;
+    color: #fff;
     border: none;
-    padding: 20px;
-    border-radius: 8px;
-    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#startTime:hover, #exportExcel:hover {
-    background-color: #45a049;
+#logoutButton:hover {
+    background-color: #e74c3c;
 }
-
-#endTime:hover, #exportPdf:hover {
-    background-color: #e53935;
-}
-
-#table .bg{
-    background-color: #A16DFF;
-}
-
 
 /* Modal */
 .modal {
@@ -183,20 +116,15 @@ section {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    text-align: center;
+    width: 30%;
 }
 
 .close {
@@ -208,25 +136,52 @@ section {
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-label, input, select {
+/* Formular */
+form label {
     display: block;
-    font-size: 16px;
+    margin-bottom: 5px;
 }
 
-input[type="text"], input[type="date"], select {
-    padding: 10px;
-    width: 80%;
-    max-width: 300px;
+form input,
+form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-#calendar {
-    margin-top: 20px;
+form button {
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #34495e;
+}
+
+#deleteEventButton {
+    background-color: #c0392b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#deleteEventButton:hover {
+    background-color: #e74c3c;
 }

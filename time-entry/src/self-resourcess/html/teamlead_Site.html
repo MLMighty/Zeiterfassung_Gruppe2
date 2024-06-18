@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitarbeiter und Projekte erstellen</title>
+    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <link rel="stylesheet" href="../css/admin_Style.css">
+</head>
+<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+    <header>
+        <h1>Teamlead Seite</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Zu genehmigende Einträge</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Mitarbeiter</th>
+                        <th>Projekt</th>
+                        <th>Tätigkeit</th>
+                        <th>Stunden</th>
+                        <th>Genehmigen</th>
+                        <th>Ablehnen</th>
+                    </tr>
+                </thead>
+                <tbody id="approvalList">
+                    <!-- Hier werden die zu genehmigenden Einträge dynamisch hinzugefügt -->
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Projekt erstellen</h2>
+            <form id="projectForm">
+                <label for="projectName">Projektname:</label>
+                <input type="text" id="projectName" name="projectName" required>
+
+                <label for="startDate">Startdatum:</label>
+                <input type="date" id="startDate" name="startDate" required>
+
+                <label for="endDate">Enddatum:</label>
+                <input type="date" id="endDate" name="endDate" required>
+
+                <label for="projectMembers">Mitarbeiter (E-Mail):</label>
+                <div id="memberContainer">
+                    <!-- Hier werden die Eingabefelder für Mitarbeiter-E-Mails dynamisch hinzugefügt -->
+                </div>
+                <button type="button" id="addMember">Mitarbeiter hinzufügen</button>
+
+                <h3>Tätigkeiten</h3>
+                <div id="taskContainer">
+                    <!-- Hier werden die Tätigkeiten dynamisch hinzugefügt -->
+                </div>
+                <button type="button" id="addTask">Tätigkeit hinzufügen</button>
+
+                <button type="submit">Projekt erstellen</button>
+            </form>
+        </section>
+    </main>
+    <button id="backButton" type="button">Zurück</button>
+</footer>
+
+<script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> 
+    <script src="../java_skript/adminMain_logic.js"></script>
+</body>
+</html>

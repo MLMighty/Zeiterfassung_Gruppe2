@@ -1,0 +1,151 @@
+/* Allgemeine Styles */
+body {
+    background: #F7F7F7;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header */
+  .containerTop {
+    background-color: #2C3E50;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-1,
+  .header-2,
+  .header-3,
+  .header-4 {
+    margin: 10px;
+  }
+  #clock, #weekDay, #fullDate{
+    color: #ECF0F1;
+  }
+  
+  .personName {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #ECF0F1;
+  }
+  
+  .navigationButtons button {
+    margin-right: 10px;
+    background-color: #E67E22;
+    color: #FFF;
+  }
+  
+  .status {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ECF0F1;
+  }
+  
+  /* Selects */
+  select {
+    font-family: 'Trebuchet MS', sans-serif;
+    appearance: none;
+    margin: 10px;
+    background-color: #ECF0F1;
+    border: 1px solid #BDC3C7;
+    border-radius: 4px;
+    padding: 8px 30px 8px 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23333" d="M4.5 6.5l4 4 4-4"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+  
+  select:hover {
+    border-color: #999;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #E67E22;
+    box-shadow: 0 0 5px rgba(230, 126, 34, 0.2);
+  }
+  
+  select option {
+    background-color: #ECF0F1;
+    color: #333;
+    padding: 8px 10px;
+  }
+  
+  select option:hover {
+    background-color: #BDC3C7;
+  }
+  
+  /* Buttons */
+  button {
+    margin: 10px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    padding: 9px 22px;
+    font-size: 15px;
+    height: 40px;
+    color: #FFF;
+    text-align: center;
+    line-height: normal;
+    background-color: #E67E22;
+    border-radius: 50px;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  button:hover {
+    box-shadow: 0 0 0 0.15rem #D35400;
+  }
+  
+  /* Table */
+  .containerTable {
+    margin: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #BDC3C7;
+  }
+  
+  th {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #F7F7F7;
+  }
+  
+  tr:hover {
+    background-color: #ECF0F1;
+  }
+  
+  .tableControl {
+    margin-bottom: 10px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+    padding: 10px;
+    text-align: center;
+  }

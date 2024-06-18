@@ -46,13 +46,13 @@ export class TimeEntryHanlder{
     updateTimeEntryProjectType(){
         let projectEntry = document.getElementById("projectSelection").value;
         this.projectEntry = projectEntry
-        console.log(this.projectEntry);
+       
   
     }
     updateTimeEntryTaskType(){
         let taskEntry = document.getElementById("tasktSelection").value;
         this.taskEntry = taskEntry
-        console.log(this.taskEntry);
+       
     }
 
     processTimeEntryData(){
@@ -62,7 +62,7 @@ export class TimeEntryHanlder{
             taskname:this.taskEntry,
             projectname: this.projectEntry
         }
-        console.log(timeEntryData)
+   
         return timeEntryData
 
     }
