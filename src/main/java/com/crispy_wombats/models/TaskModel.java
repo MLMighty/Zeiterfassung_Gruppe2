@@ -10,7 +10,7 @@ import java.util.Set;
 @Table(schema = "dbo",name = "ttask")
 public class TaskModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     @Column(name = "task_id")
