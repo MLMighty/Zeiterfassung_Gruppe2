@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     required />
                 <input class="login-input"  oninput="import('${scriptLocation}').then(module => module.forwardingChangeOnInput(event)).catch(err => console.error(err))" id="password" type="password" name="pswd" placeholder="Passwort*"
                     required />
-                <p id="password-guidline-text" class="pw-guidline-text">Voraussetzungen: 0-9 , A-Z , a-z , :_.!#$%&*+?= , Mindestlänge: 10 </p>
+                <p id="password-guidline-text" class="pw-guidline-text">Voraussetzungen: 0-9 , A-Z , a-z , :_.!#$%&*+?= , Mindestlänge: 10</p>
                 <p id="sanitize-guidline-text" class=""></p>
                 <button class="login-button">registrieren</button>
             </form>
