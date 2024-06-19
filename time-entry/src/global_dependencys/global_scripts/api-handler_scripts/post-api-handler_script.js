@@ -90,14 +90,14 @@ export class POST_ApiInterfaceHandler {
     }
 
     
-    async timeEntryApiHandler(timeEntryData){
+    async roleApiHandler(createdRoleData){
       try {
-        const responseData = await fetch("http://localhost:8080/timeentry",{
+        const responseData = await fetch("http://localhost:8080/saverole",{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(timeEntryData),
+          body: JSON.stringify(createdRoleData),
           credentials: 'include'
         })
         const response = responseData.status;
@@ -110,18 +110,18 @@ export class POST_ApiInterfaceHandler {
 
 
   
-    async roleApiHandler(roleData){
+    async adminWebDataApiHandler(adminWebData){
       try {
-        const responseData = await fetch("http://localhost:8080//saverole",{
+        const responseData = await fetch("http://localhost:8080/adminwebdata",{
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(roleData),
+          body: JSON.stringify(adminWebData),
           credentials: 'include'
         })
 
-        const response = await responseData.status();
+        const response = await responseData.status;
         console.log(response);
         
       } catch (error) {

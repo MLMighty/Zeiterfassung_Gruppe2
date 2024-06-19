@@ -1,5 +1,5 @@
 import {CookieHandler  } from "../../global_dependencys/global_scripts/cookies-handler_script.js";
-
+import {POST_ApiInterfaceHandler  } from "../../global_dependencys/global_scripts/api-handler_scripts/post-api-handler_script.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     const taskContainer = document.getElementById('taskContainer');
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const approvalList = document.getElementById('approvalList');
     const backButton = document.getElementById('backButton');
     const projectNameInput = document.getElementById("projectName");
+    const projectDescription = document.getElementById("projectDescription");
    
 
     let task_Inputs = [];
@@ -198,15 +199,17 @@ document.addEventListener('DOMContentLoaded', function() {
     projectForm.addEventListener('submit', function(event) {
         event.preventDefault();
         let cookieHandler = new CookieHandler();
+        let post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
         let cookieUuid = cookieHandler.getUuidcookie("uuid");
        
         //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
         
          let admin_WebData ={
             projectname:projectNameInput.value ,
+            projectdescription:projectDescription.value,
             projectaddedworker: [],
             tasksinfo:[],
-            uuid: cookieUuid[1],
+            uuid: cookieUuid,
          }
 
          for (let i = 0; i < task_Inputs.length; i++) {
@@ -223,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-         console.log(admin_WebData)
+        post_ApiInterfaceHandler.adminWebDataApiHandler(admin_WebData)
         projectForm.reset();
 
         // Vorhandene Aufgaben- und Mitgliederfelder entfernen

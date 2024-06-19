@@ -46,8 +46,38 @@
                 <label for="password">Passwort:</label>
                 <input type="password" id="password" name="password" required>
 
-                <button type="submit">Mitarbeiter erstellen</button>
+                <select id="tasktSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
+                    <option selected disabled>Rolen</option>
+                    <option >Entwickler</option>
+                    <option >Admin</option>
+                    <option >TeamLead</option>
+                </select>
+
+                <button type="button" onclick="import('../javascript/admin_page.js').then(module =>{module.signUpNewWorker()})">Mitarbeiter erstellen</button>
             </form>
+        </section>
+
+        <section>
+            <h2>Mitarbeiter erstellen</h2>
+                <input type="text" name="example" list="exampleList">
+                <datalist id="exampleList">
+                  <option value="A">  
+                  <option value="B">
+                    <option value="A">  
+                        <option value="B">
+                               <option value="A">  
+                                <option value="B">
+                </datalist>
+
+                <select id="tasktSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
+                    <option selected disabled>Rolen</option>
+                    <option >Entwickler</option>
+                    <option >Admin</option>
+                </select>
+
+
+                <button type="button" onclick="import('../javascript/admin_page.js').then(module =>{module.createRole()})">Role erstellen</button>
+   
         </section>
 
         <section>
@@ -55,14 +85,14 @@
             <form id="projectForm">
                 <label for="projectName">Projektname:</label>
                 <input type="text" id="projectName" name="projectName" required>
-
+                <input type="text" id="projectDescription" name="projectDescription" >
        
 
                 <label for="projectMembers">Mitarbeiter (E-Mail):</label>
                 <div id="memberContainer">
                     <!-- Hier werden die Eingabefelder für Mitarbeiter-E-Mails dynamisch hinzugefügt -->
                 </div>
-                <button type="button" id="addMember">Mitarbeiter hinzufügen</button>
+                <button type="button"  id="addMember">Mitarbeiter hinzufügen</button>
 
                 <h3>Tätigkeiten</h3>
                 <div id="taskContainer">
@@ -77,8 +107,8 @@
     <button id="backButton" type="button">Zurück</button>
     <button id="logOut" type="button">Abmelden</button>
 </footer>
-    <script src="../javascript/admin_page.js"></script>
-    <script src="../javascript/script.js"></script>
+    <script type="module" src="../javascript/admin_page.js"></script>
+    <script type="module" src="../javascript/script.js"></script>
       <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  
 </body>
 </html>
