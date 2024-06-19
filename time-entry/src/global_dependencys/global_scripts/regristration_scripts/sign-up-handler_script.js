@@ -35,6 +35,7 @@ export class SignUpHandler {
 
             if (authorized && authorizedPassword) {
                 this.signUpDataTransfer();
+                alert("Sie haben sich erfolgreich registriert.");
             } else { throw new Error("youre Data wasnt authorized"); }
 
         } catch (err) {
