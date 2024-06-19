@@ -29,15 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         taskNameInput.placeholder = 'Tätigkeit';
         taskNameInput.required = true;
 
-        const taskStartDateInput = document.createElement('input');
-        taskStartDateInput.type = 'date';
-        taskStartDateInput.name = 'taskStartDate';
-        taskStartDateInput.required = true;
 
-        const taskEndDateInput = document.createElement('input');
-        taskEndDateInput.type = 'date';
-        taskEndDateInput.name = 'taskEndDate';
-        taskEndDateInput.required = true;
 
         const removeTaskButton = document.createElement('button');
         removeTaskButton.type = 'button';
@@ -188,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 // Funktion zum Genehmigen eines Eintrags
 function approveEntry(entry) {
-    console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task}`);
+    console.log(`Eintrag genehmigt: ${entry.employee} - ${entry.project} - ${entry.task} - `);
 
     // Entferne den genehmigten Eintrag aus dem approvalEntries-Array
     approvalEntries = approvalEntries.filter(e => e !== entry);

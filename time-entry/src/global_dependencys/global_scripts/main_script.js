@@ -71,3 +71,51 @@ export function forwardingTimeEntryTaskType(event){
     event.preventDefault();
     timeEntryHanlder. updateTimeEntryTaskType();
 }
+
+
+/////////////////////////////////////////////////////////////////////////
+
+export function forwardingTeamLeadCreateProject(event){
+    event.preventDefault();
+
+}
+
+
+export function forwardingTeamLeadStartDate(event){
+    event.preventDefault();
+}
+
+export function forwardingTeamLeadEndDate(event){
+    event.preventDefault();
+
+}
+
+export function forwardingTeamLeadAddWorker(event){
+    event.preventDefault();
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////
+
+
+export function forwardingAdminCreateProject(event){
+    event.preventDefault();
+
+}
+
+
+export function forwardingAdmindStartDate(event){
+    event.preventDefault();
+}
+
+export function forwardingAdminEndDate(event){
+    event.preventDefault();
+
+}
+
+export function forwardingAdminAddWorker(event){
+    event.preventDefault();
+
+}
+

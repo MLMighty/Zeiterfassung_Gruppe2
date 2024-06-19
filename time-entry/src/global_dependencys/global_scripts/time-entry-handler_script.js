@@ -37,6 +37,7 @@ export class TimeEntryHanlder{
         const seconds = String(now.getSeconds()).padStart(2, '0');
    
         this.endDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+        
 
         this.post_ApiInterfaceHandler.timeEntryApiHandler(this.processTimeEntryData());
 
@@ -44,14 +45,12 @@ export class TimeEntryHanlder{
     }
 
     updateTimeEntryProjectType(){
-        let projectEntry = document.getElementById("projectSelection").value;
-        this.projectEntry = projectEntry
+       //hier wird das  Project vom datenbank geholt und das section erstellt und dort riengetan
        
   
     }
     updateTimeEntryTaskType(){
-        let taskEntry = document.getElementById("tasktSelection").value;
-        this.taskEntry = taskEntry
+          //hier wird das  Project vom datenbank geholt und das section erstellt und dort riengetan
        
     }
 
@@ -59,8 +58,6 @@ export class TimeEntryHanlder{
         let timeEntryData={
             starttime: this.startDate,
             endtime:this.endDate,
-            taskname:this.taskEntry,
-            projectname: this.projectEntry
         }
    
         return timeEntryData
