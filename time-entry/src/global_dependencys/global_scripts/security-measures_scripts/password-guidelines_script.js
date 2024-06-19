@@ -41,10 +41,10 @@ export class PasswordGuidelines {
 
     checkCharacterLength(passwordValue){
         if(passwordValue.length >= 10){
-            this.password_GuidlineText.innerText =  this.password_GuidlineText.innerText.replace(" min. length: 10 ,", "");
+            this.password_GuidlineText.innerText =  this.password_GuidlineText.innerText.replace(" Mindestlänge: 10", "");
             return true;
-        }else if(this.password_GuidlineText.innerText.includes(" min. length: 10 ,") === false && passwordValue.length < 10){
-            this.password_GuidlineText.innerText += " min. length: 10 ,";
+        }else if(this.password_GuidlineText.innerText.includes(" Mindestlänge: 10") === false && passwordValue.length < 10){
+            this.password_GuidlineText.innerText += " Mindestlänge: 10";
         }
 
     }
