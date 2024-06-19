@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const addMemberButton = document.getElementById('addMember');
     const approvalList = document.getElementById('approvalList');
     const backButton = document.getElementById('backButton');
+    const projectNameInput = document.getElementById("projectName");
+
+    let task_Inputs = []
+    let task_Description_Inputs = [];
+
 
     // Variablen für Mitarbeiterdaten
     let employeeFirstName;
@@ -31,22 +36,15 @@ document.addEventListener('DOMContentLoaded', function() {
         taskNameInput.name = 'taskName';
         taskNameInput.placeholder = 'Tätigkeit';
         taskNameInput.required = true;
+        task_Inputs.push(taskInfoInput);
 
         const taskInfoInput = document.createElement('input');
         taskInfoInput.type = 'text';
         taskInfoInput.name = 'taskInfo';
         taskInfoInput.placeholder = 'Beschreibung';
         taskInfoInput.required = false;
+        task_Description_Inputs.push(taskInfoInput);
 
-        const taskStartDateInput = document.createElement('input');
-        taskStartDateInput.type = 'date';
-        taskStartDateInput.name = 'taskStartDate';
-        taskStartDateInput.required = true;
-
-        const taskEndDateInput = document.createElement('input');
-        taskEndDateInput.type = 'date';
-        taskEndDateInput.name = 'taskEndDate';
-        taskEndDateInput.required = true;
 
         const removeTaskButton = document.createElement('button');
         removeTaskButton.type = 'button';
@@ -56,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         taskInput.appendChild(taskNameInput);
         taskInput.appendChild(taskInfoInput);
-        taskInput.appendChild(taskStartDateInput);
-        taskInput.appendChild(taskEndDateInput);
         taskInput.appendChild(removeTaskButton);
 
         taskContainer.appendChild(taskInput);
@@ -185,9 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return dummyEntries;
     }
 
-    // Initialisierung der Genehmigungsliste
-    approvalEntries = fetchApprovalEntries();
-    renderApprovalEntries(approvalEntries);
+
 
     // Zurück zur Hauptseite navigieren
     backButton.addEventListener('click', function() {
@@ -228,4 +222,27 @@ document.addEventListener('DOMContentLoaded', function() {
         createMemberInput();
     });
 
+    function processAdminWebData(){
+        for (let i = 0; i < task_Inputs.length; i++) {
+            admin_WebData.tasksinfo.push({
+                taskname: task_Inputs[i].value,
+                taskdescription: task_Description_Inputs[i].value
+            })
+        }
+        
+        for (let i = 0; i < task_Inputs.length; i++) {
+    // für workers
+        }
+
+        //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
+        
+         let admin_WebData ={
+            projectname:projectNameInput.value ,
+            projectaddedworker: [],
+            tasksinfo:[]
+           
+
+         }
+
+    }
 });
