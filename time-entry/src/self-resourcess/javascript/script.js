@@ -1,3 +1,6 @@
+import {CookieHandler  } from "../../global_dependencys/global_scripts/cookies-handler_script.js";
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const taskContainer = document.getElementById('taskContainer');
     const addTaskButton = document.getElementById('addTask');
@@ -7,9 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const approvalList = document.getElementById('approvalList');
     const backButton = document.getElementById('backButton');
     const projectNameInput = document.getElementById("projectName");
+   
 
-    let task_Inputs = []
+    let task_Inputs = [];
     let task_Description_Inputs = [];
+    let member_Inputs = [];
 
 
     // Variablen für Mitarbeiterdaten
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         taskNameInput.name = 'taskName';
         taskNameInput.placeholder = 'Tätigkeit';
         taskNameInput.required = true;
-        task_Inputs.push(taskInfoInput);
+        task_Inputs.push(taskNameInput);
 
         const taskInfoInput = document.createElement('input');
         taskInfoInput.type = 'text';
@@ -80,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         emailInput.type = 'email';
         emailInput.name = 'projectMembers';
         emailInput.required = true;
+        member_Inputs.push(emailInput);
 
         const removeButton = document.createElement('button');
         removeButton.type = 'button';
@@ -191,26 +197,33 @@ document.addEventListener('DOMContentLoaded', function() {
     // Ereignislistener für das Erstellen eines Projekts
     projectForm.addEventListener('submit', function(event) {
         event.preventDefault();
+        let cookieHandler = new CookieHandler();
+        let cookieUuid = cookieHandler.getUuidcookie("uuid");
+       
+        //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
+        
+         let admin_WebData ={
+            projectname:projectNameInput.value ,
+            projectaddedworker: [],
+            tasksinfo:[],
+            uuid: cookieUuid[1],
+         }
 
-        const projectName = document.getElementById('projectName').value;
-        const startDate = document.getElementById('startDate').value;
-        const endDate = document.getElementById('endDate').value;
-        const memberEmails = Array.from(document.querySelectorAll('input[name="projectMembers"]')).map(input => input.value);
-        const tasks = Array.from(taskContainer.getElementsByClassName('taskInput')).map(taskInput => ({
-            taskName: taskInput.querySelector('input[name="taskName"]').value,
-            taskInfo: taskInput.querySelector('input[name="taskInfo"]').value,
-            taskStartDate: taskInput.querySelector('input[name="taskStartDate"]').value,
-            taskEndDate: taskInput.querySelector('input[name="taskEndDate"]').value
-        }));
+         for (let i = 0; i < task_Inputs.length; i++) {
+            admin_WebData.tasksinfo.push({
+                taskname: task_Inputs[i].value,
+                taskdescription: task_Description_Inputs[i].value
+            })
+        }
+        
+        for (let i = 0; i < member_Inputs.length; i++) {
+            admin_WebData.projectaddedworker.push(
+                {workeremail: member_Inputs[i].value}
+            )
+        }
 
-        console.log('Projekt erstellt:');
-        console.log('Projektname:', projectName);
-        console.log('Startdatum:', startDate);
-        console.log('Enddatum:', endDate);
-        console.log('Mitarbeiter:', memberEmails);
-        console.log('Tätigkeiten:', tasks);
 
-        // Formular zurücksetzen
+         console.log(admin_WebData)
         projectForm.reset();
 
         // Vorhandene Aufgaben- und Mitgliederfelder entfernen
@@ -222,27 +235,5 @@ document.addEventListener('DOMContentLoaded', function() {
         createMemberInput();
     });
 
-    function processAdminWebData(){
-        for (let i = 0; i < task_Inputs.length; i++) {
-            admin_WebData.tasksinfo.push({
-                taskname: task_Inputs[i].value,
-                taskdescription: task_Description_Inputs[i].value
-            })
-        }
-        
-        for (let i = 0; i < task_Inputs.length; i++) {
-    // für workers
-        }
 
-        //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
-        
-         let admin_WebData ={
-            projectname:projectNameInput.value ,
-            projectaddedworker: [],
-            tasksinfo:[]
-           
-
-         }
-
-    }
 });

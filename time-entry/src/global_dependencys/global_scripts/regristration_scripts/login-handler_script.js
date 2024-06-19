@@ -62,7 +62,7 @@ export class LoginHandler {
             const uuid = succesfullLogin;
             this.loggedIn_display.classList.add("loggedIn-true");
             this.cookieHandler.setCookie("loggedIn", "true" , 3);
-            this.cookieHandler.setUUIDCookie("uuid", uuid,    3);
+            this.cookieHandler.setUUIDCookie("uuid", `${uuid}`,    3);
             setTimeout(() => {
                 this.login_Container_Visibility.style.display ="none";
             }, 1000);

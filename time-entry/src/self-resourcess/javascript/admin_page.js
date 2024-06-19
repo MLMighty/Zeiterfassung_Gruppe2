@@ -234,4 +234,4 @@ var exampleData = [
 ];
 
 // Beispielaufruf der Funktion, um die Tabelle mit den Beispieldaten zu aktualisieren
-renderTableBody(exampleData);
+
