@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
@@ -27,12 +28,20 @@ public class AdminController {
 
     @PostMapping("/adminwebdata")
     public void addAdminWebData (@RequestBody Map<String,Object> adminWebData  )  {
+        Map<String,Object> d = ( Map<String,Object>) adminWebData.get("");
+
         TaskModel taskModel = new TaskModel();
         String taskName = (String) adminWebData.get("taskname");
         taskModel.setTaskname(taskName);
         ProjectModel projectModel = new ProjectModel();
-        String projectName = (String) adminWebData.get("projectname");
-        projectModel.setProjectname(projectName);
+
+        projectModel.setProjectname((String) adminWebData.get("projectname"));
+        projectModel.setProjectdescription((String) adminWebData.get("projectdescription"));
+        (ArrayList<String>) adminWebData.get("rojectaddedworker")
+
+        for (int i = 0; i < ; i++) {
+
+        }
 
         projectRepository.save(projectModel);
         taskRepository.save(taskModel);

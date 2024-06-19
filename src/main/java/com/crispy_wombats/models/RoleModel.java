@@ -14,7 +14,7 @@ import java.util.Set;
 public class RoleModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     @Column(name = "role_id")
@@ -30,10 +30,6 @@ public class RoleModel {
     @Column(name = "roledescription")
     private String roledescription;
 
-    @Getter
-    @Setter
-    @Column(name = "permissionrights")
-    private Boolean permissionrights;
 
     public RoleModel(){
 
