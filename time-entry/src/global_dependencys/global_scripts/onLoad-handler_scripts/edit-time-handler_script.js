@@ -6,7 +6,8 @@ let post_ApiInterfaceHandler =  new  POST_ApiInterfaceHandler();
 let databaseData;
 
 window.addEventListener("DOMContentLoaded", ()=>{
-    post_ApiInterfaceHandler.getEditTimeApiHandler(cookie_handler.getUuidcookie("uuid")).then(databaseData=> callEditTimeData(databaseData))
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
+    post_ApiInterfaceHandler.getEditTimeApiHandler(cookieUuid.replace(/"/g, '')).then(databaseData=> callEditTimeData(databaseData))
   
 })
 
