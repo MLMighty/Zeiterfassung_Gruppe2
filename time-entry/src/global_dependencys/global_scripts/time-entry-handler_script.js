@@ -50,8 +50,9 @@ export class TimeEntryHanlder{
 
 
     processTimeEntryData(){
+        let cookieUuid = this.cookie_handler.getUuidcookie("uuid");
         let timeEntryData={
-            uuid:this.cookie_handler.getUuidcookie("uuid"),
+            uuid: cookieUuid.replace(/"/g, ''),
             starttime: this.startDate,
             endtime:this.endDate,
         }
