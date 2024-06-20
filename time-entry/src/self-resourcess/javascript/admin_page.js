@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <th>Ende</th>
           <th>Ist</th>
           <th>Soll</th>
+          <th>Differenz</th>
           <th>Projekt</th>
           <th>Tätigkeit</th>
           <th>freigegeben</th>

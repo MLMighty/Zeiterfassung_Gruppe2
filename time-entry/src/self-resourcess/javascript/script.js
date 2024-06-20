@@ -133,49 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Funktion zum Rendern der zu genehmigenden Einträge in der Tabelle
-    function renderApprovalEntries(entries) {
-        approvalList.innerHTML = '';
-
-        entries.forEach(entry => {
-            const row = document.createElement('tr');
-
-            const dateCell = document.createElement('td');
-            dateCell.textContent = entry.date;
-            row.appendChild(dateCell);
-
-            const employeeCell = document.createElement('td');
-            employeeCell.textContent = entry.employee;
-            row.appendChild(employeeCell);
-
-            const projectCell = document.createElement('td');
-            projectCell.textContent = entry.project;
-            row.appendChild(projectCell);
-
-            const taskCell = document.createElement('td');
-            taskCell.textContent = entry.task;
-            row.appendChild(taskCell);
-
-            const hoursCell = document.createElement('td');
-            hoursCell.textContent = entry.hours;
-            row.appendChild(hoursCell);
-
-            const approveCell = document.createElement('td');
-            const approveButton = document.createElement('button');
-            approveButton.textContent = 'Genehmigen';
-            approveButton.addEventListener('click', () => approveEntry(entry));
-            approveCell.appendChild(approveButton);
-            row.appendChild(approveCell);
-
-            const rejectCell = document.createElement('td');
-            const rejectButton = document.createElement('button');
-            rejectButton.textContent = 'Ablehnen';
-            rejectButton.addEventListener('click', () => rejectEntry(entry));
-            rejectCell.appendChild(rejectButton);
-            row.appendChild(rejectCell);
-
-            approvalList.appendChild(row);
-        });
-    }
+   
 
     // Beispiel: Abrufen von Dummy-Daten für die Genehmigungsliste
     function fetchApprovalEntries() {
