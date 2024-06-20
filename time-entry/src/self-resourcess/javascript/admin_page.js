@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentWeek = getWeekNumber(today);
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
-    let role = "Mitarbeiter" //Rolle von der Datenbank
+    let role = "Admin" //Rolle von der Datenbank
 
 
   
@@ -64,8 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
           <th>Projekt</th>
           <th>Tätigkeit</th>
           <th>freigegeben</th>
-        </tr>
+          <th>          
+          <select id= "selectFilter" onchange="import('../javascript/admin_page.js').then(module => {module.filterSelection(event)})" class="selects">
+          <option selected disabled>Filter</option>
+          <option >Project A-z</option>
+          <option >Project Z-a</option>
+          </select></th>
+          </tr>
       `;
+    
     }
 
   // Excel file download
@@ -258,6 +265,14 @@ let cookie_handler = new CookieHandler();
      signUpApiHandler.signUpDataTransfer(forwardingSignUpData);
   
   }
+  let filter_selection ;
+  export function filterSelection(event){
+    event.preventDefault();
+    let filterSelections =  document.getElementById("selectFilter");
+    filter_selection = filterSelections.value;
+
+  }
+
 
 
   let role_selection ;
