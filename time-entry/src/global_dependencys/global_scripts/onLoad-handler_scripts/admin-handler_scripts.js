@@ -9,7 +9,8 @@ import {CookieHandler  } from "../cookies-handler_script.js";
 let cookie_handler = new CookieHandler();
 
 window.addEventListener("DOMContentLoaded", ()=>{
-    post_ApiInterfaceHandler.getAdminApiHandler(cookie_handler.getUuidcookie("uuid")).then(data => callAdminWebData(data))
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
+    post_ApiInterfaceHandler.getAdminApiHandler(cookieUuid.replace(/"/g, '')).then(data => callAdminWebData(data))
 
 })
 
