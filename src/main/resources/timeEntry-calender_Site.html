@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link th:rel="stylesheet" th:href="@{/assets/bootstrap/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" href="timeEntry-calender_Style.css">
+</head>
+<body>
+    <main>
+        <header>
+        <!--load header here-->
+        </header>
+            <div class="container rightText">
+                    <h1 class="rightText" id="clock"></h1>
+                    <p id="weekDay">Test</p>
+                    <p id="fullDate"></p>
+            </div>
+            <div class="container">
+                <section>
+                    <h1>Calendar</h1>
+                    <div class="month-year">
+                        <button id="prev-month">&lt;</button>
+                        <span id="month-year"></span>
+                        <button id="next-month">&gt;</button>
+                    </div>
+                </section>
+                <table id="calendar">
+                    <thead>
+                    <tr>
+                        <th>Sun</th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Calendar dates will be inserted here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        <footer>
+        <!--load footer here-->
+        </footer>
+    <script src="timeEntry-calender_Script.js"></script>
+    </main>
+</body>
+</html>
