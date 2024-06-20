@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.Set;
 
-
 @Entity
-@Table(schema = "dbo",name = "ttask")
+@Table(schema = "dbo", name = "ttask")
 public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +25,7 @@ public class TaskModel {
     @Column(name = "taskdescription")
     private String taskdescription;
 
+r
     public TaskModel(){
 
     }
@@ -41,4 +41,5 @@ public class TaskModel {
     @Setter
     private Set<TaskProjectUserModel> taskProjectUsers;
     //////////////////////////////////////////////////////////////////////////////////////////////
+
 }
