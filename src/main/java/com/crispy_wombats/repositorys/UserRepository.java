@@ -7,12 +7,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public interface UserRepository extends JpaRepository<UsersModel, Integer> {
     UsersModel findByEmail(String email);
     UsersModel findAllByPassword(String password);
-    @Query(nativeQuery = true, value = "SELECT * FROM ufGetUserID (:UUID)")
-    String  callUfGetUserID(@Param("uuid") String uuid);
 
+    @Query(value = "SELECT dbo.ufGetUserID(:uuid)", nativeQuery = true)
+    Integer callUfGetUserID(@Param("uuid") UUID uuid);
 }

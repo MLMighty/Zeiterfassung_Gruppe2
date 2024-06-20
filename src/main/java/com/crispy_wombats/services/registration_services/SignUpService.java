@@ -1,4 +1,6 @@
 package com.crispy_wombats.services.registration_services;
+import com.crispy_wombats.models.RoleModel;
+import com.crispy_wombats.repositorys.RoleRepository;
 import com.crispy_wombats.repositorys.UserRepository;
 import com.crispy_wombats.security_measurements.HashUtil;
 import com.crispy_wombats.models.UsersModel;
@@ -7,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
+
 @Service
 public class SignUpService
 {
@@ -14,8 +18,10 @@ public class SignUpService
     @Autowired
     UserRepository userRepository;
 
+
     public ResponseEntity<String> createUser(UsersModel user)
     {
+
 
         UsersModel userEmail = userRepository.findByEmail(user.getEmail());
         if(userEmail == null){
@@ -23,6 +29,8 @@ public class SignUpService
             user.setEmail(user.getEmail());
             user.setLastname(user.getLastname());
             user.setPassword(HashUtil.hashString(user.getPassword()));
+            user.setRole_id(2);
+            System.out.println(user.getRole_id());
 
             userRepository.save(user);
             return new ResponseEntity<>("Angemeldet",HttpStatus.OK);

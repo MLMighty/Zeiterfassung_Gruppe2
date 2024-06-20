@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
 @RestController
@@ -33,9 +34,22 @@ public class AdminController {
 
     @PostMapping("/adminwebdata")
     public void addAdminWebData (@RequestBody Map<String,Object> adminWebData  )  {
-        String uuid = (String) adminWebData.get("uuid");
-        int user_id = Integer.parseInt(userRepository.callUfGetUserID(uuid));
-        System.out.println(user_id);
+        String uuidStr = (String) adminWebData.get("uuid");
+
+        try {
+            UUID uuid = UUID.fromString(uuidStr);
+            Integer userId = userRepository.callUfGetUserID(uuid);
+            if (userId != null) {
+                System.out.println("User ID: " + userId);
+
+            } else {
+                System.err.println("User ID not found for UUID: " + uuid);
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid UUID format: " + uuidStr);
+            return;
+        }
+
 
         /*Map<String,Object> d = ( Map<String,Object>) adminWebData.get("");
 
@@ -57,7 +71,10 @@ public class AdminController {
         taskRepository.save(taskModel);
 */
 
-
-
     }
+/*    @PostMapping("/adminwebdata")
+    public void addAdminWebData (@RequestBody Map<String,Object>  )  {
+
+
+    }*/
 }
