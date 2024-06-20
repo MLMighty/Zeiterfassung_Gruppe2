@@ -45,6 +45,49 @@ document.addEventListener('DOMContentLoaded', () => {
         </tr>
       `;
     }
+
+//////////////////////////////////////////nur zum testen////////////////////////////////////////////
+    function renderTableData() {
+      const tableBody = document.getElementById("table").getElementsByTagName("tbody")[0];
+      tableBody.innerHTML = "";
+    
+      for (let i = 0; i < 10; i++) {
+        const row = `
+          <tr>
+            <td>${i + 1}.01.2023</td>
+            <td>08:00</td>
+            <td>16:00</td>
+            <td>8h</td>
+            <td>8h</td>
+            <td>0h</td>
+            <td>Projekt ${i}</td>
+            <td>Tätigkeit ${i}</td>
+            <td>Ja</td>
+          </tr>
+        `;
+        tableBody.innerHTML += row;
+      }
+    }
+
+  const exportExcelButton = document.getElementById("exportExcel");
+
+  exportExcelButton.addEventListener("click", () => {
+  const table = document.getElementById("table");
+  const rows = table.rows;
+  const workbook = XLSX.utils.book_new();
+  const worksheet = XLSX.utils.table_to_sheet(table);
+
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+  const arrayBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+  const blob = new Blob([arrayBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "export.xlsx";
+  link.click();
+});
+    
+//////////////////////////////////////test ende //////////////////////////////////////////////
   
 
     function getWeekNumber(date) {
@@ -194,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setWeekDay();
     setDateText();
     renderTableHeader();
+    renderTableData(); //nur zum testen
   });
 
 ///////////////////////////////////////////////////////
