@@ -29,7 +29,7 @@ public class AbsenceController {
     @PostMapping("/absencedata")
     public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid)
     {
-        UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
+       /* UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
         if (user != null)
         {
             List<AbsenceModel> absences = absenceService.getAbsencesByUserId(user.getUser_id());
@@ -37,6 +37,8 @@ public class AbsenceController {
         } else
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+        }*/
+
+        return null;
     }
 }

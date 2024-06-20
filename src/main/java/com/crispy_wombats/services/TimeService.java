@@ -38,10 +38,6 @@ public class TimeService {
         timeRepository.deleteById(id);
     }
 
-    public List<TimeModel> getTimeEntriesByUserId(int userId)
-    {
-        return timeRepository.findById(userId);
-    }
 
     public void saveTimeEntry(TimeModel timeModel) {
         timeRepository.save(timeModel);
