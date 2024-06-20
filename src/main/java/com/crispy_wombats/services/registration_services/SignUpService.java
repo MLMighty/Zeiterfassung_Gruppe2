@@ -13,6 +13,7 @@ public class SignUpService
 
     @Autowired
     UserRepository userRepository;
+
     public ResponseEntity<String> createUser(UsersModel user)
     {
 

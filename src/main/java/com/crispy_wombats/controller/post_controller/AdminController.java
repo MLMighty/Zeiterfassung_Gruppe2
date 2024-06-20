@@ -7,6 +7,7 @@ import com.crispy_wombats.models.UsersModel;
 import com.crispy_wombats.repositorys.ProjectRepository;
 import com.crispy_wombats.repositorys.TaskRepository;
 import com.crispy_wombats.repositorys.TimeRepository;
+import com.crispy_wombats.repositorys.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,12 +27,17 @@ public class AdminController {
     @Autowired
     ProjectRepository projectRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @PostMapping("/adminwebdata")
     public void addAdminWebData (@RequestBody Map<String,Object> adminWebData  )  {
         String uuid = (String) adminWebData.get("uuid");
+        int user_id = Integer.parseInt(userRepository.callUfGetUserID(uuid));
+        System.out.println(user_id);
 
-        Map<String,Object> d = ( Map<String,Object>) adminWebData.get("");
+        /*Map<String,Object> d = ( Map<String,Object>) adminWebData.get("");
 
         TaskModel taskModel = new TaskModel();
         String taskName = (String) adminWebData.get("taskname");
@@ -44,10 +50,12 @@ public class AdminController {
 
         for (int i = 0; i < ; i++) {
 
-        }
+        }*/
 
+/*
         projectRepository.save(projectModel);
         taskRepository.save(taskModel);
+*/
 
 
 
