@@ -1,60 +1,44 @@
-import { GET_ApiInterfaceHandler } from "../api-handler_scripts/get-api-handler_script.js";
+import {POST_ApiInterfaceHandler  } from "../api-handler_scripts/post-api-handler_script.js";
 
-let get_ApiInterfaceHandler =  new  GET_ApiInterfaceHandler();
-let roleSection = document.getElementById("roleSelection")
-let databaseData = {  
-    roles:[
-        {
-            rolename:"Admin",
-    
-        },
-        {
-             rolename:"EzrasHibernate",
+let post_ApiInterfaceHandler =  new  POST_ApiInterfaceHandler();
+let roleSection = document.getElementById("roleSelection");
+let emailDataList = document.getElementById("exampleList");
+let roleSectionNewMember = document.getElementById("roleSectionNewMember")
+import {CookieHandler  } from "../cookies-handler_script.js";
 
-        },
-        {
-             rolename:"Entwickler",
-
-        },
-        {
-            rolename:"Teamlead",
-
-        }
-    ],
-
-    approvals: [
-        { datum: '2024-06-19', mitarbeiter: 'Max Mustermann', projekt: 'Projekt A', taetigkeit: 'Programmierung', stunden: '8' },
-        { datum: '2024-06-20', mitarbeiter: 'Anna Müller', projekt: 'Projekt B', taetigkeit: 'Testing', stunden: '8' },
-        { datum: '2024-06-21', mitarbeiter: 'John Doe', projekt: 'Projekt C', taetigkeit: 'Design', stunden: '6' },
-        { datum: '2024-06-22', mitarbeiter: 'Jane Smith', projekt: 'Projekt D', taetigkeit: 'Dokumentation', stunden: '7' },
-        { datum: '2024-06-23', mitarbeiter: 'Hans Schmidt', projekt: 'Projekt E', taetigkeit: 'Planung', stunden: '5' }
-    ]
-};
-
+let cookie_handler = new CookieHandler();
 
 window.addEventListener("DOMContentLoaded", ()=>{
-    // get_ApiInterfaceHandler.getAdminApiHandler.then(data => callAdminWebData(data))
-  callAdminWebData()
+    post_ApiInterfaceHandler.getAdminApiHandler(cookie_handler.getUuidcookie("uuid")).then(data => callAdminWebData(data))
+
 })
 
-function callAdminWebData() {
-    // databaseData = data;
-    createApprovalListRows()
-    createOptions()
+function callAdminWebData(databaseData) {
+    createApprovalListRows(databaseData)
+    createOptions(databaseData)
+    createEmailOptions(databaseData)
 }
 
-function createOptions(){
+function createOptions(databaseData){
     databaseData.roles.forEach(role => {
         let roleOptions = document.createElement("option");
         roleOptions.innerText = role.rolename
         roleSection.append(roleOptions)
+        roleSectionNewMember.append(roleOptions)
     });
-
 
 }
 
+function createEmailOptions(databaseData){
+    databaseData.emails.forEach(email => {
+        let emailOptions = document.createElement("option");
+        emailOptions.innerText = email.useremail;
+        emailDataList.append( emailOptions)
+    });
+}
 
-function createApprovalListRows() {
+
+function createApprovalListRows(databaseData) {
     const approvalList = document.getElementById('approvalList');
 
     databaseData.approvals.forEach(entry => {
@@ -66,6 +50,7 @@ function createApprovalListRows() {
             <td>${entry.projekt}</td>
             <td>${entry.taetigkeit}</td>
             <td>${entry.stunden}</td>
+            <td>${entry.differenz}</td>
             <td><button class="approveButton">Genehmigen</button></td>
             <td><button class="rejectButton">Ablehnen</button></td>
         `;

@@ -1,11 +1,12 @@
 import{POST_ApiInterfaceHandler} from "./api-handler_scripts/post-api-handler_script.js";
-
+import { CookieHandler } from "../global_scripts/cookies-handler_script.js";
 
 
 export class AbcenseHandler {
 
     constructor(){
         this.post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
+        this.cookie_handler = new CookieHandler();
         this.absenceName;
         this.startDate;
         this.endDate;
@@ -30,6 +31,7 @@ export class AbcenseHandler {
 
      processAbcenceData(){
         let absenceData = {
+        uuid:this.cookie_handler.getUuidcookie("uuid"),
         absencestart: this.startDate ,
         absenceend:this.endDate,
         absencetype: this.absenceName 

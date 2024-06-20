@@ -46,7 +46,7 @@
                 <label for="password">Passwort:</label>
                 <input type="password" id="password" name="password" required>
 
-                <select id="tasktSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
+                <select id= "roleSectionNewMember" onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
                     <option selected disabled>Rolen</option>
                     <option >Entwickler</option>
                     <option >Admin</option>
@@ -62,11 +62,8 @@
                 <input type="text" name="example" list="exampleList">
                 <datalist id="exampleList">
                   <option value="A">  
-                  <option value="B">
-                    <option value="A">  
-                        <option value="B">
-                               <option value="A">  
-                                <option value="B">
+       
+
                 </datalist>
 
                 <select id="roleSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
