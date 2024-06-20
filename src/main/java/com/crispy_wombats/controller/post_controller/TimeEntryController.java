@@ -33,7 +33,7 @@ public class TimeEntryController {
         Date endDate = dateFormat.parse(endTime);
         timeModel.setStarttime(startDate);
         timeModel.setEndtime(endDate);
-        // Setze hier die anderen Attribute von timeModel, z.B. holiday und weekend, falls notwendig
+        //Setze hier die anderen Attribute von timeModel, z.B. holiday und weekend, falls notwendig
         timeRepository.save(timeModel);
     }
 
