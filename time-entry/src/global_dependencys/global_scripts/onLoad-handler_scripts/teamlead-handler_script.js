@@ -1,7 +1,7 @@
-import { GET_ApiInterfaceHandler } from "../api-handler_scripts/get-api-handler_script.js";
+import { GET_ApiInterfaceHandler } from "../api-handler_scripts/get-api-handler_script.js"; //pfad und namen ändern 
 
-let get_ApiInterfaceHandler = new GET_ApiInterfaceHandler();
-let databaseData = {
+let get_ApiInterfaceHandler = new GET_ApiInterfaceHandler(); // namen ändern 
+let databaseData = { //kann man löschen dann
     roles:[
         {
             role:"Admin",
@@ -31,15 +31,16 @@ let databaseData = {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+    // das hie roben freigeben
     // Hier würde normalerweise die API-Anfrage stehen, um Daten abzurufen
     // get_ApiInterfaceHandler.getTeamLeadApiHandler().then(data => {
     //     createApprovalListRows(data)
     // });
     
-    createApprovalListRows();
+    createApprovalListRows();//kann man löschen dann
 });
 
-function createApprovalListRows() {
+function createApprovalListRows(data) {
     const approvalList = document.getElementById('approvalList');
 
     databaseData.approvals.forEach(entry => {

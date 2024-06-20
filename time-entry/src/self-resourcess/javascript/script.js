@@ -213,15 +213,19 @@ document.addEventListener('DOMContentLoaded', function() {
          }
 
          for (let i = 0; i < task_Inputs.length; i++) {
-            admin_WebData.tasksinfo.push({
+            admin_WebData.tasksinfo.push( 
+                {
                 taskname: task_Inputs[i].value,
                 taskdescription: task_Description_Inputs[i].value
-            })
+               }
+            )
         }
         
         for (let i = 0; i < member_Inputs.length; i++) {
             admin_WebData.projectaddedworker.push(
-                {workeremail: member_Inputs[i].value}
+                {
+                    workeremail: member_Inputs[i].value
+                }
             )
         }
 
