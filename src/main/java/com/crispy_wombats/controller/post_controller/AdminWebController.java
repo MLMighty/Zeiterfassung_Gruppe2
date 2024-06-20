@@ -2,23 +2,20 @@ package com.crispy_wombats.controller.post_controller;
 
 import com.crispy_wombats.models.ProjectModel;
 import com.crispy_wombats.models.TaskModel;
-import com.crispy_wombats.models.TimeModel;
+import com.crispy_wombats.models.UsersModel;
 import com.crispy_wombats.repositorys.ProjectRepository;
 import com.crispy_wombats.repositorys.TaskRepository;
-import com.crispy_wombats.repositorys.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
 @RestController
-public class AdminController {
+public class AdminWebController {
 
     @Autowired
     TaskRepository taskRepository;
@@ -28,6 +25,9 @@ public class AdminController {
 
     @PostMapping("/adminwebdata")
     public void addAdminWebData (@RequestBody Map<String,Object> adminWebData  )  {
+
+        // daten in die verscheidene models rein machen
+        //in getrrennte Services reinmachen
         Map<String,Object> d = ( Map<String,Object>) adminWebData.get("");
 
         TaskModel taskModel = new TaskModel();
@@ -45,8 +45,18 @@ public class AdminController {
 
         projectRepository.save(projectModel);
         taskRepository.save(taskModel);
+    }
+
+    @GetMapping("/admindata")
+    public ResponseEntity<List<UsersModel>> forwardAdminWebData (  )  {
 
 
+        return null;
 
     }
+
+
+
+
+
 }
