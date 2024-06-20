@@ -15,8 +15,8 @@ import java.util.UUID;
 @RestController
 public class AbsenceController {
 
-    @Autowired
-    AbsenceService absenceService;
+   @Autowired
+   AbsenceService absenceService;
 
     @Autowired
     UserRepository userRepository;
@@ -29,11 +29,13 @@ public class AbsenceController {
 
     @PostMapping("/absencedata")
 
+
     public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid){
         UUID uuids = UUID.fromString(uuid);
         Integer userId = userRepository.callUfGetUserID(uuids);
 
         return null ;
+
 
 
     }

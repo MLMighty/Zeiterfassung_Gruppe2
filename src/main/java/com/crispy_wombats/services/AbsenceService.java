@@ -16,18 +16,18 @@ public class AbsenceService {
     AbscenceRepository abscenceRepository;
 
     public void addAbsence(AbsenceModel absence) {
+        absence.setAbsencetype(absence.getAbsencetype());
+        absence.setAbsencestart(absence.getAbsencestart());
+        absence.setAbsenceend(absence.getAbsenceend());
         abscenceRepository.save(absence);
-    }
-    //    public void addAbsence(AbsenceModel absence) {
-    //    absence.setAbsencetype(absence.getAbsencetype());
-    //    absence.setAbsencestart(absence.getAbsencestart());
-    //    absence.setAbsenceend(absence.getAbsenceend());
-    //    abscenceRepository.save(absence);
-    //    }
 
-    public List<AbsenceModel> getAbsencesByUserId(int userId) {
-        return abscenceRepository.findByUserId(userId);
     }
+
+
+
+ /*   public List<AbsenceModel> getAbsencesByUserId(int userId) {
+        return abscenceRepository.findByUserId(userId);
+    }*/
 
 
 

@@ -53,16 +53,9 @@ public class TimeEntryController {
     }
 
     @PostMapping("/timeentrydata")
-
     public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData(@RequestBody String uuid)  {
         UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null)
-        {
-            return ResponseEntity.ok(List.of(user));
-        } else
-        {
-            return ResponseEntity.notFound().build();
-        }
+
 
     }
 }
