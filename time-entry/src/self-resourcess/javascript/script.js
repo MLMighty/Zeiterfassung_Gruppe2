@@ -159,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let cookieHandler = new CookieHandler();
         let post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
         let cookieUuid = cookieHandler.getUuidcookie("uuid");
+        console.log("cookieUuid: "+  cookieUuid); //Debug Ausgabe
        
         //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
         
@@ -167,7 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
             projectdescription:projectDescription.value,
             projectaddedworker: [],
             tasksinfo:[],
-            uuid: cookieUuid,
+
+            uuid: cookieUuid.replace(/"/g, ''),
+
          }
 
          for (let i = 0; i < task_Inputs.length; i++) {

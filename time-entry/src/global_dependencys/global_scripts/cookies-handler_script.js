@@ -20,24 +20,17 @@ export class CookieHandler{
         document.cookie = uuidName + "=" + uuid + ";" + expires + ";path=/";
     }
 
-    getUuidcookie(cookie){
-        let replaceable = /["\\]/gi
-       
+    getUuidcookie(cookie){      
         const cookieValue = cookie + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
         let splittedCookie = decodedCookie.split(';');
-        splittedCookie[1].replace(replaceable, "")
-        console.log(splittedCookie)
+        splittedCookie = splittedCookie[1];
         for(let i = 0; i < splittedCookie.length; i++){
-            console.log("wirda aufgerufen for")
-            let charV = splittedCookie[i];
-            while(charV.charAt(i) == '\\'){
-                console.log("wirda aufgerufen while")
+            let charV = splittedCookie;
+            while(charV.charAt(i) == " "){
                 charV = charV.substring(1);
             }
-            if(charV.indexOf(cookieValue) == 0){
-                console.log("wirda aufgerufen if")
-                console.log("der cookie " + charV.substring(cookieValue.length, charV.length))
+            if(charV.startsWith(cookieValue)){
                 return charV.substring(cookieValue.length, charV.length)
             }
 
