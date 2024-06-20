@@ -10,25 +10,23 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class AuthentificationController {
 
-        @Autowired
-        SignUpService signUpService = new SignUpService();
+    @Autowired
+    SignUpService signUpService = new SignUpService();
 
-        @Autowired
-        LoginService loginService = new LoginService();
-
-
-        @PostMapping("/login")
-        public ResponseEntity<Object> loginController(@RequestBody UsersModel user)
-        {
-            return loginService.loginAuthentication(user);
-        }
+    @Autowired
+    LoginService loginService = new LoginService();
 
 
-        @PostMapping("/signup")
-        public ResponseEntity<String> signUpController(@RequestBody UsersModel user)
-        {
-            return signUpService.createUser(user);
-        }
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginController(@RequestBody UsersModel user)
+    {
+        return loginService.loginAuthentication(user);
     }
 
 
+    @PostMapping("/signup")
+    public ResponseEntity<String> signUpController(@RequestBody UsersModel user)
+    {
+        return signUpService.createUser(user);
+    }
+}

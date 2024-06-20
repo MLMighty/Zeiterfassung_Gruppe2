@@ -33,18 +33,14 @@ public class AbsenceModel {
     @Column(name = "absencetype")
     private String absencetype;
 
-
-
-
-
+    @Getter
+    @Setter
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
+    private UsersModel user;
 
     public AbsenceModel() {
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @ManyToOne
-    private UsersModel user;
-    //////////////////////////////////////////////////////////////////////////////////////////////
 }

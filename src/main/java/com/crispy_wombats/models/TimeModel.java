@@ -11,17 +11,12 @@ import java.util.Set;
 @Table(schema = "dbo", name = "ttime")
 public class TimeModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     @Setter
     @Column(name = "time_id")
     private int time_id;
 
-
-
-    @Getter
-    @Column(name = "taskprojectuser_id")
-    private int taskprojectuser_id;
 
     @Getter
     @Setter
@@ -48,10 +43,7 @@ public class TimeModel {
     @Column(name = "isweekend")
     private boolean weekend;
 
-    @Getter
-    @Setter
-    @Column(name = "workinghours")
-    private double workinghours;
+
 
     public TimeModel(){
 
