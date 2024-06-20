@@ -33,19 +33,18 @@ public class TimeEntryController {
         Date endDate = dateFormat.parse(endTime);
         timeModel.setStarttime(startDate);
         timeModel.setEndtime(endDate);
-
         // Setze hier die anderen Attribute von timeModel, z.B. holiday und weekend, falls notwendig
-
         timeRepository.save(timeModel);
     }
 
     @PostMapping("/timeentrydata")
     public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData(@RequestBody String uuid) {
         UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null) {
-
+        if (user != null)
+        {
             return ResponseEntity.ok(List.of(user));
-        } else {
+        } else
+        {
             return ResponseEntity.notFound().build();
         }
     }
