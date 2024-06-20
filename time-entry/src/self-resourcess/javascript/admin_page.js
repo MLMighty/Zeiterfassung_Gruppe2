@@ -1,5 +1,6 @@
 import { SignUpHandler } from "../../global_dependencys/global_scripts/regristration_scripts/sign-up-handler_script.js";
 import {POST_ApiInterfaceHandler  } from "../../global_dependencys/global_scripts/api-handler_scripts/post-api-handler_script.js";
+import { CookieHandler } from "../../global_dependencys/global_scripts/cookies-handler_script.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     // Konstanten und Variablen
@@ -196,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 ///////////////////////////////////////////////////////
-
+let cookie_handler = new CookieHandler();
   export function signUpNewWorker(){
     let signUpApiHandler = new SignUpHandler();
     let firstname = document.getElementById("firstname");
@@ -205,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let password = document.getElementById("password");
   
     const forwardingSignUpData = {
+      uuid:cookie_handler.getUuidcookie("uuid"),
       firstname: firstname.value,
       lastname: lastname.value,
       email: email.value,
@@ -234,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
     const forwardingCreatedRoleData = {
+      uuid:cookie_handler.getUuidcookie("uuid"),
       rolename: rolename.value,
       roledescription: role_description.value,
       permissionrights: role_selection.value,

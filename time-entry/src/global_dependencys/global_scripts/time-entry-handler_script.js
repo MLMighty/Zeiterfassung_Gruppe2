@@ -1,13 +1,16 @@
 import{POST_ApiInterfaceHandler} from "./api-handler_scripts/post-api-handler_script.js";
+import { CookieHandler } from "../global_scripts/cookies-handler_script.js";
 
 export class TimeEntryHanlder{
 
     constructor(){
         this.post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
+        this.cookie_handler = new CookieHandler();
         this.taskEntry;
         this.projectEntry;
         this.startDate;
         this.endDate;
+       
 
     }
 
@@ -48,6 +51,7 @@ export class TimeEntryHanlder{
 
     processTimeEntryData(){
         let timeEntryData={
+            uuid:this.cookie_handler.getUuidcookie("uuid"),
             starttime: this.startDate,
             endtime:this.endDate,
         }

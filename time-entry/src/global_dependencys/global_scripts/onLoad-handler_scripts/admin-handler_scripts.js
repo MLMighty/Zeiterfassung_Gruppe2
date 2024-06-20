@@ -29,7 +29,6 @@ function createOptions(databaseData){
 
 }
 
-
 function createEmailOptions(databaseData){
     databaseData.emails.forEach(email => {
         let emailOptions = document.createElement("option");
