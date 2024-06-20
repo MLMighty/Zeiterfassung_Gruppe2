@@ -31,7 +31,6 @@ public class SignUpService
             user.setPassword(HashUtil.hashString(user.getPassword()));
             user.setRole_id(3);
 
-
             userRepository.save(user);
             return new ResponseEntity<>("Angemeldet",HttpStatus.OK);
         }else{

@@ -4,6 +4,7 @@ package com.crispy_wombats.controller.post_controller;
 import com.crispy_wombats.models.TimeModel;
 import com.crispy_wombats.models.UsersModel;
 import com.crispy_wombats.repositorys.TimeRepository;
+import com.crispy_wombats.repositorys.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,6 +17,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
 @CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
 @RestController
 public class TimeEntryController {
@@ -23,9 +26,14 @@ public class TimeEntryController {
     @Autowired
     TimeRepository timeRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
     @PostMapping("/timeentry")
     public void addTimeEntryWebData (@RequestBody Map<String,Object> timeEntryData  ) throws ParseException {
-
+        String uuidStr = (String) timeEntryData.get("uuid");
+        UUID uuid = UUID.fromString(uuidStr);
+        Integer userId = userRepository.callUfGetUserID(uuid);
         //Das in getrennte Service reinmachen
         TimeModel timeModel = new TimeModel();
         String startTime = (String) timeEntryData.get("starttime");
@@ -36,13 +44,14 @@ public class TimeEntryController {
         timeModel.setStarttime(startDate);
         timeModel.setEndtime(endDate);
 
+
         timeRepository.save(timeModel);
 
     }
 
 
     @PostMapping("/timeentrydata")
-    public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData ( )  {
+    public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData(@RequestBody String uuid)  {
 
       //daten ans frontend senden
         //muss alles vom ensptrechenden User-verbindung abgegeben werden:

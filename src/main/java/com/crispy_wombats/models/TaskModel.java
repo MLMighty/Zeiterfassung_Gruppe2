@@ -31,9 +31,14 @@ public class TaskModel {
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToMany(mappedBy = "tasks")
     @Getter
     @Setter
-    @ManyToMany(mappedBy = "tasks")
-    Set<UsersModel> users;
+    private Set<UsersModel> users;
+
+    @OneToMany(mappedBy = "task")
+    @Getter
+    @Setter
+    private Set<TaskProjectUserModel> taskProjectUsers;
     //////////////////////////////////////////////////////////////////////////////////////////////
 }
