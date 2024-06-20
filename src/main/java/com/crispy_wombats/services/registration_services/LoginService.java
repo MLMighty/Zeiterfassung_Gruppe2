@@ -17,7 +17,6 @@ public class LoginService {
 
     public ResponseEntity<Object> loginAuthentication(UsersModel user) {
 
-
         UsersModel userEmail = userRepository.findByEmail(user.getEmail());
         if (userEmail != null && userEmail.getPassword() != null) {
             if (userEmail.getEmail().equals(user.getEmail()) && userEmail.getPassword().equals(HashUtil.hashString(user.getPassword()))) {

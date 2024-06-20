@@ -37,11 +37,11 @@ public class AdminWebController {
 
         projectModel.setProjectname((String) adminWebData.get("projectname"));
         projectModel.setProjectdescription((String) adminWebData.get("projectdescription"));
-        (ArrayList<String>) adminWebData.get("rojectaddedworker")
+        //(ArrayList<String>) adminWebData.get("rojectaddedworker")
 
-        for (int i = 0; i < ; i++) {
+        //for (int i = 0; i < ; i++) {
 
-        }
+        //}
 
         projectRepository.save(projectModel);
         taskRepository.save(taskModel);

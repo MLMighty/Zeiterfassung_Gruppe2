@@ -15,7 +15,6 @@ public class SignUpService
     UserRepository userRepository;
     public ResponseEntity<String> createUser(UsersModel user)
     {
-
         UsersModel userEmail = userRepository.findByEmail(user.getEmail());
         if(userEmail == null){
             user.setFirstname(user.getFirstname());
