@@ -46,7 +46,7 @@ export class POST_ApiInterfaceHandler {
       }
   }
   
-  
+
     async createdPostApiHandler(postData) {
       try {
         const response = await fetch("http://localhost:8080/surveycreation", {

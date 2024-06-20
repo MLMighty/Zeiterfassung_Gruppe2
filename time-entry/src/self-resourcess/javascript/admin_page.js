@@ -45,7 +45,26 @@ document.addEventListener('DOMContentLoaded', () => {
         </tr>
       `;
     }
-  
+
+  // Excel file download
+  // bin ehrlich.. Magic Code wegen Zeitdruck. Aber funktioniert, let's gooooooooooooooo  
+  const exportExcelButton = document.getElementById("exportExcel");
+
+  exportExcelButton.addEventListener("click", () => {
+  const table = document.getElementById("table");
+  const rows = table.rows;
+  const workbook = XLSX.utils.book_new();
+  const worksheet = XLSX.utils.table_to_sheet(table);
+
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+  const arrayBuffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
+  const blob = new Blob([arrayBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "export.xlsx";
+  link.click();
+});  
 
     function getWeekNumber(date) {
       const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
