@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
     <title>Zeiterfassung</title>
-    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
     <link rel="stylesheet" href="../css/main-site_Style.css">
 </head>
 <body onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
@@ -50,13 +50,11 @@
                     <div>
                         <select id="tasktSelection"onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryTaskType(event)})" class="selects">
                             <option selected disabled>Tätigkeit</option>
-                            <option >create hungu style</option>
-                            <option >Fisch essen</option>
+          
                         </select>
                         <select id="projectSelection" onchange="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.forwardingTimeEntryProjectType(event)})" class="selects">
-                          <optionselected disabled >Projekt</option>
-                          <option >UI-LIB</option>
-                          <option >Slay</option>
+                          <option selected disabled >Projekt</option>
+   
                       </select>
                     </div>
                 </div>
@@ -102,9 +100,10 @@
 
             </footer>
 
-    <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>
+    <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script> -->
 
-    <script src="../javascript/admin_page.js"></script>
+    <script type="module" src="../javascript/admin_page.js"></script>
+    <script type="module" src="../../global_dependencys/global_scripts/onLoad-handler_scripts/time-entry_Script.js"></script>
     </main>
 </body>
 </html>

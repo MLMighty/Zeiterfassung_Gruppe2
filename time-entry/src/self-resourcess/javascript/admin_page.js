@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const viewSelection = document.getElementById("viewSelection");
     const tableViewInfo = document.getElementById('tableViewInfo');
     const tableHead = document.getElementById('tableHead');
-    const tableBody = document.getElementById('tableBody');
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
     const clock = document.getElementById("clock");
@@ -17,21 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
-    // Variablen für Mitarbeiterdaten
-    let employeeFirstName;
-    let employeeLastName;
-    let employeeEmail;
-    let employeePassword;
-  
-    // Variablen für Projektdaten
-    let projectName;
-    let projectStartDate;
-    let projectEndDate;
-    let projectMembers = [];
-    let projectTasks = [];
-  
-    // Variablen für Tabellenansicht
-    let tableData = []; // Array für die Tabellenzeilen
+
   
     // Eventlistener
     document.getElementById("logOut").addEventListener('click', deleteCookie); 
@@ -59,12 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
   
-    function getFirstDayOfWeek(date) {
-      const dayOfWeek = date.getDay();
-      const diff = date.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
-      return new Date(date.setDate(diff));
-    }
-  
+
     function getWeekNumber(date) {
       const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
       const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
@@ -89,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
           break;
       }
     }
+
+    //////////////////////////////////////////
   
     function handlePrevButton() {
       const view = viewSelection.value;
@@ -204,13 +186,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   
-    // Initialisierung
+   
     updateTableViewInfo();
     startTime();
     setWeekDay();
     setDateText();
     renderTableHeader();
   });
+
+///////////////////////////////////////////////////////
 
   export function signUpNewWorker(){
     let signUpApiHandler = new SignUpHandler();
@@ -229,6 +213,8 @@ document.addEventListener('DOMContentLoaded', () => {
      signUpApiHandler.signUpDataTransfer(forwardingSignUpData);
   
   }
+
+
   let role_selection ;
   export function forwardingCreatedRole(event){
     event.preventDefault();

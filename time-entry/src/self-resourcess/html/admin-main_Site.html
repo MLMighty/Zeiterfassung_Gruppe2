@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mitarbeiter und Projekte erstellen</title>
-    <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css">
+    <!-- <link rel="stylesheet" href="../../global_dependencys/global_styles/login_style.css"> -->
     <link rel="stylesheet" href="../css/main-site_Style.css">
 </head>
-<body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})">
+<!-- <body  onload="import('../../global_dependencys/global_scripts/main_script.js').then(module => {module.callLoginHandler(event)})"> -->
     <header>
         <h1>Admin Seite</h1>
     </header>
@@ -58,7 +58,7 @@
         </section>
 
         <section>
-            <h2>Mitarbeiter erstellen</h2>
+            <h2>Mitarbeiter Rolle ändern</h2>
                 <input type="text" name="example" list="exampleList">
                 <datalist id="exampleList">
                   <option value="A">  
@@ -69,7 +69,7 @@
                                 <option value="B">
                 </datalist>
 
-                <select id="tasktSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
+                <select id="roleSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
                     <option selected disabled>Rolen</option>
                     <option >Entwickler</option>
                     <option >Admin</option>
@@ -107,8 +107,9 @@
     <button id="backButton" type="button">Zurück</button>
     <button id="logOut" type="button">Abmelden</button>
 </footer>
+<script type="module" src="../../global_dependencys/global_scripts/onLoad-handler_scripts/admin-handler_scripts.js"></script>
     <script type="module" src="../javascript/admin_page.js"></script>
     <script type="module" src="../javascript/script.js"></script>
-      <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>  
+      <!-- <script src="../../global_dependencys/global_html_scripts/login-html_script.js"></script>   -->
 </body>
 </html>
