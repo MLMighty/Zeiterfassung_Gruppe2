@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 
 import java.util.List;
 import java.util.Set;
@@ -20,9 +19,10 @@ public class UsersModel {
     @Column(name = "user_id")
     private int user_id;
 
-    /*@UuidGenerator
-    @Column(name = "UUID")
-    private UUID uuid;*/
+    @Getter
+    @Setter
+    @Column(name = "uuid", unique = true)
+    private UUID uuid;
 
     @Getter
     @Setter
@@ -44,13 +44,9 @@ public class UsersModel {
     @Column(name = "email")
     private String email;
 
-
-    public UsersModel(){
-
+    public UsersModel() {
     }
 
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "ttaskprojectuser",
@@ -58,8 +54,7 @@ public class UsersModel {
             inverseJoinColumns = { @JoinColumn(name = "task_id") }
     )
     Set<TaskModel> tasks;
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
+
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "ttaskprojectuser",
@@ -67,31 +62,25 @@ public class UsersModel {
             inverseJoinColumns = { @JoinColumn(name = "project_id") }
     )
     Set<ProjectModel> project;
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     @Getter
     @Setter
     @ManyToOne
     private RoleModel role;
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @Getter
-    @Setter
-    @OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
-    private List<AbsenceModel> absences;
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
 
     @Getter
     @Setter
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @JsonIgnore
-    private List<TimeScheduleModel> timeSchedule ;
+    private List<AbsenceModel> absences;
 
-
+    @Getter
+    @Setter
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private List<TimeScheduleModel> timeSchedule;
 }
+
+
