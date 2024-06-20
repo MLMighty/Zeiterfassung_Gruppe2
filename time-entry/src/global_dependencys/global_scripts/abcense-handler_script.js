@@ -30,8 +30,9 @@ export class AbcenseHandler {
      }
 
      processAbcenceData(){
+        let cookieUuid = this.cookie_handler.getCookie("uuid");
         let absenceData = {
-        uuid:this.cookie_handler.getUuidcookie("uuid"),
+        uuid: cookieUuid.replace(/"/g, ''),
         absencestart: this.startDate ,
         absenceend:this.endDate,
         absencetype: this.absenceName 

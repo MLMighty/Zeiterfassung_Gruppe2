@@ -223,9 +223,10 @@ let cookie_handler = new CookieHandler();
     let lastname = document.getElementById("lastname");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
+      let cookieUuid = cookie_handler.getUuidcookie("uuid");
   
     const forwardingSignUpData = {
-      uuid:cookie_handler.getUuidcookie("uuid"),
+      uuid: cookieUuid.replace(/"/g, ''),
       firstname: firstname.value,
       lastname: lastname.value,
       email: email.value,

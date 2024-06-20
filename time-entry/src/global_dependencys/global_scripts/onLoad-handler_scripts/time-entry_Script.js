@@ -10,7 +10,8 @@ let projectSection = document.getElementById("projectSelection");
 
 
 window.addEventListener("DOMContentLoaded", ()=>{
-    post_ApiInterfaceHandler.getTimeEntryApiHandler(cookie_handler.getUuidcookie("uuid")).then(databaseData => processData(databaseData))
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
+    post_ApiInterfaceHandler.getTimeEntryApiHandler(cookieUuid.replace(/"/g, '')).then(databaseData => processData(databaseData))
 
 })
 

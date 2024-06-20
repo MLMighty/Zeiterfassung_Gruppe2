@@ -102,14 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
         //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
         
          let admin_WebData ={
-            uuid:cookie_handler.getUuidcookie("uuid"),
+            uuid: cookieUuid.replace(/"/g, ''),
             projectname:projectNameInput.value ,
             projectdescription:projectDescription.value,
             projectaddedworker: [],
-            tasksinfo:[],
-
-            uuid: cookieUuid.replace(/"/g, ''),
-
+            tasksinfo:[]
          }
 
          for (let i = 0; i < task_Inputs.length; i++) {
