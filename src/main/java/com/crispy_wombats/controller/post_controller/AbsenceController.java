@@ -21,24 +21,22 @@ public class AbsenceController {
     @Autowired
     UserRepository userRepository;
 
+
     @PostMapping("/saveabsence")
     public void saveAbsence(@RequestBody AbsenceModel absence){
         absenceService.addAbsence(absence);
     }
 
     @PostMapping("/absencedata")
-    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid)
-    {
-       /* UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null)
-        {
-            List<AbsenceModel> absences = absenceService.getAbsencesByUserId(user.getUser_id());
-            return ResponseEntity.ok(absences);
-        } else
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }*/
 
-        return null;
+
+    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid){
+        UUID uuids = UUID.fromString(uuid);
+        Integer userId = userRepository.callUfGetUserID(uuids);
+
+        return null ;
+
+
+
     }
 }

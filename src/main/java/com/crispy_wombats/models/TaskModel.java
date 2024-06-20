@@ -25,9 +25,21 @@ public class TaskModel {
     @Column(name = "taskdescription")
     private String taskdescription;
 
+r
+    public TaskModel(){
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    @ManyToMany(mappedBy = "tasks")
     @Getter
     @Setter
-    @ManyToMany(mappedBy = "tasks")
     private Set<UsersModel> users;
+
+    @OneToMany(mappedBy = "task")
+    @Getter
+    @Setter
+    private Set<TaskProjectUserModel> taskProjectUsers;
+    //////////////////////////////////////////////////////////////////////////////////////////////
 
 }

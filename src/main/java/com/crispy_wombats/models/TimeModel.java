@@ -49,13 +49,8 @@ public class TimeModel {
 
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
-            name = "ttaskprojectuser",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "task_id") }
-    )
-    Set<TaskModel> tasks;
-    //////////////////////////////////////////////////////////////////////////////////////////////
+    @OneToMany(mappedBy = "time")
+    @Getter
+    @Setter
+    private Set<TaskProjectUserModel> taskProjectUsers;
 }

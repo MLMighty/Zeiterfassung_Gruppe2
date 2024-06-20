@@ -11,9 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 
-@CrossOrigin(origins = "http://127.0.0.1:5501", allowCredentials = "true")
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+@CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
+
 @RestController
 public class TimeEntryController {
 
@@ -21,10 +26,20 @@ public class TimeEntryController {
     private TimeRepository timeRepository;
 
     @Autowired
+
+    UserRepository userRepository;
+
+
+ 
+
     private UserRepository userRepository;
 
     @PostMapping("/timeentry")
     public void addTimeEntryWebData(@RequestBody Map<String,Object> timeEntryData) throws ParseException {
+        String uuidStr = (String) timeEntryData.get("uuid");
+        UUID uuid = UUID.fromString(uuidStr);
+        Integer userId = userRepository.callUfGetUserID(uuid);
+  
         TimeModel timeModel = new TimeModel();
         String startTime = (String) timeEntryData.get("starttime");
         String endTime = (String) timeEntryData.get("endtime");
@@ -33,19 +48,14 @@ public class TimeEntryController {
         Date endDate = dateFormat.parse(endTime);
         timeModel.setStarttime(startDate);
         timeModel.setEndtime(endDate);
+
         timeRepository.save(timeModel);
     }
 
     @PostMapping("/timeentrydata")
-    public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData(@RequestBody String uuid) {
-       /*UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null)
-        {
-            return ResponseEntity.ok(List.of(user));
-        } else
-        {
-            return ResponseEntity.notFound().build();
-        }*/
-        return null;
+    public ResponseEntity<List<UsersModel>> forwardTimeEntryWebData(@RequestBody String uuid)  {
+        UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
+
+
     }
 }

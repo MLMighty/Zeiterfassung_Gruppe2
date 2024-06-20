@@ -5,6 +5,7 @@ package com.crispy_wombats.controller.post_controller;
 
 import com.crispy_wombats.models.RoleModel;
 import com.crispy_wombats.models.UsersModel;
+import com.crispy_wombats.repositorys.UserRepository;
 import com.crispy_wombats.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://127.0.0.1:5501",allowCredentials = "true")
 @RestController
@@ -19,6 +21,8 @@ public class TeamLeadWebController
 {
 
 
+    @Autowired
+    UserRepository userRepository;
 
     @PostMapping("/teamleadweb")
     public ResponseEntity<?> absenceController (@RequestBody Map<String,Object> teamLeadWebData){
@@ -28,8 +32,9 @@ public class TeamLeadWebController
     }
 
     @GetMapping("/teamleadwebdata")
-    public ResponseEntity<List<UsersModel>> forwardAbsenceController (){
-
+    public ResponseEntity<List<UsersModel>> forwardAbsenceController (@RequestBody String uuid){
+        UUID uuids = UUID.fromString(uuid);
+        Integer userId = userRepository.callUfGetUserID(uuids);
         return null;
 
     }

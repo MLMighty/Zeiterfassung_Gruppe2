@@ -35,6 +35,10 @@ public class RoleModel {
 
     }
 
+    @OneToMany(mappedBy = "role")
+    @Getter
+    @Setter
+    private Set<UsersModel> users;
 
 }
 
