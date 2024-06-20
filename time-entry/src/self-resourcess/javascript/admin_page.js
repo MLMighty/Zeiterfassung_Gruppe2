@@ -46,29 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-//////////////////////////////////////////nur zum testen////////////////////////////////////////////
-    function renderTableData() {
-      const tableBody = document.getElementById("table").getElementsByTagName("tbody")[0];
-      tableBody.innerHTML = "";
-    
-      for (let i = 0; i < 10; i++) {
-        const row = `
-          <tr>
-            <td>${i + 1}.01.2023</td>
-            <td>08:00</td>
-            <td>16:00</td>
-            <td>8h</td>
-            <td>8h</td>
-            <td>0h</td>
-            <td>Projekt ${i}</td>
-            <td>Tätigkeit ${i}</td>
-            <td>Ja</td>
-          </tr>
-        `;
-        tableBody.innerHTML += row;
-      }
-    }
-
+// Excel file download
+  // bin ehrlich.. Magic Code wegen Zeitdruck. Aber funktioniert, let's gooooooooooooooo  
   const exportExcelButton = document.getElementById("exportExcel");
 
   exportExcelButton.addEventListener("click", () => {
@@ -85,10 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   link.href = URL.createObjectURL(blob);
   link.download = "export.xlsx";
   link.click();
-});
-    
-//////////////////////////////////////test ende //////////////////////////////////////////////
-  
+});  
 
     function getWeekNumber(date) {
       const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
