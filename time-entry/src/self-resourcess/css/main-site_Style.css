@@ -217,8 +217,42 @@ button:hover {
 #endTime{
     background-color: #ff0000;
 }
-/* delete */
 
+/* Tabelle für Genehmigungen */
+#approvalList th, #approvalList td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#approvalList tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#approvalList button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#approvalList .approveButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#approvalList .approveButton:hover {
+    background-color: #45a049;
+}
+
+#approvalList .rejectButton {
+    background-color: #f44336;
+    color: white;
+}
+
+#approvalList .rejectButton:hover {
+    background-color: #e53935;
+}
 
 /* Allgemeine Stile für Tabellen */
 table {
@@ -252,4 +286,3 @@ table {
 #tableBody tr:hover {
     background-color: #f2f2f2; /* Hintergrundfarbe ändern bei Hover */
 }
-

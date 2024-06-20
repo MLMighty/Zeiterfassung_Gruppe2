@@ -1,5 +1,5 @@
 import {CookieHandler  } from "../../global_dependencys/global_scripts/cookies-handler_script.js";
-
+import {POST_ApiInterfaceHandler  } from "../../global_dependencys/global_scripts/api-handler_scripts/post-api-handler_script.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     const taskContainer = document.getElementById('taskContainer');
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const approvalList = document.getElementById('approvalList');
     const backButton = document.getElementById('backButton');
     const projectNameInput = document.getElementById("projectName");
+    const projectDescription = document.getElementById("projectDescription");
    
 
     let task_Inputs = [];
@@ -132,49 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Funktion zum Rendern der zu genehmigenden Einträge in der Tabelle
-    function renderApprovalEntries(entries) {
-        approvalList.innerHTML = '';
-
-        entries.forEach(entry => {
-            const row = document.createElement('tr');
-
-            const dateCell = document.createElement('td');
-            dateCell.textContent = entry.date;
-            row.appendChild(dateCell);
-
-            const employeeCell = document.createElement('td');
-            employeeCell.textContent = entry.employee;
-            row.appendChild(employeeCell);
-
-            const projectCell = document.createElement('td');
-            projectCell.textContent = entry.project;
-            row.appendChild(projectCell);
-
-            const taskCell = document.createElement('td');
-            taskCell.textContent = entry.task;
-            row.appendChild(taskCell);
-
-            const hoursCell = document.createElement('td');
-            hoursCell.textContent = entry.hours;
-            row.appendChild(hoursCell);
-
-            const approveCell = document.createElement('td');
-            const approveButton = document.createElement('button');
-            approveButton.textContent = 'Genehmigen';
-            approveButton.addEventListener('click', () => approveEntry(entry));
-            approveCell.appendChild(approveButton);
-            row.appendChild(approveCell);
-
-            const rejectCell = document.createElement('td');
-            const rejectButton = document.createElement('button');
-            rejectButton.textContent = 'Ablehnen';
-            rejectButton.addEventListener('click', () => rejectEntry(entry));
-            rejectCell.appendChild(rejectButton);
-            row.appendChild(rejectCell);
-
-            approvalList.appendChild(row);
-        });
-    }
+   
 
     // Beispiel: Abrufen von Dummy-Daten für die Genehmigungsliste
     function fetchApprovalEntries() {
@@ -198,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     projectForm.addEventListener('submit', function(event) {
         event.preventDefault();
         let cookieHandler = new CookieHandler();
+        let post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
         let cookieUuid = cookieHandler.getUuidcookie("uuid");
         console.log("cookieUuid: "+  cookieUuid); //Debug Ausgabe
        
@@ -205,9 +165,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
          let admin_WebData ={
             projectname:projectNameInput.value ,
+            projectdescription:projectDescription.value,
             projectaddedworker: [],
             tasksinfo:[],
+
             uuid: cookieUuid.replace(/"/g, ''),
+
          }
 
          for (let i = 0; i < task_Inputs.length; i++) {
@@ -224,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-         console.log(admin_WebData)
+        post_ApiInterfaceHandler.adminWebDataApiHandler(admin_WebData)
         projectForm.reset();
 
         // Vorhandene Aufgaben- und Mitgliederfelder entfernen

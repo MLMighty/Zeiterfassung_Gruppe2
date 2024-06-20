@@ -44,15 +44,7 @@ export class TimeEntryHanlder{
 
     }
 
-    updateTimeEntryProjectType(){
-       //hier wird das  Project vom datenbank geholt und das section erstellt und dort riengetan
-       
-  
-    }
-    updateTimeEntryTaskType(){
-          //hier wird das  Project vom datenbank geholt und das section erstellt und dort riengetan
-       
-    }
+
 
     processTimeEntryData(){
         let timeEntryData={

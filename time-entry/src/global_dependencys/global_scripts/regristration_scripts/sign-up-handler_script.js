@@ -46,16 +46,22 @@ export class SignUpHandler {
     }
 
 
-    signUpDataTransfer() {
-        const signUpData = {
-            firstname: this.firstname.value,
-            lastname: this.lastname.value,
-            email: this.email.value,
-            password: this.password.value,
+    signUpDataTransfer(forwardedSignUpData) {
+        if(forwardedSignUpData == null){
+            const signUpData = {
+                firstname: this.firstname.value,
+                lastname: this.lastname.value,
+                email: this.email.value,
+                password: this.password.value,
+            }
+            this.post_apiInterfaceHandler.signUpApiHandler(signUpData);
+        }else{
+            this.post_apiInterfaceHandler.signUpApiHandler(forwardedSignUpData);
         }
+     
 
 
-        this.post_apiInterfaceHandler.signUpApiHandler(signUpData);
+       
         for (let index = 0; index < this.login_Inputs.length; index++) {
             this.login_Inputs[index].value = "";
 
