@@ -6,8 +6,8 @@ let post_ApiInterfaceHandler =  new  POST_ApiInterfaceHandler();
 
 
 window.addEventListener("DOMContentLoaded", () => {
-
-    post_ApiInterfaceHandler.getTeamLeadApiHandler(cookie_handler.getUuidcookie("uuid")).then(databaseData => {
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
+    post_ApiInterfaceHandler.getTeamLeadApiHandler(cookieUuid.replace(/"/g, '')).then(databaseData => {
         createApprovalListRows(databaseData)
     });
     
