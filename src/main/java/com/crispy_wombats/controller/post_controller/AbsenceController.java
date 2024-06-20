@@ -1,5 +1,4 @@
 package com.crispy_wombats.controller.post_controller;
-
 import com.crispy_wombats.models.AbsenceModel;
 import com.crispy_wombats.models.UsersModel;
 import com.crispy_wombats.repositorys.UserRepository;
@@ -28,12 +27,15 @@ public class AbsenceController {
     }
 
     @PostMapping("/absencedata")
-    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid){
+    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid)
+    {
         UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null) {
+        if (user != null)
+        {
             List<AbsenceModel> absences = absenceService.getAbsencesByUserId(user.getUser_id());
             return ResponseEntity.ok(absences);
-        } else {
+        } else
+        {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }

@@ -7,20 +7,31 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class RoleService
-{
+public class RoleService {
+
+    private final RoleRepository roleRepository;
+
     @Autowired
-    RoleRepository roleRepository;
-
-    public ResponseEntity<?> addNewRole(RoleModel role){
-
-
-
-
-
-
-        return new ResponseEntity<>(HttpStatus.OK);
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
     }
 
+    public List<RoleModel> findAll() {
+        return roleRepository.findAll();
+    }
+
+    public RoleModel findById(int id) {
+        return roleRepository.findById(id).orElse(null);
+    }
+
+    public RoleModel save(RoleModel roleModel) {
+        return roleRepository.save(roleModel);
+    }
+
+    public void deleteById(int id) {
+        roleRepository.deleteById(id);
+    }
 }

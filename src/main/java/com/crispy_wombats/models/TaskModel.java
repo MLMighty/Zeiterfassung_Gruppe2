@@ -5,9 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import java.util.Set;
 
-
 @Entity
-@Table(schema = "dbo",name = "ttask")
+@Table(schema = "dbo", name = "ttask")
 public class TaskModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +25,9 @@ public class TaskModel {
     @Column(name = "taskdescription")
     private String taskdescription;
 
-    public TaskModel(){
-
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
     @Getter
     @Setter
     @ManyToMany(mappedBy = "tasks")
-    Set<UsersModel> users;
-    //////////////////////////////////////////////////////////////////////////////////////////////
+    private Set<UsersModel> users;
+
 }
