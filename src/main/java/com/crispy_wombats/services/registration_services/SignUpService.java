@@ -29,8 +29,8 @@ public class SignUpService
             user.setEmail(user.getEmail());
             user.setLastname(user.getLastname());
             user.setPassword(HashUtil.hashString(user.getPassword()));
-            user.setRole_id(2);
-            System.out.println(user.getRole_id());
+            user.setRole_id(3);
+
 
             userRepository.save(user);
             return new ResponseEntity<>("Angemeldet",HttpStatus.OK);
