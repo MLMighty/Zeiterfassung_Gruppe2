@@ -16,20 +16,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentWeek = getWeekNumber(today);
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
+    let role = "Mitarbeiter" //Rolle von der Datenbank
 
 
   
     // Eventlistener
-    document.getElementById("logOut").addEventListener('click', deleteCookie); 
-    document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
     document.getElementById("backButton").addEventListener('click', navigateToMainPage);
-    document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
-    document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
     viewSelection.addEventListener('change', updateTableViewInfo);
     prevButton.addEventListener('click', handlePrevButton);
     nextButton.addEventListener('click', handleNextButton);
   
     // Funktionen
+  
+  function permissions(role){
+    switch (role){
+      case "Admin":
+        document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
+        document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
+        document.getElementById("logOut").addEventListener('click', deleteCookie); 
+        document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
+
+        break;
+      
+      case "Teamlead":
+        document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
+        document.getElementById("logOut").addEventListener('click', deleteCookie); 
+        document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
+
+        break;
+        
+      case "Mitarbeiter":
+        document.getElementById("logOut").addEventListener('click', deleteCookie);
+        document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
+
+        break;
+    }
+  }
     function renderTableHeader() {
       tableHead.innerHTML = `
         <tr>
@@ -212,6 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startTime();
     setWeekDay();
     setDateText();
+    permissions(role)//Rollen
     renderTableHeader();
   });
 
