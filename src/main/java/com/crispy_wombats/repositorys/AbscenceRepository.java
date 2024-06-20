@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface AbscenceRepository extends JpaRepository<AbsenceModel, Integer> {
-    List<AbsenceModel> findByUserId(int userId);
+   /* List<AbsenceModel> findByUserId(int userId);*/
 }
