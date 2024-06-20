@@ -20,9 +20,9 @@ public class UsersModel {
     @Column(name = "user_id")
     private int user_id;
 
-    /*@UuidGenerator
+    @UuidGenerator
     @Column(name = "UUID")
-    private UUID uuid;*/
+    private UUID uuid;
 
     @Getter
     @Setter
