@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
-// Excel file download
+  // Excel file download
   // bin ehrlich.. Magic Code wegen Zeitdruck. Aber funktioniert, let's gooooooooooooooo  
   const exportExcelButton = document.getElementById("exportExcel");
 
@@ -213,7 +213,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setWeekDay();
     setDateText();
     renderTableHeader();
-    renderTableData(); //nur zum testen
   });
 
 ///////////////////////////////////////////////////////
