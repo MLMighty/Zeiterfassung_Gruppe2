@@ -18,6 +18,7 @@ public class AbsenceModel {
     @Column(name = "absence_id")
     private int absence_id;
 
+
     @Getter
     @Setter
     @Column(name = "absencestart")

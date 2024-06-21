@@ -3,7 +3,6 @@ package com.crispy_wombats.controller.post_controller;
 
 //weil der Admin Rolen erstellen kann
 
-import com.crispy_wombats.models.RoleModel;
 import com.crispy_wombats.models.UsersModel;
 import com.crispy_wombats.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

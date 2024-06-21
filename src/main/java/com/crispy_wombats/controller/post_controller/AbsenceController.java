@@ -1,6 +1,7 @@
 package com.crispy_wombats.controller.post_controller;
 import com.crispy_wombats.models.AbsenceModel;
 import com.crispy_wombats.models.UsersModel;
+import com.crispy_wombats.repositorys.AbscenceRepository;
 import com.crispy_wombats.repositorys.UserRepository;
 import com.crispy_wombats.services.AbsenceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class AbsenceController {
     AbsenceService absenceService;
 
     @Autowired
+    AbscenceRepository abscenceRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @PostMapping("/saveabsence")
@@ -29,14 +33,19 @@ public class AbsenceController {
     @PostMapping("/absencedata")
     public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid)
     {
-       /* UsersModel user = userRepository.findByUuid(UUID.fromString(uuid));
-        if (user != null)
-        {
-            List<AbsenceModel> absences = absenceService.getAbsencesByUserId(user.getUser_id());
-            return ResponseEntity.ok(absences);
-        } else
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+      /*  UUID uuids = UUID.fromString(uuid);
+        try {
+
+            Integer userId = userRepository.callUfGetUserID(uuids);
+            if (userId != null) {
+               return new ResponseEntity<>(abscenceRepository.findAllByUser_id(userId),HttpStatus.OK);
+
+            } else {
+                System.err.println("User ID not found for UUID: " + uuid);
+            }
+        } catch (IllegalArgumentException e) {
+            System.err.println("Invalid UUID format: " + uuids);
+
         }*/
 
         return null;
