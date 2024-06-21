@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<UsersModel, Integer> {
 
     @Query(value = "SELECT dbo.ufGetUserID(:uuid)", nativeQuery = true)
     Integer callUfGetUserID(@Param("uuid") UUID uuid);
+
+
 }
