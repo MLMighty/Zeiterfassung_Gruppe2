@@ -17,13 +17,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Datum</th>
-                        <th>Mitarbeiter</th>
-                        <th>Projekt</th>
-                        <th>Tätigkeit</th>
-                        <th>Stunden</th>
-                        <th>Genehmigen</th>
-                        <th>Ablehnen</th>
+                        <th>Abwesenheit-Start</th>
+                        <th>Abwesenheit-Ende</th>
+                        <th>Abwesenheit-Typ</th>
+       
                     </tr>
                 </thead>
                 <tbody id="approvalList">
@@ -68,6 +65,9 @@
 
                 <select id="roleSelection"onchange="import('../javascript/admin_page.js').then(module => {module.forwardingSelectedRole(event)})" class="selects">
                     <option selected disabled>Rolen</option>
+                    <option >Entwickler</option>
+                    <option >Admin</option>
+                    <option >TeamLead</option>
                
                 </select>
 
@@ -81,11 +81,13 @@
             <form id="projectForm">
                 <label for="projectName">Projektname:</label>
                 <input type="text" id="projectName" name="projectName" required>
+                <label for="projectName">Projekt Beschreibung:</label>
                 <input type="text" id="projectDescription" name="projectDescription" >
        
 
                 <label for="projectMembers">Mitarbeiter (E-Mail):</label>
                 <div id="memberContainer">
+                    
                     <!-- Hier werden die Eingabefelder für Mitarbeiter-E-Mails dynamisch hinzugefügt -->
                 </div>
                 <button type="button"  id="addMember">Mitarbeiter hinzufügen</button>

@@ -15,6 +15,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     post_ApiInterfaceHandler.getAdminApiHandler(cookieUuid.replace(/"/g, '')).then(data => callAdminWebData(data))
     get_ApiInterfaceHandler.getRolesApiHandler().then(databaseData =>  createOptions(databaseData))
     get_ApiInterfaceHandler.getEmailsApiHandler().then(databaseData =>  createEmailOptions(databaseData))
+    get_ApiInterfaceHandler.getAbscenceApiHandler().then(databaseData =>  createApprovalListRows(databaseData))
 
 })
 
@@ -44,36 +45,50 @@ function createEmailOptions(databaseData){
     }
 }
 
-
 function createApprovalListRows(databaseData) {
+    console.log(databaseData);
     const approvalList = document.getElementById('approvalList');
 
-    databaseData.approvals.forEach(entry => {
+    for (let index = 0; index < databaseData.length; index++) {
+        const entry = databaseData[index];
+        
         const tr = document.createElement('tr');
 
+        // Konvertiere die Datumsfelder
+        const absencestart = formatDate(entry.absencestart);
+        const absenceend = formatDate(entry.absenceend);
+
         tr.innerHTML = `
-            <td>${entry.datum}</td>
-            <td>${entry.mitarbeiter}</td>
-            <td>${entry.projekt}</td>
-            <td>${entry.taetigkeit}</td>
-            <td>${entry.stunden}</td>
-            <td>${entry.differenz}</td>
+            <td>${absencestart}</td>
+            <td>${absenceend}</td>
+            <td>${entry.absencetype}</td>
             <td><button class="approveButton">Genehmigen</button></td>
             <td><button class="rejectButton">Ablehnen</button></td>
         `;
 
         approvalList.appendChild(tr);
 
-       
         tr.querySelector('.approveButton').addEventListener('click', () => {
             console.log('Genehmigt:', entry);
-            tr.remove(); 
+            tr.remove();
         });
 
         tr.querySelector('.rejectButton').addEventListener('click', () => {
-
             console.log('Abgelehnt:', entry);
-            tr.remove(); 
+            tr.remove();
         });
-    });
+    }
+}
+
+function formatDate(isoDateString) {
+    let date = new Date(isoDateString);
+
+    let year = date.getUTCFullYear();
+    let month = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    let day = date.getUTCDate().toString().padStart(2, '0');
+    let hours = date.getUTCHours().toString().padStart(2, '0');
+    let minutes = date.getUTCMinutes().toString().padStart(2, '0');
+    let seconds = date.getUTCSeconds().toString().padStart(2, '0');
+
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 }

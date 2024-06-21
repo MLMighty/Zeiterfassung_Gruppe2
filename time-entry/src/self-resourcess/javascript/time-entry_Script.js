@@ -19,6 +19,15 @@ window.onclick = function(event) {
 document.getElementsByClassName('close')[0].onclick = function() {
     closeModal();
 }
+document.getElementById("logOut").addEventListener('click', deleteCookie); 
+    
+function deleteCookie(){
+    document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+    document.cookie = 'uuid=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+
+    window.location = "time-entry_Site.html";;
+  }
+
 
 $(document).ready(function() {
     $('#calendar').fullCalendar({

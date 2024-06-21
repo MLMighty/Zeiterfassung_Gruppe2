@@ -60,6 +60,21 @@ export class GET_ApiInterfaceHandler {
       
         }}
     
+
+        async getAbscenceApiHandler(){
+    
+          try{
+            const response = await fetch("http://localhost:8080/absencedata")
+            if(!response.ok) {
+              throw new Error("Fehler beim senden der Daten");
+            }
+            const responseData = await response.json();
+            
+            return responseData;
+          }catch(err){
+             console.error("A problem occured: " + err);
+        
+          }}
   
 
 

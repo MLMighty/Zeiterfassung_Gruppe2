@@ -17,13 +17,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Datum</th>
-                        <th>Mitarbeiter</th>
-                        <th>Projekt</th>
-                        <th>Tätigkeit</th>
-                        <th>Stunden</th>
-                        <th>Genehmigen</th>
-                        <th>Ablehnen</th>
+                        <th>Abwesenheit-Start</th>
+                        <th>Abwesenheit-Ende</th>
+                        <th>Abwesenheit-Typ</th>
+       
                     </tr>
                 </thead>
                 <tbody id="approvalList">
@@ -36,7 +33,8 @@
             <form id="projectForm">
                 <label for="projectName">Projektname:</label>
                 <input type="text" id="projectName" name="projectName" required>
-
+                <label for="projectName">Projekt Beschreibung:</label>
+                <input type="text" id="projectDescription" name="projectDescription" >
               
 
                 <label for="projectMembers">Mitarbeiter (E-Mail):</label>

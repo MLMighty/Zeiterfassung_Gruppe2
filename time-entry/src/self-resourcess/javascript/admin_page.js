@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentWeek = getWeekNumber(today);
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
-    let role = "Mitarbeiter" //Rolle von der Datenbank
+    let role = "Admin" //Rolle von der Datenbank
 
 
   
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     viewSelection.addEventListener('change', updateTableViewInfo);
     prevButton.addEventListener('click', handlePrevButton);
     nextButton.addEventListener('click', handleNextButton);
+    document.getElementById("logOut").addEventListener('click', deleteCookie); 
   
     // Funktionen
   
@@ -33,20 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
       case "Admin":
         document.getElementById("adminPage").addEventListener('click', navigateToAdminPage);
         document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
-        document.getElementById("logOut").addEventListener('click', deleteCookie); 
         document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
 
         break;
       
       case "Teamlead":
         document.getElementById("teamleadPage").addEventListener('click', navigateToTeamLeadPage);
-        document.getElementById("logOut").addEventListener('click', deleteCookie); 
         document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
 
         break;
         
       case "Mitarbeiter":
-        document.getElementById("logOut").addEventListener('click', deleteCookie);
         document.getElementById("editTime").addEventListener('click', navigateToTimeEntryPage);
 
         break;

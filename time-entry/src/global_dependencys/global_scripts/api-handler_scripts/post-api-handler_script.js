@@ -157,7 +157,7 @@ export class POST_ApiInterfaceHandler {
       async getEditTimeApiHandler(uuid){
     
         try {
-          const responseData = await fetch("http://localhost:8080/absencedata",{
+          const responseData = await fetch("http://localhost:8080/usertimenetrydata",{
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import {CookieHandler  } from "../../global_dependencys/global_scripts/cookies-handler_script.js";
 import {POST_ApiInterfaceHandler  } from "../../global_dependencys/global_scripts/api-handler_scripts/post-api-handler_script.js";
+import { GET_ApiInterfaceHandler } from "../../global_dependencys/global_scripts/api-handler_scripts/get-api-handler_script.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     const taskContainer = document.getElementById('taskContainer');
@@ -92,11 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = "time-entry_Site.html";
     });
 
+    document.getElementById("logOut").addEventListener('click', deleteCookie); 
+    
+    function deleteCookie(){
+        document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+        document.cookie = 'uuid=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/;';
+  
+        window.location = "time-entry_Site.html";;
+      }
+
     projectForm.addEventListener('submit', function(event) {
         event.preventDefault();
         let cookie_handler = new CookieHandler();
         let post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
-        let cookieUuid = cookieHandler.getUuidcookie("uuid");
+        let cookieUuid = cookie_handler.getUuidcookie("uuid");
         console.log("cookieUuid: "+  cookieUuid); //Debug Ausgabe
        
         //lösch button noch auch in arrays speichern und gucken dalls erste button angeklickt wurde wird der der input des ersten arrays z.b auch gelöscht
