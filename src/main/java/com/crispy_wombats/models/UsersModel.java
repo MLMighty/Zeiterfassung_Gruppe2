@@ -20,9 +20,17 @@ public class UsersModel {
     @Column(name = "user_id")
     private int user_id;
 
-    /*@UuidGenerator
-    @Column(name = "UUID")
-    private UUID uuid;*/
+    @Getter
+    @Setter
+    @Column(name = "UUID", nullable = true, unique = true)
+    private UUID uuid;
+
+/*
+    @Getter
+    @Setter
+    @Column(name = "role_id")
+    private int role_id;
+*/
 
     @Getter
     @Setter

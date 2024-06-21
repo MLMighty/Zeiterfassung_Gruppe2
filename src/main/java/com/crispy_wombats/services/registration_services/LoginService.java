@@ -22,6 +22,8 @@ public class LoginService {
         if (userEmail != null && userEmail.getPassword() != null) {
             if (userEmail.getEmail().equals(user.getEmail()) && userEmail.getPassword().equals(HashUtil.hashString(user.getPassword()))) {
                 UUID uuid = Uuid.generateUUID();
+                userEmail.setUuid(uuid);
+                userRepository.save(user);
                 return new ResponseEntity<>(uuid, HttpStatus.OK);
             }
             return new ResponseEntity<>(false, HttpStatus.OK);
