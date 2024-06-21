@@ -27,12 +27,15 @@ public class AbsenceController {
 
     @PostMapping("/saveabsence")
     public void saveAbsence(@RequestBody AbsenceModel absence){
+
         absenceService.addAbsence(absence);
+
     }
 
-    @PostMapping("/absencedata")
-    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId(@RequestBody String uuid)
+    @GetMapping("/absencedata")
+    public ResponseEntity<List<AbsenceModel>> getAbsencesByUserId()
     {
+        return new ResponseEntity<>(abscenceRepository.findAll(),HttpStatus.OK);
       /*  UUID uuids = UUID.fromString(uuid);
         try {
 
@@ -48,6 +51,6 @@ public class AbsenceController {
 
         }*/
 
-        return null;
+
     }
 }
