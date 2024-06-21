@@ -12,7 +12,6 @@ import java.util.UUID;
 @Repository
 public interface UserRepository extends JpaRepository<UsersModel, Integer> {
     UsersModel findByEmail(String email);
-    UsersModel findAllByPassword(String password);
 
     @Query(value = "SELECT dbo.ufGetUserID(:uuid)", nativeQuery = true)
     Integer callUfGetUserID(@Param("uuid") UUID uuid);
