@@ -80,6 +80,17 @@
                         <button id="prev">&lt;</button>
                         <span id="tableViewInfo"></span>
                         <button id="next">&gt;</button>
+                        <select id= "filterOption" onchange="import('../javascript/admin_page.js').then(module => {module.filterSelection(event)})" class="selects">
+                            <option selected disabled>Filter</option>
+                            <option >+ Projekt A-z</option>
+                            <option >- Projekt Z-a</option>
+                            <option >+ Tätigkeit A-z</option>
+                            <option >- Tätigkeit Z-a</option>
+                            <option >+ Datum Asc.</option>
+                            <option >- Datum Desc.</option>
+                            <option >+ Freigegeben Ja</option>
+                            <option >- Freigegeben Nein</option>
+                          </select>
                     </div>
                 </section>
 

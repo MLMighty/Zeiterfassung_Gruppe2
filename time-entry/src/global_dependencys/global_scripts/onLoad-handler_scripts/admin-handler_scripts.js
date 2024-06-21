@@ -14,6 +14,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     let cookieUuid = cookie_handler.getUuidcookie("uuid");
     post_ApiInterfaceHandler.getAdminApiHandler(cookieUuid.replace(/"/g, '')).then(data => callAdminWebData(data))
     get_ApiInterfaceHandler.getRolesApiHandler().then(databaseData =>  createOptions(databaseData))
+    get_ApiInterfaceHandler.getEmailsApiHandler().then(databaseData =>  createEmailOptions(databaseData))
 
 })
 
@@ -35,11 +36,12 @@ function createOptions(databaseData){
 }
 
 function createEmailOptions(databaseData){
-    databaseData.emails.forEach(email => {
+
+    for (let index = 0; index < databaseData.length; index++) {
         let emailOptions = document.createElement("option");
-        emailOptions.innerText = email.useremail;
-        emailDataList.append( emailOptions)
-    });
+        emailOptions.innerText = databaseData[index].email;
+        emailDataList.append(emailOptions)
+    }
 }
 
 

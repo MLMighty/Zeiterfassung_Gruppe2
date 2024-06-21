@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </tr>
       `;
     }
+    
 
   // Excel file download
   // bin ehrlich.. Magic Code wegen Zeitdruck. Aber funktioniert, let's gooooooooooooooo  
@@ -114,6 +115,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //////////////////////////////////////////
+    function renderTableData() {
+      const tableBody = document.getElementById('tableBody');
+      tableBody.innerHTML = '';
+
+      const fakeData = [
+          { datum: '2024-06-01', start: '08:00', ende: '16:00', ist: '8h', soll: '8h', differenz: '0h', projekt: 'Projekt A', taetigkeit: 'Entwicklung', freigegeben: 'Ja' },
+          { datum: '2024-06-02', start: '09:00', ende: '17:00', ist: '8h', soll: '8h', differenz: '0h', projekt: 'Projekt B', taetigkeit: 'Besprechung', freigegeben: 'Ja' },
+          { datum: '2024-06-03', start: '07:30', ende: '15:30', ist: '8h', soll: '8h', differenz: '0h', projekt: 'Projekt C', taetigkeit: 'Dokumentation', freigegeben: 'Ja' },
+          { datum: '2024-06-04', start: '08:30', ende: '16:30', ist: '8h', soll: '8h', differenz: '0h', projekt: 'Projekt D', taetigkeit: 'Testing', freigegeben: 'Ja' },
+          { datum: '2024-06-05', start: '08:00', ende: '16:00', ist: '8h', soll: '8h', differenz: '0h', projekt: 'Projekt E', taetigkeit: 'Entwicklung', freigegeben: 'Ja' }
+      ];
+
+      fakeData.forEach(item => {
+          const row = document.createElement('tr');
+          Object.values(item).forEach(text => {
+              const cell = document.createElement('td');
+              cell.textContent = text;
+              row.appendChild(cell);
+          });
+          tableBody.appendChild(row);
+      });
+  }
+
+    
   
     function handlePrevButton() {
       const view = viewSelection.value;
@@ -236,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setDateText();
     permissions(role)//Rollen
     renderTableHeader();
+    renderTableData();
   });
 
 ///////////////////////////////////////////////////////
@@ -266,6 +292,14 @@ let cookie_handler = new CookieHandler();
     event.preventDefault();
     let roleSelections =  document.getElementById("roleSelection");
     role_selection = roleSelections.value;
+
+  }
+
+  let filter_selection ;
+  export function filterSelection(event){
+    event.preventDefault();
+    let filterSelections =  document.getElementById("filterOption");
+    filter_selection = filterSelections.value;
 
   }
 
