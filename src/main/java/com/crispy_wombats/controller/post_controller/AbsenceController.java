@@ -15,8 +15,8 @@ import java.util.UUID;
 @RestController
 public class AbsenceController {
 
-    @Autowired
-    AbsenceService absenceService;
+   @Autowired
+   AbsenceService absenceService;
 
     @Autowired
     UserRepository userRepository;

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AbsenceService {
 
@@ -17,11 +19,16 @@ public class AbsenceService {
         absence.setAbsencetype(absence.getAbsencetype());
         absence.setAbsencestart(absence.getAbsencestart());
         absence.setAbsenceend(absence.getAbsenceend());
-
-
         abscenceRepository.save(absence);
 
     }
+
+
+
+ /*   public List<AbsenceModel> getAbsencesByUserId(int userId) {
+        return abscenceRepository.findByUserId(userId);
+    }*/
+
 
 
 

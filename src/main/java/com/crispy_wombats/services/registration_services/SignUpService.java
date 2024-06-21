@@ -21,21 +21,15 @@ public class SignUpService
 
     public ResponseEntity<String> createUser(UsersModel user)
     {
- /*       @Autowire*/
+
 
         UsersModel userEmail = userRepository.findByEmail(user.getEmail());
         if(userEmail == null){
-            RoleModel roleModel = new RoleModel();
-
             user.setFirstname(user.getFirstname());
             user.setEmail(user.getEmail());
             user.setLastname(user.getLastname());
             user.setPassword(HashUtil.hashString(user.getPassword()));
-//            user.setRole_id(3);
-//
-//            if(user.getRole_id() == null ){
-//
-//            }
+            user.setRole_id(3);
 
 
             userRepository.save(user);
