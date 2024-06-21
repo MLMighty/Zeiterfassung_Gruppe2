@@ -246,7 +246,7 @@ let cookie_handler = new CookieHandler();
     let lastname = document.getElementById("lastname");
     let email = document.getElementById("email");
     let password = document.getElementById("password");
-      let cookieUuid = cookie_handler.getUuidcookie("uuid");
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
   
     const forwardingSignUpData = {
       uuid: cookieUuid.replace(/"/g, ''),
@@ -274,12 +274,13 @@ let cookie_handler = new CookieHandler();
     let post_ApiInterfaceHandler = new POST_ApiInterfaceHandler();
     let rolename = document.getElementById("roleName");
     let role_description = document.getElementById("role-description");
+    let cookieUuid = cookie_handler.getUuidcookie("uuid");
    
 
   
   
     const forwardingCreatedRoleData = {
-      uuid:cookie_handler.getUuidcookie("uuid"),
+      uuid: cookieUuid.replace(/"/g, ''),
       rolename: rolename.value,
       roledescription: role_description.value,
       permissionrights: role_selection.value,

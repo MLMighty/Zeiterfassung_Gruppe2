@@ -1,6 +1,8 @@
 import {POST_ApiInterfaceHandler  } from "../api-handler_scripts/post-api-handler_script.js";
+import {GET_ApiInterfaceHandler  } from "../api-handler_scripts/get-api-handler_script.js";
 
 let post_ApiInterfaceHandler =  new  POST_ApiInterfaceHandler();
+let get_ApiInterfaceHandler =  new  GET_ApiInterfaceHandler();
 let roleSection = document.getElementById("roleSelection");
 let emailDataList = document.getElementById("exampleList");
 let roleSectionNewMember = document.getElementById("roleSectionNewMember")
@@ -11,23 +13,25 @@ let cookie_handler = new CookieHandler();
 window.addEventListener("DOMContentLoaded", ()=>{
     let cookieUuid = cookie_handler.getUuidcookie("uuid");
     post_ApiInterfaceHandler.getAdminApiHandler(cookieUuid.replace(/"/g, '')).then(data => callAdminWebData(data))
+    get_ApiInterfaceHandler.getRolesApiHandler().then(databaseData =>  createOptions(databaseData))
 
 })
 
 function callAdminWebData(databaseData) {
     createApprovalListRows(databaseData)
-    createOptions(databaseData)
-    createEmailOptions(databaseData)
+   
+   
 }
 
 function createOptions(databaseData){
+    console.log(databaseData)
     databaseData.roles.forEach(role => {
         let roleOptions = document.createElement("option");
         roleOptions.innerText = role.rolename
         roleSection.append(roleOptions)
         roleSectionNewMember.append(roleOptions)
     });
-
+    createEmailOptions(databaseData)
 }
 
 function createEmailOptions(databaseData){
